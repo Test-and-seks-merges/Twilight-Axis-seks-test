@@ -1,5 +1,3 @@
-# AZURE PEAK
-
 <p align="center">
  <img width="450px" src="https://github.com/user-attachments/assets/6b803f1d-3262-4373-8531-8f8415a3d05f" align="center" alt="Twilight Fortress" />
  <h1 align="center">Twilight Axis</h1>
