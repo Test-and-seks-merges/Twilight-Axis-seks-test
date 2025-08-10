@@ -1,18 +1,15 @@
 /datum/outfit/job/roguetown/puritan/inspector/pre_equip(mob/living/carbon/human/H)
 	. = ..()
 	H.adjust_skillrank(/datum/skill/combat/twilight_firearms, 3, TRUE)
-	belt = /obj/item/storage/belt/rogue/leather/twilight_holsterbelt
-	backl = /obj/item/rogueweapon/scabbard/sword
+	belt = /obj/item/storage/belt/rogue/leather/twilight_holsterbelt/runelock
 	beltr = /obj/item/quiver/twilight_bullet/runed
-	beltl = /obj/item/gun/ballistic/revolver/grenadelauncher/twilight_runelock
+	backl = null
 
 /datum/outfit/job/roguetown/puritan/ordinator/pre_equip(mob/living/carbon/human/H)
 	. = ..()
 	H.adjust_skillrank(/datum/skill/combat/twilight_firearms, 3, TRUE)
-	belt = /obj/item/storage/belt/rogue/leather/twilight_holsterbelt
-	backr = /obj/item/rogueweapon/scabbard/sword
+	belt = /obj/item/storage/belt/rogue/leather/twilight_holsterbelt/runelock
 	beltr = /obj/item/quiver/twilight_bullet/runed
-	beltl = /obj/item/gun/ballistic/revolver/grenadelauncher/twilight_runelock
 
 /datum/advclass/puritan/blackpowder
 	name = "Black Vanguard"
@@ -27,8 +24,8 @@
 	H.adjust_skillrank(/datum/skill/misc/lockpicking, 5, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/tracking, 5, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/sneaking, 5, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/knives, 4, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/climbing, 4, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/athletics, 4, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/twilight_firearms, 5, TRUE)
@@ -36,7 +33,7 @@
 	H.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/shields, 3, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
-	H.adjust_skillrank(/datum/skill/misc/medicine, 5, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/medicine, 4, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
 	H.change_stat("strength", 2)
 	H.change_stat("endurance", 3)
@@ -67,7 +64,7 @@
 	gloves = /obj/item/clothing/gloves/roguetown/otavan/psygloves
 	beltl = /obj/item/rogueweapon/scabbard/sword
 	id = /obj/item/clothing/ring/signet/silver
-	l_hand = /obj/item/rogueweapon/sword/long/psysword
+	l_hand = /obj/item/rogueweapon/sword/rapier/psyrapier
 	backpack_contents = list(
 		/obj/item/storage/keyring/puritan = 1,
 		/obj/item/lockpickring/mundane = 1,
