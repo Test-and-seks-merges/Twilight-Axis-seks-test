@@ -171,15 +171,6 @@
 			r_hand = /obj/item/rogueweapon/sword/sabre
 			backl = /obj/item/rogueweapon/shield/tower/metal
 
-	var/armors = list(
-		"Brigandine"		= /obj/item/clothing/suit/roguetown/armor/brigandine,
-		"Coat of Plates"	= /obj/item/clothing/suit/roguetown/armor/brigandine/coatplates,
-		"Steel Cuirass"		= /obj/item/clothing/suit/roguetown/armor/plate/half,
-		"Fluted Cuirass"	= /obj/item/clothing/suit/roguetown/armor/plate/half/fluted,
-	)
-	var/armorchoice = input("Choose your armor.", "TAKE UP ARMOR") as anything in armors
-	armor = armors[armorchoice]
-
 /datum/advclass/captain/cavalry
 	name = "Cavalry Captain"
 	tutorial = "As the first among finest you ride at the speartip of cavalier forces, barreling saiga and blades through \
@@ -265,15 +256,6 @@
 			H.adjust_skillrank_up_to(/datum/skill/combat/polearms, 5, TRUE)
 			r_hand = /obj/item/rogueweapon/spear/lance
 			backl = /obj/item/rogueweapon/shield/tower/metal
-
-	var/armors = list(
-		"Brigandine"		= /obj/item/clothing/suit/roguetown/armor/brigandine,
-		"Coat of Plates"	= /obj/item/clothing/suit/roguetown/armor/brigandine/coatplates,
-		"Steel Cuirass"		= /obj/item/clothing/suit/roguetown/armor/plate/half,
-		"Fluted Cuirass"	= /obj/item/clothing/suit/roguetown/armor/plate/half/fluted,
-	)
-	var/armorchoice = input("Choose your armor.", "TAKE UP ARMOR") as anything in armors
-	armor = armors[armorchoice]
 
 /obj/effect/proc_holder/spell/self/convertrole
 	name = "Recruit Beggar"
