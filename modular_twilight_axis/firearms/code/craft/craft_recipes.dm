@@ -48,7 +48,7 @@
 	verbage_simple = "engineer"
 	verbage = "engineers"
 	skillcraft = /datum/skill/craft/engineering
-	craftdiff = 4
+	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/engineering/twilight_powderflask/thunder
 	name = "fill powderflask with thunderpowder (6 coal dust, 4 air essentia)"
