@@ -8,7 +8,7 @@
 /// Возвращает размер лодаута для указанного ника игрока
 /datum/preferences/proc/get_loadout_size(mob/user)
 	
-	var/loadout_size = 1
+	var/loadout_size = 3
 	var/modifiers = 0
 	if(check_patreon_lvl(user.ckey))
 		modifiers = 4
