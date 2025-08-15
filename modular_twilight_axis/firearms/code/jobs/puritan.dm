@@ -5,12 +5,6 @@
 	beltr = /obj/item/quiver/twilight_bullet/runed
 	backl = null
 
-/datum/outfit/job/roguetown/puritan/ordinator/pre_equip(mob/living/carbon/human/H)
-	. = ..()
-	H.adjust_skillrank(/datum/skill/combat/twilight_firearms, 3, TRUE)
-	belt = /obj/item/storage/belt/rogue/leather/twilight_holsterbelt/runelock
-	beltr = /obj/item/quiver/twilight_bullet/runed
-
 /datum/advclass/puritan/blackpowder
 	name = "Black Vanguard"
 	tutorial = "A truly rare specimen among the ranks of the Inquisition - an agent of the Black Powder Order now serving as an Ordinator, hunting down Psydon's many enemies, set upon this task by Marshal Inquisitionis himself. There are many mistakes a heretic can commit over their lifespan, but when facing a Black Vanguard, their final error tends to be the fact that they brought a sword to a gunfight."
