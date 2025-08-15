@@ -491,6 +491,7 @@ GLOBAL_LIST_EMPTY(loadout_items_by_name)
 //All these items are stored in the donator_fluff.dm in the azure modular folder for simplicity.
 //All should be subtypes of existing weapons/clothes/armor/gear, whatever, to avoid balance issues I guess. Idk, I'm not your boss.
 
+// Энчант киты
 /datum/loadout_item/donator_plex
 	name = "Donator Kit - Rapier di Aliseo - Required: Rapier"
 	path = /obj/item/enchantingkit/plexiant
@@ -526,7 +527,148 @@ GLOBAL_LIST_EMPTY(loadout_items_by_name)
 	path = /obj/item/enchantingkit/zydras
 	donatitem = TRUE
 
-/datum/loadout_item/dmusicbox
-	name = "Music Box"
+// Разное
+/datum/loadout_item/donat
+	name = "Музыкальная коробка"
 	path = /obj/item/dmusicbox
+	donatitem = TRUE
+
+/datum/loadout_item/donat/lute
+	name = "Музыкальный инструмент: Лютня"
+	path = /obj/item/rogue/instrument/lute
+	donatitem = TRUE
+
+/datum/loadout_item/donat/accord
+	name = "Музыкальный инструмент: Аккордеон"
+	path = /obj/item/rogue/instrument/accord
+	donatitem = TRUE
+
+/datum/loadout_item/donat/guitar
+	name = "Музыкальный инструмент: Гитара"
+	path = /obj/item/rogue/instrument/guitar
+	donatitem = TRUE
+
+/datum/loadout_item/donat/harp
+	name = "Музыкальный инструмент: Арфа"
+	path = /obj/item/rogue/instrument/harp
+	donatitem = TRUE
+
+/datum/loadout_item/donat/flute
+	name = "Музыкальный инструмент: Флейта"
+	path = /obj/item/rogue/instrument/flute
+	donatitem = TRUE
+
+/datum/loadout_item/donat/drum
+	name = "Музыкальный инструмент: Барабан"
+	path = /obj/item/rogue/instrument/drum
+	donatitem = TRUE
+
+/datum/loadout_item/donat/shamisen
+	name = "Музыкальный инструмент: Сямисэн"
+	path = /obj/item/rogue/instrument/shamisen
+	donatitem = TRUE
+
+// Одежда для донатеров
+/datum/loadout_item/donat/corset
+	name = "Корсет"
+	path = /obj/item/clothing/suit/roguetown/armor/corset
+	donatitem = TRUE
+
+// Табарды и плащи
+
+/datum/loadout_item/donat/matron
+	name = "Плащ матроны"
+	path = /obj/item/clothing/cloak/matron
+	donatitem = TRUE
+
+/datum/loadout_item/donat/capeblkknight
+	name = "Кровавая мантия"
+	path = /obj/item/clothing/cloak/cape/blkknight
+	donatitem = TRUE
+
+/datum/loadout_item/donat/xylixiancloak
+	name = "Ксайликситский плащ"
+	path = /obj/item/clothing/cloak/templar/xylixian
+	donatitem = TRUE
+
+/datum/loadout_item/donat/furcloak
+	name = "Меховой плащ"
+	path = /obj/item/clothing/cloak/raincloak/furcloak
+	donatitem = TRUE
+
+/datum/loadout_item/donat/battleskirt
+	name = "Боевая юбка"
+	path = /obj/item/clothing/cloak/fauld/battleskirt
+	donatitem = TRUE
+
+/datum/loadout_item/donat/faulds
+	name = "Фольд"
+	path = /obj/item/clothing/cloak/fauld
+	donatitem = TRUE
+
+/datum/loadout_item/donat/tabard/astata
+	name = "Табард-плащ Астраты"
+	path = /obj/item/clothing/cloak/templar/astratan
+	donatitem = TRUE
+
+/datum/loadout_item/donat/tabard/crusader/noc
+	name = "Табард-плащ Нок"
+	path = /obj/item/clothing/cloak/tabard/crusader/noc
+	donatitem = TRUE
+
+/datum/loadout_item/donat/tabard/crusader/dendor
+	name = "Табард-плащ Дендора"
+	path = /obj/item/clothing/cloak/tabard/crusader/dendor
+	donatitem = TRUE
+
+/datum/loadout_item/donat/tabard/pestra
+	name = "Табард-плащ Пестры"
+	path = /obj/item/clothing/cloak/templar/pestran
+	donatitem = TRUE
+
+/datum/loadout_item/donat/tabard/malum
+	name = "Табард-плащ Малума"
+	path = /obj/item/clothing/cloak/templar/malumite
+	donatitem = TRUE
+
+/datum/loadout_item/donat/tabard/abyssor
+	name = "Табард-плащ Абиссора"
+	path = /obj/item/clothing/cloak/abyssortabard
+	donatitem = TRUE
+
+/datum/loadout_item/donat/tabard/crusader/ravox
+	name = "Табард-плащ Равокса"
+	path = /obj/item/clothing/cloak/tabard/crusader/ravox
+	donatitem = TRUE
+
+/datum/loadout_item/donat/tabard/crusader/eora
+	name = "Табард-плащ Эоры(старый)"
+	path = /obj/item/clothing/cloak/tabard/crusader/eora
+	donatitem = TRUE
+
+/datum/loadout_item/donat/tabard/eora
+	name = "Табард-плащ Эоры"
+	path = /obj/item/clothing/cloak/templar/eoran
+	donatitem = TRUE
+
+/datum/loadout_item/donat/tabard/crusader/necra
+	name = "Табард Некры"
+	path = /obj/item/clothing/cloak/templar/necran
+	donatitem = TRUE
+	
+/datum/loadout_item/donat/tabard/crusader/psydon
+	name = "Табард Псайдона"
+	path = /obj/item/clothing/cloak/psydontabard
+	donatitem = TRUE
+
+// Маски
+
+/datum/loadout_item/donat/naledimask
+	name = "Маска Наледи"
+	path = /obj/item/clothing/mask/rogue/lordmask/naledi/decorated
+	donatitem = TRUE
+
+/datum/loadout_item/donat/eoramask
+	name = "Эоранская маска"
+	path = /obj/item/clothing/head/roguetown/eoramask
 	donatitem = TRUE
