@@ -43,7 +43,7 @@ GLOBAL_LIST_EMPTY(loadout_items_by_name)
 	path = /obj/item/clothing/head/roguetown/helmet/tricorn
 
 /datum/loadout_item/archercap
-	name = "Archer's cap"
+	name = "Archer cap"
 	path = /obj/item/clothing/head/roguetown/archercap
 
 /datum/loadout_item/strawhat
@@ -83,7 +83,7 @@ GLOBAL_LIST_EMPTY(loadout_items_by_name)
 	path = /obj/item/clothing/head/roguetown/bucklehat
 
 /datum/loadout_item/duelist_hat
-	name = "Duelist's Hat"
+	name = "Duelist Hat"
 	path = /obj/item/clothing/head/roguetown/duelhat
 
 /datum/loadout_item/hood
@@ -156,7 +156,7 @@ GLOBAL_LIST_EMPTY(loadout_items_by_name)
 	path = /obj/item/clothing/cloak/eastcloak2
 
 /datum/loadout_item/thief_cloak
-	name = "Rapscallion's Shawl"
+	name = "Rapscallion Shawl"
 	path = /obj/item/clothing/cloak/thief_cloak
 
 //SHOES
@@ -380,7 +380,7 @@ GLOBAL_LIST_EMPTY(loadout_items_by_name)
 	path = /obj/item/clothing/mask/rogue/exoticsilkmask
 
 /datum/loadout_item/duelmask
-	name = "Duelist's Mask"
+	name = "Duelist Mask"
 	path = /obj/item/clothing/mask/rogue/duelmask
 
 /datum/loadout_item/pipe
@@ -468,19 +468,19 @@ GLOBAL_LIST_EMPTY(loadout_items_by_name)
     path = /obj/item/clothing/head/roguetown/chaperon/greyscale
 
 /datum/loadout_item/chaperon/burgher
-    name = "Noble's Chaperon"
+    name = "Noble Chaperon"
     path = /obj/item/clothing/head/roguetown/chaperon/noble
 
 /datum/loadout_item/jesterhat
-    name = "Jester's Hat"
+    name = "Jester Hat"
     path = /obj/item/clothing/head/roguetown/jester
 
 /datum/loadout_item/jestertunick
-    name = "Jester's Tunick"
+    name = "Jester Tunick"
     path = /obj/item/clothing/suit/roguetown/shirt/jester
 
 /datum/loadout_item/jestershoes
-    name = "Jester's Shoes"
+    name = "Jester Shoes"
     path = /obj/item/clothing/shoes/roguetown/jester
 
 /datum/loadout_item/cotehardie
