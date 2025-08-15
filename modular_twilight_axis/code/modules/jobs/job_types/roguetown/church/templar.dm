@@ -139,12 +139,14 @@
 
 /datum/outfit/job/roguetown/templar/vigilant/choose_loadout(mob/living/carbon/human/H)
 	. = ..()
-	var/weapons = list("Dagger + Parrying Dagger","Shortsword + Parrying Dagger")
+	var/weapons = list("Dagger + Parrying Dagger","Shortsword + Parrying Dagger","Recurve Bow")
 	switch(H.patron?.type)
 		if(/datum/patron/divine/pestra)
 			weapons += "Plaguebringer Sickles"
 		if(/datum/patron/divine/xylix)
 			weapons += "Devilsknives"
+		if(/datum/patron/divine/eora)
+			weapons += "The Heartstring"
 
 	var/weapon_choice = input(H,"Choose your weapon.", "TAKE UP ARMS") as anything in weapons
 	switch(weapon_choice)
@@ -164,3 +166,11 @@
 			H.put_in_hands(new /obj/item/rogueweapon/huntingknife/idagger/steel/devilsknife(H), TRUE)
 			H.put_in_hands(new /obj/item/rogueweapon/huntingknife/idagger/steel/devilsknife(H), TRUE)
 			H.adjust_skillrank_up_to(/datum/skill/combat/knives, 4, TRUE)
+		if("The Heartstring")
+			H.put_in_hands(new /obj/item/rogueweapon/sword/rapier/eora(H), TRUE)
+			H.put_in_hands(new /obj/item/rogueweapon/huntingknife/idagger/steel/parrying(H), TRUE)
+			H.adjust_skillrank_up_to(/datum/skill/combat/swords, 3, TRUE)
+		if("Recurve Bow")
+			H.put_in_hands(new /obj/item/quiver/arrows(H), TRUE)
+			H.put_in_hands(new /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve(H), TRUE) 
+			H.adjust_skillrank_up_to(/datum/skill/combat/bows, 4, TRUE)
