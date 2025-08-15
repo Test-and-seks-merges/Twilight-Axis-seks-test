@@ -1,10 +1,12 @@
 GLOBAL_LIST_EMPTY(loadout_items)
+GLOBAL_LIST_EMPTY(loadout_items_by_name)
 
 /datum/loadout_item
 	var/name = "Parent loadout datum"
 	var/desc
 	var/path
 	var/donoritem			//autoset on new if null
+	var/donatitem = FALSE
 	var/list/ckeywhitelist
 
 /datum/loadout_item/New()
@@ -492,34 +494,39 @@ GLOBAL_LIST_EMPTY(loadout_items)
 /datum/loadout_item/donator_plex
 	name = "Donator Kit - Rapier di Aliseo"
 	path = /obj/item/enchantingkit/plexiant
-	ckeywhitelist = list("plexiant")
+	donatitem = TRUE
 
 /datum/loadout_item/donator_sru
 	name = "Donator Kit - Emerald Dress"
 	path = /obj/item/enchantingkit/srusu
-	ckeywhitelist = list("cheekycrenando")
+	donatitem = TRUE
 
 /datum/loadout_item/donator_strudel
 	name = "Donator Kit - Grenzelhoftian Mage Vest"
 	path = /obj/item/enchantingkit/strudle
-	ckeywhitelist = list("toasterstrudes")
+	donatitem = TRUE
 
 /datum/loadout_item/donator_bat
 	name = "Donator Kit - Handcarved Harp"
 	path = /obj/item/enchantingkit/bat
-	ckeywhitelist = list("kitchifox")
+	donatitem = TRUE
 
 /datum/loadout_item/donator_mansa
 	name = "Donator Kit - Wortträger"
 	path = /obj/item/enchantingkit/ryebread
-	ckeywhitelist = list("pepperoniplayboy")	//Byond maybe doesn't like spaces. If a name has a space, do it as one continious name.
+	donatitem = TRUE
 
 /datum/loadout_item/donator_rebel
 	name = "Donator Kit - Gilded Sallet"
 	path = /obj/item/enchantingkit/rebel
-	ckeywhitelist = list("rebel0")
+	donatitem = TRUE
 
 /datum/loadout_item/donator_zydras
 	name = "Donator Kit - Padded silky dress"
 	path = /obj/item/enchantingkit/zydras
-	ckeywhitelist = list("1ceres")
+	donatitem = TRUE
+
+/datum/loadout_item/donator_zydras
+	name = "Music Box"
+	path = /obj/item/dmusicbox
+	donatitem = TRUE
