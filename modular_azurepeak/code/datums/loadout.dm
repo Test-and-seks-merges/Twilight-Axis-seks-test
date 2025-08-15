@@ -492,37 +492,37 @@ GLOBAL_LIST_EMPTY(loadout_items_by_name)
 //All should be subtypes of existing weapons/clothes/armor/gear, whatever, to avoid balance issues I guess. Idk, I'm not your boss.
 
 /datum/loadout_item/donator_plex
-	name = "Donator Kit - Rapier di Aliseo"
+	name = "Donator Kit - Rapier di Aliseo - Required: Rapier"
 	path = /obj/item/enchantingkit/plexiant
 	donatitem = TRUE
 
 /datum/loadout_item/donator_sru
-	name = "Donator Kit - Emerald Dress"
+	name = "Donator Kit - Emerald Dress - Required: Dress"
 	path = /obj/item/enchantingkit/srusu
 	donatitem = TRUE
 
 /datum/loadout_item/donator_strudel
-	name = "Donator Kit - Grenzelhoftian Mage Vest"
+	name = "Donator Kit - Grenzelhoftian Mage Vest - Required: Robe"
 	path = /obj/item/enchantingkit/strudle
 	donatitem = TRUE
 
 /datum/loadout_item/donator_bat
-	name = "Donator Kit - Handcarved Harp"
+	name = "Donator Kit - Handcarved Harp - Required: Harp"
 	path = /obj/item/enchantingkit/bat
 	donatitem = TRUE
 
 /datum/loadout_item/donator_mansa
-	name = "Donator Kit - Wortträger"
+	name = "Donator Kit - Wortträger - Required: Estoc"
 	path = /obj/item/enchantingkit/ryebread
 	donatitem = TRUE
 
 /datum/loadout_item/donator_rebel
-	name = "Donator Kit - Gilded Sallet"
+	name = "Donator Kit - Gilded Sallet - Required: Visored Sallet"
 	path = /obj/item/enchantingkit/rebel
 	donatitem = TRUE
 
 /datum/loadout_item/donator_zydras
-	name = "Donator Kit - Padded silky dress"
+	name = "Donator Kit - Padded silky dress - Required: Silky Dress"
 	path = /obj/item/enchantingkit/zydras
 	donatitem = TRUE
 
