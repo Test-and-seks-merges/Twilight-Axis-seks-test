@@ -526,7 +526,7 @@ GLOBAL_LIST_EMPTY(loadout_items_by_name)
 	path = /obj/item/enchantingkit/zydras
 	donatitem = TRUE
 
-/datum/loadout_item/donator_zydras
+/datum/loadout_item/dmusicbox
 	name = "Music Box"
 	path = /obj/item/dmusicbox
 	donatitem = TRUE
