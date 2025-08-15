@@ -1,4 +1,4 @@
-/*
+
 ///////////
 // EASEL //
 ///////////
@@ -127,4 +127,3 @@ GLOBAL_LIST_INIT(globalBlankCanvases, new(AMT_OF_CANVASES))
 
 
 #undef AMT_OF_CANVASES
-*/
