@@ -8,7 +8,7 @@
 /// Возвращает размер лодаута для указанного ника игрока
 /datum/preferences/proc/get_loadout_size(mob/user)
 	
-	var/loadout_size = 3
+	var/loadout_size = 2
 	var/modifiers = 0
 	if(check_patreon_lvl(user.ckey))
 		modifiers = 4
@@ -21,9 +21,11 @@
 	content.Add("<div>")
 	content.Add("<span>Выберите предметы для вашего персонажа.</span>")
 	content.Add("<span>Вы их сможете забрать, когда нажмете правой кнопкой мыши по статуе или дереву.</span>")
+	if(!check_patreon_lvl(user.ckey))
+		content.Add("<span style='color: #EED775;'><strong>Если вы хотите больше слотов и уникальные вещи в лодаут, то подпишитесь на Boosty. Больше информации вы найдете в канале Discord #основная-информация</strong></span>")
 	content.Add("<span> [selected_loadout_items.len] / [get_loadout_size(user)]. </span>")
 	content.Add("</div>")
-	content.Add("<hr>")
+	content.Add("<hr style='width: 100%; border: 1px solid #7b5346;'>")
 	return content.Join()
 
 /// Отображает таблицу лодаута
