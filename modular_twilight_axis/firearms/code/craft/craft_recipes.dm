@@ -37,7 +37,7 @@
 	verbage_simple = "engineer"
 	verbage = "engineers"
 	skillcraft = /datum/skill/craft/engineering
-	craftdiff = 3
+	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/engineering/twilight_powderflask/fyre
 	name = "fill powderflask with fyrepowder (4 fire essentia, 1 silverdust)"
@@ -59,7 +59,7 @@
 	verbage_simple = "engineer"
 	verbage = "engineers"
 	skillcraft = /datum/skill/craft/engineering
-	craftdiff = 4
+	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/engineering/twilight_powderflask/terror
 	name = "fill powderflask with terrorpowder (6 coal dust, 15 oz elixir of mana)"
@@ -70,7 +70,7 @@
 	verbage_simple = "engineer"
 	verbage = "engineers"
 	skillcraft = /datum/skill/craft/engineering
-	craftdiff = 3
+	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/engineering/twilight_powderflask/corrosive
 	name = "fill powderflask with corrosive gunpowder (4 fire essentia, 3 earth essentia)"
@@ -81,7 +81,7 @@
 	verbage_simple = "engineer"
 	verbage = "engineers"
 	skillcraft = /datum/skill/craft/engineering
-	craftdiff = 4
+	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/engineering/twilight_powderflask/arcyne
 	name = "fill powderflask with arcyne gunpowder (4 fire essentia, 2 pure essentia, 30 oz elixir of mana)"
@@ -93,4 +93,4 @@
 	verbage_simple = "engineer"
 	verbage = "engineers"
 	skillcraft = /datum/skill/craft/engineering
-	craftdiff = 4
+	craftdiff = 3
