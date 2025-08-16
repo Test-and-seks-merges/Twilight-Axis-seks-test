@@ -65,7 +65,7 @@
 	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/lord
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/heavy/coat
 	pants = /obj/item/clothing/under/roguetown/heavy_leather_pants
-	belt = /obj/item/storage/belt/rogue/leather/knifebelt/black
+	belt = /obj/item/storage/belt/rogue/leather/knifebelt/black/steel
 	beltl = /obj/item/storage/belt/rogue/pouch/coins/mid
 	beltr = /obj/item/storage/keyring/churchie
 	wrists = /obj/item/clothing/wrists/roguetown/bracers/jackchain
@@ -130,17 +130,18 @@
 	ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)
 	ADD_TRAIT(H, TRAIT_RITUALIST, TRAIT_GENERIC)
-	H.change_stat("strength", 1)
+	H.change_stat("strength", -1)
+	H.change_stat("endurance", 2)
 	H.change_stat("speed", 3)
 	H.change_stat("perception", 1)
-	H.change_stat("intelligence", 1)
+	H.change_stat("intelligence", 2)
 
 	var/datum/devotion/C = new /datum/devotion(H, H.patron)
 	C.grant_miracles(H, cleric_tier = CLERIC_T2, passive_gain = CLERIC_REGEN_MINOR, devotion_limit = CLERIC_REQ_2)	//Capped to T2 miracles.
 
 /datum/outfit/job/roguetown/templar/vigilant/choose_loadout(mob/living/carbon/human/H)
 	. = ..()
-	var/weapons = list("Dagger + Parrying Dagger","Shortsword + Parrying Dagger","Recurve Bow")
+	var/weapons = list("Dagger + Parrying Dagger","Rapier + Parrying Dagger","Recurve Bow")
 	switch(H.patron?.type)
 		if(/datum/patron/divine/pestra)
 			weapons += "Plaguebringer Sickles"
@@ -155,8 +156,8 @@
 			H.put_in_hands(new /obj/item/rogueweapon/huntingknife/idagger/steel(H), TRUE)
 			H.put_in_hands(new /obj/item/rogueweapon/huntingknife/idagger/steel/parrying(H), TRUE)
 			H.adjust_skillrank_up_to(/datum/skill/combat/knives, 4, TRUE)
-		if("Shortsword + Parrying Dagger")
-			H.put_in_hands(new /obj/item/rogueweapon/sword/short(H), TRUE)
+		if("Rapier + Parrying Dagger")
+			H.put_in_hands(new /obj/item/rogueweapon/sword/rapier(H), TRUE)
 			H.put_in_hands(new /obj/item/rogueweapon/huntingknife/idagger/steel/parrying(H), TRUE)
 			H.adjust_skillrank_up_to(/datum/skill/combat/swords, 4, TRUE)
 		if("Plaguebringer Sickles")
