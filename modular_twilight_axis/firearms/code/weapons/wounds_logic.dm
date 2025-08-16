@@ -73,14 +73,9 @@
 			crit_chance += 10
 	switch(crit_chance)
 		if(1 to 60)
-			var/fracture_type = /datum/wound/fracture/head
+			var/fracture_type = /datum/wound/fracture
 			if(resistance)
-				if(zone_precise == BODY_ZONE_PRECISE_MOUTH) // critically resistant people can still have their jaw broken
-					fracture_type = /datum/wound/fracture/mouth // this is awful implementation. i'm sorry free
-				else
-					fracture_type = /datum/wound/fracture // everything else is still a normal fracture doe
-			else if(zone_precise == BODY_ZONE_PRECISE_SKULL)
-				fracture_type = /datum/wound/fracture/head/brain
+				fracture_type = /datum/wound/facial/disfigurement
 			else if(zone_precise== BODY_ZONE_PRECISE_EARS)
 				fracture_type = /datum/wound/fracture/head/ears
 			else if(zone_precise == BODY_ZONE_PRECISE_NOSE)
@@ -125,8 +120,6 @@
 						attempted_wounds +=/datum/wound/fracture/head/nose
 					else
 						attempted_wounds += /datum/wound/facial/disfigurement/nose
-				else if(zone_precise in knockout_zones)
-					attempted_wounds += /datum/wound/fracture/head/brain
 
 	for(var/wound_type in shuffle(attempted_wounds))
 		var/datum/wound/applied = add_wound(wound_type, silent, crit_message)

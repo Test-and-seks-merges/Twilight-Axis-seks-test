@@ -167,7 +167,7 @@
 				check_crit_against_con *= B.critfactor * (M.STAPER > 10 ? M.STAPER / 10 : 1)
 				if(check_crit_against_con > (src.STACON))
 					if(getarmor(zone, B.flag) >= (B.armor_penetration / 2))
-						if(prob(60))
+						if(prob(50))
 							affecting.twilight_gunpowder_crit(P.woundclass, zone_precise = zone, silent = FALSE, crit_message = TRUE)
 					else
 						if(prob(90))
