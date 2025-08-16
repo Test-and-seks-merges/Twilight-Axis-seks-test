@@ -117,7 +117,7 @@
 	. = ..()
 	if(isliving(firer) && (istype(fired_from, /obj/item/gun/ballistic/twilight_firearm) || istype(fired_from, /obj/item/gun/ballistic/revolver/grenadelauncher/twilight_runelock)))
 		var/mob/living/M = firer
-	//	var/obj/item/gun/G = fired_from
+		//var/obj/item/gun/G = fired_from
 		var/skill = (M?.mind ? M.get_skill_level(/datum/skill/combat/twilight_firearms) : 1)
 		if(isliving(target))
 			var/mob/living/T = target
@@ -153,20 +153,26 @@
 						T.visible_message("<font color='white'>The silver weapon weakens the curse temporarily!</font>")
 						to_chat(T, span_userdanger("I'm hit by my BANE!"))
 						T.apply_status_effect(/datum/status_effect/debuff/silver_curse)
-			if(blocked == 0) //Handle crits. Gunpowder weapons have a separate crit roll that ignores bodypart health
-				if(iscarbon(T))
-					var/zone = def_zone
-					var/obj/item/bodypart/affecting = T.get_bodypart(zone)
-					if(affecting)
-						var/check_crit_against_con = rand(10, 20)
-						check_crit_against_con *= critfactor * (M.STAPER > 10 ? M.STAPER / 10 : 1)
-						if(check_crit_against_con > (T.STACON))
-							if(T.getarmor(zone, flag) >= (armor_penetration / 2))
-								if(prob(60))
-									affecting.twilight_gunpowder_crit(woundclass, zone_precise = zone, crit_message = TRUE)
-							else
-								if(prob(90))
-									affecting.twilight_gunpowder_crit(woundclass, zone_precise = zone, crit_message = TRUE)
+
+/mob/living/carbon/check_projectile_wounding(obj/projectile/P, def_zone, blocked)
+	if(isliving(P.firer) && (istype(P.fired_from, /obj/item/gun/ballistic/twilight_firearm) || istype(P.fired_from, /obj/item/gun/ballistic/revolver/grenadelauncher/twilight_runelock)))
+		var/mob/living/M = P.firer
+		var/obj/projectile/bullet/B = P
+		blocked = run_armor_check(def_zone, P.flag, "", "",armor_penetration = B.armor_penetration, damage = P.damage)
+		if(blocked == 0) //Handle crits. Gunpowder weapons have a separate crit roll that ignores bodypart health
+			var/zone = def_zone
+			var/obj/item/bodypart/affecting = get_bodypart(zone)
+			if(affecting)
+				var/check_crit_against_con = rand(10, 20)
+				check_crit_against_con *= B.critfactor * (M.STAPER > 10 ? M.STAPER / 10 : 1)
+				if(check_crit_against_con > (src.STACON))
+					if(getarmor(zone, B.flag) >= (B.armor_penetration / 2))
+						if(prob(60))
+							affecting.twilight_gunpowder_crit(P.woundclass, zone_precise = zone, silent = FALSE, crit_message = TRUE)
+					else
+						if(prob(90))
+							affecting.twilight_gunpowder_crit(P.woundclass, zone_precise = zone, silent = FALSE, crit_message = TRUE)
+	. = ..()
 
 /obj/projectile/bullet/twilight_cannonball/on_hit(atom/target, blocked = FALSE)
 	. = ..()
