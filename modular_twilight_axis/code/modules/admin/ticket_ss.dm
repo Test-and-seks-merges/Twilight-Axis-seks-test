@@ -26,7 +26,14 @@ SUBSYSTEM_DEF(ticket_ping)
 
 	message_admins(span_adminnotice("У нас сейчас [valid_ahelps] [valid_ahelps == 1 ? "не взятый на рассмотрение тикет" : "не взятых на рассмотрение тикетов"]."))
 	for(var/client/staff as anything in GLOB.admins)
-		SEND_SOUND(staff, sound('modular_twilight_axis/sound/adminpings/soft_ping.ogg'))
+		var/sound_pick = rand(0, 2)
+		switch(sound_pick)
+			if(0)
+				SEND_SOUND(staff, sound('modular_twilight_axis/sound/adminpings/soft_ping.ogg'))
+			if(1)
+				SEND_SOUND(staff, sound('modular_twilight_axis/sound/adminpings/sirena.ogg'))
+			if(2)
+				SEND_SOUND(staff, sound('modular_twilight_axis/sound/adminpings/budilnik.ogg'))
 		window_flash(staff, ignorepref = TRUE)
 
 /// Ticket ping frequency. Set 0 for disable that subsystem. 3000 - 5 minutes, 600 - 1 minute.
