@@ -498,12 +498,12 @@ GLOBAL_LIST_EMPTY(loadout_items_by_name)
 	donatitem = TRUE
 
 /datum/loadout_item/donator_sru
-	name = "Donator Kit - Emerald Dress - Required: Dress"
+	name = "Donator Kit - Emerald Dress - Required: Dress(No dwarf)"
 	path = /obj/item/enchantingkit/srusu
 	donatitem = TRUE
 
 /datum/loadout_item/donator_strudel
-	name = "Donator Kit - Grenzelhoftian Mage Vest - Required: Robe"
+	name = "Donator Kit - Grenzelhoftian Mage Vest - Required: Robe(No dwarf)"
 	path = /obj/item/enchantingkit/strudle
 	donatitem = TRUE
 
@@ -523,7 +523,7 @@ GLOBAL_LIST_EMPTY(loadout_items_by_name)
 	donatitem = TRUE
 
 /datum/loadout_item/donator_zydras
-	name = "Donator Kit - Padded silky dress - Required: Silky Dress"
+	name = "Donator Kit - Padded silky dress - Required: Silky Dress(No dwarf)"
 	path = /obj/item/enchantingkit/zydras
 	donatitem = TRUE
 
