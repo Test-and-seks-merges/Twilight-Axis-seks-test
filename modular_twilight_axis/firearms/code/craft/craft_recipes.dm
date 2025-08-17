@@ -29,68 +29,121 @@
 	craftdiff = 0
 
 /datum/crafting_recipe/roguetown/engineering/twilight_powderflask/basic
-	name = "fill powderflask with black gunpowder (4 coaldust, 1 cinnabar)"
+	name = "engineer black gunpowder (4 coaldust, 1 cinnabar)"
 	result = /obj/item/twilight_powderflask
 	reqs = list(/obj/item/twilight_powderflask_empty = 1,
 				/obj/item/alch/coaldust = 4,
 				/obj/item/rogueore/cinnabar = 1)
-	verbage_simple = "engineer"
-	verbage = "engineers"
+	verbage_simple = "work on"
+	verbage = "finishes"
 	skillcraft = /datum/skill/craft/engineering
 	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/engineering/twilight_powderflask/fyre
-	name = "fill powderflask with fyrepowder (4 fire essentia, 1 silverdust)"
+	name = "engineer fyrepowder (4 fire essentia, 1 silverdust)"
 	result = /obj/item/twilight_powderflask/fyre
 	reqs = list(/obj/item/twilight_powderflask_empty = 1,
 				/obj/item/alch/firedust = 4,
 				/obj/item/alch/silverdust = 1)
-	verbage_simple = "engineer"
-	verbage = "engineers"
+	verbage_simple = "work on"
+	verbage = "finishes"
 	skillcraft = /datum/skill/craft/engineering
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/engineering/twilight_powderflask/thunder
-	name = "fill powderflask with thunderpowder (6 coal dust, 4 air essentia)"
+	name = "engineer thunderpowder (6 coal dust, 4 air essentia)"
 	result = /obj/item/twilight_powderflask/thunder
 	reqs = list(/obj/item/twilight_powderflask_empty = 1,
 				/obj/item/alch/coaldust = 6,
 				/obj/item/alch/airdust = 4)
-	verbage_simple = "engineer"
-	verbage = "engineers"
+	verbage_simple = "work on"
+	verbage = "finishes"
 	skillcraft = /datum/skill/craft/engineering
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/engineering/twilight_powderflask/terror
-	name = "fill powderflask with terrorpowder (6 coal dust, 15 oz elixir of mana)"
+	name = "engineer terrorpowder (6 coal dust, 15 oz elixir of mana)"
 	result = /obj/item/twilight_powderflask/terror
 	reqs = list(/obj/item/twilight_powderflask_empty = 1,
 				/obj/item/alch/coaldust = 6,
 				/datum/reagent/medicine/manapot = 15)
-	verbage_simple = "engineer"
-	verbage = "engineers"
+	verbage_simple = "work on"
+	verbage = "finishes"
 	skillcraft = /datum/skill/craft/engineering
 	craftdiff = 2
 
 /datum/crafting_recipe/roguetown/engineering/twilight_powderflask/corrosive
-	name = "fill powderflask with corrosive gunpowder (4 fire essentia, 3 earth essentia)"
+	name = "engineer corrosive gunpowder (4 fire essentia, 3 earth essentia)"
 	result = /obj/item/twilight_powderflask/corrosive
 	reqs = list(/obj/item/twilight_powderflask_empty = 1,
 				/obj/item/alch/firedust = 4,
 				/obj/item/alch/earthdust = 3)
-	verbage_simple = "engineer"
-	verbage = "engineers"
+	verbage_simple = "work on"
+	verbage = "finishes"
 	skillcraft = /datum/skill/craft/engineering
 	craftdiff = 3
 
 /datum/crafting_recipe/roguetown/engineering/twilight_powderflask/arcyne
-	name = "fill powderflask with arcyne gunpowder (4 fire essentia, 2 pure essentia, 30 oz elixir of mana)"
+	name = "engineer arcyne gunpowder (4 fire essentia, 2 pure essentia, 30 oz elixir of mana)"
 	result = /obj/item/twilight_powderflask/arcyne
 	reqs = list(/obj/item/twilight_powderflask_empty = 1,
 				/obj/item/alch/firedust = 4,
 				/obj/item/alch/magicdust = 2,
 				/datum/reagent/medicine/manapot = 30)
-	verbage_simple = "engineer"
-	verbage = "engineers"
+	verbage_simple = "work on"
+	verbage = "finishes"
 	skillcraft = /datum/skill/craft/engineering
+	craftdiff = 3
+
+/datum/crafting_recipe/roguetown/alchemy/twilight_powderflask
+	name = "mix black gunpowder (4 coaldust, 1 cinnabar)"
+	result = /obj/item/twilight_powderflask
+	reqs = list(/obj/item/twilight_powderflask_empty = 1,
+				/obj/item/alch/coaldust = 4,
+				/obj/item/rogueore/cinnabar = 1)
+	verbage_simple = "work on"
+	verbage = "finishes"
+	category = "Table"
+	skillcraft = /datum/skill/craft/alchemy
+	craftdiff = 2
+
+/datum/crafting_recipe/roguetown/alchemy/twilight_powderflask/fyre
+	name = "mix fyrepowder (4 fire essentia, 1 silverdust)"
+	result = /obj/item/twilight_powderflask/fyre
+	reqs = list(/obj/item/twilight_powderflask_empty = 1,
+				/obj/item/alch/firedust = 4,
+				/obj/item/alch/silverdust = 1)
+	craftdiff = 3
+
+/datum/crafting_recipe/roguetown/alchemy/twilight_powderflask/thunder
+	name = "mix thunderpowder (6 coal dust, 4 air essentia)"
+	result = /obj/item/twilight_powderflask/thunder
+	reqs = list(/obj/item/twilight_powderflask_empty = 1,
+				/obj/item/alch/coaldust = 6,
+				/obj/item/alch/airdust = 4)
+	craftdiff = 3
+
+/datum/crafting_recipe/roguetown/alchemy/twilight_powderflask/terror
+	name = "mix terrorpowder (6 coal dust, 15 oz elixir of mana)"
+	result = /obj/item/twilight_powderflask/terror
+	reqs = list(/obj/item/twilight_powderflask_empty = 1,
+				/obj/item/alch/coaldust = 6,
+				/datum/reagent/medicine/manapot = 15)
+	craftdiff = 2
+
+/datum/crafting_recipe/roguetown/alchemy/twilight_powderflask/corrosive
+	name = "mix corrosive gunpowder (4 fire essentia, 3 earth essentia)"
+	result = /obj/item/twilight_powderflask/corrosive
+	reqs = list(/obj/item/twilight_powderflask_empty = 1,
+				/obj/item/alch/firedust = 4,
+				/obj/item/alch/earthdust = 3)
+	craftdiff = 3
+
+/datum/crafting_recipe/roguetown/alchemy/twilight_powderflask/arcyne
+	name = "mix arcyne gunpowder (4 fire essentia, 2 pure essentia, 30 oz elixir of mana)"
+	result = /obj/item/twilight_powderflask/arcyne
+	reqs = list(/obj/item/twilight_powderflask_empty = 1,
+				/obj/item/alch/firedust = 4,
+				/obj/item/alch/magicdust = 2,
+				/datum/reagent/medicine/manapot = 30)
 	craftdiff = 3

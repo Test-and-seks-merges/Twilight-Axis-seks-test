@@ -40,10 +40,6 @@
 	crate_name = "Grenzelhoft Armory Crate"
 	crate_type = /obj/structure/closet/crate/chest/merchant
 
-//////////
-// HEAD //
-//////////
-
 /datum/supply_pack/rogue/Afreet/leather/lhelmet
 	name = "Leather Helmet"
 	cost = 5
@@ -64,10 +60,6 @@
 	cost = 20
 	contains = list(/obj/item/clothing/head/roguetown/helmet/kettle)
 
-//////////
-// NECK //
-//////////
-
 /datum/supply_pack/rogue/Afreet/gorget
 	name = "Gorget"
 	cost = 20
@@ -82,10 +74,6 @@
 	name = "Steel Gorget"
 	cost = 35
 	contains = list(/obj/item/clothing/neck/roguetown/gorget/steel)
-
-///////////
-// CHEST //
-///////////
 
 /datum/supply_pack/rogue/Afreet/gambeson
 	name = "Gambeson"
@@ -122,10 +110,6 @@
 	cost = 30
 	contains = list(/obj/item/clothing/suit/roguetown/armor/leather/heavy/coat)
 
-///////////////////
-// WRISTS/GLOVES //
-///////////////////
-
 /datum/supply_pack/rogue/Afreet/leather/Lbracers
 	name = "Leather Bracers"
 	cost = 5
@@ -161,10 +145,6 @@
 	cost = 10
 	contains = list(/obj/item/clothing/gloves/roguetown/angle/grenzelgloves)
 
-///////////////
-// LEGS/FEET //
-///////////////
-
 /datum/supply_pack/rogue/Afreet/leather/pants
 	name = "Leather Trousers"
 	cost = 10
@@ -184,10 +164,6 @@
 	name = "Grenzelhoft Boots"
 	cost = 15
 	contains = list(/obj/item/clothing/shoes/roguetown/grenzelhoft)
-
-/////////////////////
-// WEAPONS - MELEE //
-/////////////////////
 
 /datum/supply_pack/rogue/Afreet/dagger
 	name = "Iron Dagger"
@@ -229,18 +205,10 @@
 	cost = 20
 	contains = list(/obj/item/rogueweapon/stoneaxe/battle)
 
-//////////////////////
-// WEAPONS - RANGED //
-//////////////////////
-
 /datum/supply_pack/rogue/Afreet/flintgonne
 	name = "Flintgonne"
 	cost = 100
 	contains = list(/obj/item/gun/ballistic/twilight_firearm/flintgonne)
-
-/////////////////////////////
-// WEAPONS - RANGED - AMMO //
-/////////////////////////////
 
 /datum/supply_pack/rogue/Afreet/bulletbag
 	name = "Bullet bag (empty)"
@@ -272,19 +240,50 @@
 
 /datum/supply_pack/rogue/Afreet/twilight_powderflask
 	name = "Powderflask"
-	cost = 15
+	cost = 30
 	contains = list(
 					/obj/item/twilight_powderflask,
+				)
+
+/datum/supply_pack/rogue/Afreet/twilight_fyrepowder
+	name = "Fyrepowder"
+	cost = 150
+	contains = list(
+					/obj/item/twilight_powderflask/fyre,
+				)
+
+/datum/supply_pack/rogue/Afreet/twilight_terrorpowder
+	name = "Terrorpowder"
+	cost = 100
+	contains = list(
+					/obj/item/twilight_powderflask/terror,
+				)
+
+/datum/supply_pack/rogue/Afreet/twilight_corrpowder
+	name = "Corrosive Gunpowder"
+	cost = 150
+	contains = list(
+					/obj/item/twilight_powderflask/corrosive,
+				)
+
+/datum/supply_pack/rogue/Afreet/twilight_arcynepowder
+	name = "Arcyne Gunpowder"
+	cost = 150
+	contains = list(
+					/obj/item/twilight_powderflask/arcyne,
+				)
+
+/datum/supply_pack/rogue/Afreet/twilight_thunderpowder
+	name = "Thunderpowder"
+	cost = 150
+	contains = list(
+					/obj/item/twilight_powderflask/thunder,
 				)
 
 /datum/supply_pack/rogue/Afreet/twilight_silver
 	name = "Silver bullet"
 	cost = 10
 	contains = list(/obj/item/ammo_casing/caseless/twilight_lead/silver)
-
-/////////////
-// UTILITY //
-/////////////
 
 /datum/supply_pack/rogue/Afreet/Mancatcher
 	name = "Mancatcher"
@@ -295,3 +294,23 @@
 	name = "Lockpick ring"
 	cost = 10
 	contains = list(/obj/item/lockpickring/mundane)	
+
+// BIG INQ SHOP
+
+/datum/inqports/equipment/twilight_runelock_bullets
+	name = "(6 bullets) Runelock Ammunition"
+	item_type = /obj/structure/closet/crate/chest/inqcrate/supplies/twilight_runelock_bullets
+	marquescost = 15
+
+/obj/structure/closet/crate/chest/inqcrate/supplies/twilight_runelock_bullets/Initialize()
+	. = ..()
+	new /obj/item/quiver/twilight_bullet/runed(src)
+
+/datum/inqports/equipment/twilight_blessed_bullets
+	name = "(4 bullets) Runelock Blessed Ammunition"
+	item_type = /obj/structure/closet/crate/chest/inqcrate/supplies/twilight_blessed_bullets
+	marquescost = 30
+
+/obj/structure/closet/crate/chest/inqcrate/supplies/twilight_blessed_bullets/Initialize()
+	. = ..()
+	new /obj/item/quiver/twilight_bullet/blessed(src)
