@@ -296,6 +296,7 @@
 	chargedrain = 0
 	chargetime = 0
 	noaa = TRUE
+	pointer = 'icons/effects/mousemice/human_give.dmi'
 
 /datum/intent/spell
 	name = "spell"
