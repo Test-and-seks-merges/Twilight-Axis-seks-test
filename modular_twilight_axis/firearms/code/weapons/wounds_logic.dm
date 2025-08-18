@@ -64,57 +64,30 @@
 	var/static/list/tonguestab_zones = list(BODY_ZONE_PRECISE_MOUTH)
 	var/static/list/nosestab_zones = list(BODY_ZONE_PRECISE_NOSE)
 	var/static/list/earstab_zones = list(BODY_ZONE_PRECISE_EARS)
-	var/static/list/knockout_zones = list(BODY_ZONE_HEAD, BODY_ZONE_PRECISE_SKULL)
 	var/list/attempted_wounds = list()
-	var/crit_chance = rand(1, 100)
 	var/resistance = HAS_TRAIT(owner, TRAIT_CRITICAL_RESISTANCE)
-	if(user)
-		if(user.goodluck(2))
-			crit_chance += 10
-	switch(crit_chance)
-		if(1 to 60)
-			var/fracture_type = /datum/wound/fracture
-			if(resistance)
-				fracture_type = /datum/wound/facial/disfigurement
-			else if(zone_precise== BODY_ZONE_PRECISE_EARS)
-				fracture_type = /datum/wound/fracture/head/ears
-			else if(zone_precise == BODY_ZONE_PRECISE_NOSE)
-				fracture_type = /datum/wound/fracture/head/nose
-			else if(zone_precise == BODY_ZONE_PRECISE_MOUTH)
-				fracture_type = /datum/wound/fracture/mouth
-			attempted_wounds += fracture_type
-		if(60 to INFINITY)
-			var/artery_type = /datum/wound/artery
-			if(zone_precise == BODY_ZONE_PRECISE_NECK)
-				artery_type = /datum/wound/artery/neck
-			attempted_wounds += artery_type
-			if(!resistance)
-				if(zone_precise in earstab_zones)
-					var/obj/item/organ/ears/my_ears = owner.getorganslot(ORGAN_SLOT_EARS)
-					if(!my_ears || has_wound(/datum/wound/facial/ears))
-						attempted_wounds += /datum/wound/fracture/head/ears
-					else
-						attempted_wounds += /datum/wound/facial/ears
-				else if(zone_precise in eyestab_zones)
-					var/obj/item/organ/my_eyes = owner.getorganslot(ORGAN_SLOT_EYES)
-					if(!my_eyes || (has_wound(/datum/wound/facial/eyes/left) && has_wound(/datum/wound/facial/eyes/right)))
-						attempted_wounds += /datum/wound/fracture/head/eyes
-					else if(my_eyes)
-						if(zone_precise == BODY_ZONE_PRECISE_R_EYE)
-							attempted_wounds += /datum/wound/facial/eyes/right
-						else if(zone_precise == BODY_ZONE_PRECISE_L_EYE)
-							attempted_wounds += /datum/wound/facial/eyes/left
-				else if(zone_precise in tonguestab_zones)
-					var/obj/item/organ/tongue/tongue_up_my_asshole = owner.getorganslot(ORGAN_SLOT_TONGUE)		//..hello?
-					if(!tongue_up_my_asshole || has_wound(/datum/wound/facial/tongue))
-						attempted_wounds += /datum/wound/fracture/mouth
-					else
-						attempted_wounds += /datum/wound/facial/tongue
-				else if(zone_precise in nosestab_zones)
-					if(has_wound(/datum/wound/facial/disfigurement/nose))
-						attempted_wounds +=/datum/wound/fracture/head/nose
-					else
-						attempted_wounds += /datum/wound/facial/disfigurement/nose
+	var/artery_type = /datum/wound/artery
+	if(zone_precise == BODY_ZONE_PRECISE_NECK)
+		artery_type = /datum/wound/artery/neck
+	attempted_wounds += artery_type
+	if(!resistance)
+		if(zone_precise in earstab_zones)
+			var/obj/item/organ/ears/my_ears = owner.getorganslot(ORGAN_SLOT_EARS)
+			if(my_ears)
+				attempted_wounds += /datum/wound/facial/ears
+		else if(zone_precise in eyestab_zones)
+			var/obj/item/organ/my_eyes = owner.getorganslot(ORGAN_SLOT_EYES)
+			if(my_eyes)
+				if(zone_precise == BODY_ZONE_PRECISE_R_EYE)
+					attempted_wounds += /datum/wound/facial/eyes/right
+				else if(zone_precise == BODY_ZONE_PRECISE_L_EYE)
+					attempted_wounds += /datum/wound/facial/eyes/left
+		else if(zone_precise in tonguestab_zones)
+			var/obj/item/organ/tongue/tongue_up_my_asshole = owner.getorganslot(ORGAN_SLOT_TONGUE)		//..hello?
+			if(tongue_up_my_asshole)
+				attempted_wounds += /datum/wound/facial/tongue
+		else if(zone_precise in nosestab_zones)
+			attempted_wounds += /datum/wound/facial/disfigurement/nose
 
 	for(var/wound_type in shuffle(attempted_wounds))
 		var/datum/wound/applied = add_wound(wound_type, silent, crit_message)
