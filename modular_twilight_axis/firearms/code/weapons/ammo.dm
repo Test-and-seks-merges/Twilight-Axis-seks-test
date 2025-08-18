@@ -126,12 +126,6 @@
 					adjust_experience(M, /datum/skill/combat/twilight_firearms, M.STAINT * 3)
 				else if(ishuman(T) && (T.stat != DEAD || (T.stat == DEAD && T.timeofdeath == world.time)))
 					adjust_experience(M, /datum/skill/combat/twilight_firearms, M.STAINT * 6)
-					var/list/screams = list("painscream", "paincrit") //Simulating paincrit on hit
-					var/check = rand(1, 20)
-					if(check > T.STACON)
-						T.emote(screams)
-						T.Knockdown(rand(15,30))
-						T.Immobilize(rand(30,60))
 			if(silver) //Silver bullet effects
 				if(T.mind)
 					var/datum/antagonist/werewolf/W = T.mind.has_antag_datum(/datum/antagonist/werewolf/)
