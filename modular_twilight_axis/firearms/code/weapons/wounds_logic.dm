@@ -82,11 +82,6 @@
 				fracture_type = /datum/wound/fracture/head/nose
 			else if(zone_precise == BODY_ZONE_PRECISE_MOUTH)
 				fracture_type = /datum/wound/fracture/mouth
-			else if(zone_precise == BODY_ZONE_PRECISE_NECK)
-				if(HAS_TRAIT(src, TRAIT_BRITTLE) || owner.has_wound(/datum/wound/dislocation/neck))
-					fracture_type = /datum/wound/fracture/neck
-				else if (!resistance)
-					fracture_type = /datum/wound/dislocation/neck
 			attempted_wounds += fracture_type
 		if(60 to INFINITY)
 			var/artery_type = /datum/wound/artery
