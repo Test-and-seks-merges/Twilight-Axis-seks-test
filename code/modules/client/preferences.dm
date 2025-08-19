@@ -258,6 +258,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 		slot_randomized = FALSE
 	var/list/dat = list("<center>")
 	handle_loadout_size(user)
+	clean_loadout(user)
 	if(tabchoice)
 		current_tab = tabchoice
 	if(tabchoice == 4)
@@ -1859,6 +1860,7 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 						log_game("[user] has set their OOC Extra to '[ooc_extra_link]'.")
 				if("loadout_item")
 					handle_loadout_size(user)
+					clean_loadout(user)
 					show_loadout_window(user)
 
 
