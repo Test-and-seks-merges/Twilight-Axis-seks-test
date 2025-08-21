@@ -314,3 +314,39 @@
 /obj/structure/closet/crate/chest/inqcrate/supplies/twilight_blessed_bullets/Initialize()
 	. = ..()
 	new /obj/item/quiver/twilight_bullet/blessed(src)
+
+/datum/inqports/equipment/twilight_otavian_grapeshot
+	name = "(10 charges) Otavian Grapeshot"
+	item_type = /obj/structure/closet/crate/chest/inqcrate/supplies/twilight_otavian_grapeshot
+	marquescost = 15
+
+/obj/structure/closet/crate/chest/inqcrate/supplies/twilight_otavian_grapeshot/Initialize()
+	. = ..()
+	new /obj/item/quiver/twilight_bullet/cannonball/otavian_grapeshot(src)
+
+/datum/inqports/equipment/twilight_silver_bullets
+	name = "(10 bullets) Silver Ammunition"
+	item_type = /obj/structure/closet/crate/chest/inqcrate/supplies/twilight_silver_bullets
+	marquescost = 15
+
+/obj/structure/closet/crate/chest/inqcrate/supplies/twilight_silver_bullets/Initialize()
+	. = ..()
+	new /obj/item/quiver/twilight_bullet/silver(src)
+
+/datum/inqports/equipment/twilight_gunpowder_black
+	name = "Black Gunpowder Supply"
+	item_type = /obj/structure/closet/crate/chest/inqcrate/supplies/twilight_gunpowder_black
+	marquescost = 5
+
+/obj/structure/closet/crate/chest/inqcrate/supplies/twilight_gunpowder_black/Initialize()
+	. = ..()
+	new /obj/item/twilight_powderflask(src)
+
+/datum/inqports/equipment/twilight_gunpowder_thunder
+	name = "Thunderpowder Supply"
+	item_type = /obj/structure/closet/crate/chest/inqcrate/supplies/twilight_gunpowder_thunder
+	marquescost = 12
+
+/obj/structure/closet/crate/chest/inqcrate/supplies/twilight_gunpowder_thunder/Initialize()
+	. = ..()
+	new /obj/item/twilight_powderflask/thunder(src)

@@ -15,6 +15,7 @@
 
 /datum/outfit/job/roguetown/puritan/blackpowder/pre_equip(mob/living/carbon/human/H)
 	..()
+	has_loadout = TRUE
 	H.adjust_skillrank(/datum/skill/misc/lockpicking, 5, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/tracking, 5, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/sneaking, 5, TRUE)
@@ -45,20 +46,15 @@
 	ADD_TRAIT(H, TRAIT_PURITAN, JOB_TRAIT)
 	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy/inq
 	armor = /obj/item/clothing/suit/roguetown/armor/plate/scale/inqcoat
-	belt = /obj/item/storage/belt/rogue/leather/steel
 	neck = /obj/item/clothing/neck/roguetown/gorget/steel
 	shoes = /obj/item/clothing/shoes/roguetown/boots/otavan/inqboots
 	wrists = /obj/item/clothing/neck/roguetown/psicross/silver
 	pants = /obj/item/clothing/under/roguetown/heavy_leather_pants/otavan
 	backr = /obj/item/storage/backpack/rogue/satchel/otavan
-	backl = /obj/item/gun/ballistic/revolver/grenadelauncher/twilight_runelock/rifle
-	beltr = /obj/item/quiver/twilight_bullet/blessed
 	cloak = /obj/item/clothing/cloak/psydontabard
 	head = /obj/item/clothing/head/roguetown/inqhat
 	gloves = /obj/item/clothing/gloves/roguetown/otavan/psygloves
-	beltl = /obj/item/rogueweapon/scabbard/sword
 	id = /obj/item/clothing/ring/signet/silver
-	l_hand = /obj/item/rogueweapon/sword/rapier/psyrapier
 	backpack_contents = list(
 		/obj/item/storage/keyring/puritan = 1,
 		/obj/item/lockpickring/mundane = 1,
@@ -68,3 +64,31 @@
 		/obj/item/rogueweapon/scabbard/sheath = 1,
 		/obj/item/paper/inqslip/arrival/inq = 1
 		)
+
+/datum/outfit/job/roguetown/puritan/blackpowder/choose_loadout(mob/living/carbon/human/H)
+	. = ..()
+	var/weapons = list("Doomsdae (Runelock Rifle)", "Purgatory (Handcannon)", "Umbra (Assassin's Firearm)")
+	var/weapon_choice = input(H,"CHOOSE YOUR RELIQUARY PIECE.", "WIELD THEM IN HIS NAME.") as anything in weapons
+	switch(weapon_choice)
+		if("Doomsdae (Runelock Rifle)")
+			H.equip_to_slot_or_del(new /obj/item/storage/belt/rogue/leather/steel, SLOT_BELT, TRUE)
+			H.equip_to_slot_or_del(new /obj/item/quiver/twilight_bullet/blessed, SLOT_BELT_R, TRUE)
+			H.equip_to_slot_or_del(new /obj/item/rogueweapon/scabbard/sword, SLOT_BELT_L, TRUE)
+			H.put_in_hands(new /obj/item/gun/ballistic/revolver/grenadelauncher/twilight_runelock/rifle(H), TRUE)
+			H.put_in_hands(new /obj/item/rogueweapon/sword/rapier/psyrapier(H), TRUE)
+		if("Purgatory (Handcannon)")
+			H.equip_to_slot_or_del(new /obj/item/storage/belt/rogue/leather/steel, SLOT_BELT, TRUE)
+			H.equip_to_slot_or_del(new /obj/item/quiver/twilight_bullet/cannonball/otavian_grapeshot, SLOT_BELT_R, TRUE)
+			H.equip_to_slot_or_del(new /obj/item/rogueweapon/scabbard/sword, SLOT_BELT_L, TRUE)
+			H.put_in_hands(new /obj/item/gun/ballistic/twilight_firearm/handgonne/purgatory(H), TRUE)
+			H.put_in_hands(new /obj/item/rogueweapon/sword/rapier/psyrapier(H), TRUE)
+			if(!SEND_SIGNAL(H.get_item_by_slot(SLOT_BELT), COMSIG_TRY_STORAGE_INSERT, new /obj/item/twilight_powderflask(H), null, TRUE, TRUE))
+				addtimer(CALLBACK(PROC_REF(move_storage), new /obj/item/twilight_powderflask(H), H.loc), 3 SECONDS)
+		if("Umbra (Assassin's Firearm)")
+			H.equip_to_slot_or_del(new /obj/item/storage/belt/rogue/leather/twilight_holsterbelt, SLOT_BELT, TRUE)
+			H.equip_to_slot_or_del(new /obj/item/quiver/twilight_bullet/silver, SLOT_BELT_R, TRUE)
+			H.equip_to_slot_or_del(new /obj/item/rogueweapon/scabbard/sword, SLOT_BELT_L, TRUE)
+			H.put_in_hands(new /obj/item/gun/ballistic/twilight_firearm/arquebus_pistol/umbra(H), TRUE)
+			H.put_in_hands(new /obj/item/rogueweapon/sword/rapier/psyrapier(H), TRUE)
+			if(!SEND_SIGNAL(H.get_item_by_slot(SLOT_BELT), COMSIG_TRY_STORAGE_INSERT, new /obj/item/twilight_powderflask/thunder(H), null, TRUE, TRUE))
+				addtimer(CALLBACK(PROC_REF(move_storage), new /obj/item/twilight_powderflask/thunder(H), H.loc), 3 SECONDS)

@@ -20,7 +20,7 @@
 	backl = /obj/item/storage/backpack/rogue/satchel
 	neck = /obj/item/clothing/neck/roguetown/gorget
 	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy/grenzelhoft
-	head = /obj/item/clothing/head/roguetown/grenzelhofthat
+	head = /obj/item/clothing/head/roguetown/helmet/tricorn/grenzel
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/heavy/coat
 	pants = /obj/item/clothing/under/roguetown/heavy_leather_pants/grenzelpants
 	shoes = /obj/item/clothing/shoes/roguetown/grenzelhoft
@@ -34,7 +34,7 @@
 	H.adjust_skillrank(/datum/skill/combat/twilight_firearms, 4, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/bows, 3, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/crossbows, 3, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/axes, 3, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
@@ -42,7 +42,7 @@
 	H.adjust_skillrank(/datum/skill/combat/unarmed, 4, TRUE)
 	H.adjust_skillrank(/datum/skill/labor/lumberjacking, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/climbing, 4, TRUE)
-	H.adjust_skillrank(/datum/skill/misc/swimming, 3, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/swimming, 4, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/reading, 1, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/athletics, 4, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/tracking, 1, TRUE)

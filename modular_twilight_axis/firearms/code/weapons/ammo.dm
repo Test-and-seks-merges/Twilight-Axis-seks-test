@@ -93,6 +93,14 @@
 	speed = 0.1
 	critfactor = 0.67
 
+/obj/projectile/bullet/twilight_grapeshot/otavian
+	name = "otavian grapeshot"
+	desc = "Плотно упакованный в бумагу набор небольших серебряных шариков. Хорошо сочетается с большими группами нечисти."
+	ammo_type = /obj/item/ammo_casing/caseless/twilight_cannonball/grapeshot/otavian
+	armor_penetration = 60
+	critfactor = 0.5
+	silver = TRUE
+
 /obj/projectile/bullet/on_hit(atom/target, blocked = FALSE)
 	if(isliving(target))
 		var/mob/living/T = target
@@ -270,4 +278,13 @@
 	dropshrink = 0.5
 	max_integrity = 0.1
 	pellets = 6
+	variance = 30
+
+/obj/item/ammo_casing/caseless/twilight_cannonball/grapeshot/otavian
+	name = "otavian grapeshot"
+	desc = "Плотно упакованный в бумагу набор небольших серебряных шариков. Хорошо сочетается с большими группами нечисти."
+	projectile_type = /obj/projectile/bullet/twilight_grapeshot/otavian
+	caliber = "otavian grapeshot"
+	icon_state = "grapeshot_silver"
+	pellets = 12
 	variance = 30

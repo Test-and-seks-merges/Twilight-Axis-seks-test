@@ -51,14 +51,14 @@
 	desc = "Пороховница, предназначенная для удобной перезарядки огнестрельного оружия. Содержит огненный порох, наделяющий пули зажигательным эффектом."
 	icon_state = "powderflask_fyre"
 	gunpowder = "fyrepowder"
-	charges = 15
+	charges = 16
 
 /obj/item/twilight_powderflask/thunder
 	name = "powderflask"
 	desc = "Пороховница, предназначенная для удобной перезарядки огнестрельного оружия. Содержит громовой порох, наделяющий пули оглушающим эффектом."
 	icon_state = "powderflask_thunder"
 	gunpowder = "thunderpowder"
-	charges = 15
+	charges = 16
 
 /obj/item/twilight_powderflask/terror
 	name = "powderflask"
@@ -153,8 +153,10 @@
 	var/spread_num = 10
 	var/damfactor = 1
 	var/reloaded = FALSE
+	var/silenced = FALSE
 	var/load_time = 50
 	var/gunpowder
+	var/powder_per_reload = 1
 	var/locktype = "Wheellock"
 	var/obj/item/twilight_ramrod/myrod = null
 
@@ -184,25 +186,28 @@
 
 
 /obj/item/gun/ballistic/twilight_firearm/shoot_live_shot(mob/living/user as mob|obj, pointblank = 0, mob/pbtarget = null, message = 1)
-	switch(gunpowder)
-		if("fyrepowder")
-			fire_sound = pick("modular_twilight_axis/firearms/sound/fyrepowder/arquefire.ogg", "modular_twilight_axis/firearms/sound/fyrepowder/arquefire2.ogg", "modular_twilight_axis/firearms/sound/fyrepowder/arquefire3.ogg",
-						"modular_twilight_axis/firearms/sound/fyrepowder/arquefire4.ogg", "modular_twilight_axis/firearms/sound/fyrepowder/arquefire5.ogg")
-		if("thunderpowder")
-			fire_sound = pick("modular_twilight_axis/firearms/sound/thunderpowder/arquefire.ogg", "modular_twilight_axis/firearms/sound/thunderpowder/arquefire2.ogg", "modular_twilight_axis/firearms/sound/thunderpowder/arquefire3.ogg",
-						"modular_twilight_axis/firearms/sound/thunderpowder/arquefire4.ogg", "modular_twilight_axis/firearms/sound/thunderpowder/arquefire5.ogg")
-		if("corrosive gunpowder")
-			fire_sound = pick("modular_twilight_axis/firearms/sound/corrpowder/arquefire.ogg", "modular_twilight_axis/firearms/sound/corrpowder/arquefire2.ogg", "modular_twilight_axis/firearms/sound/corrpowder/arquefire3.ogg",
-						"modular_twilight_axis/firearms/sound/corrpowder/arquefire4.ogg", "modular_twilight_axis/firearms/sound/corrpowder/arquefire5.ogg")
-		if("arcyne gunpowder")
-			fire_sound = pick("modular_twilight_axis/firearms/sound/arcynepowder/arquefire.ogg", "modular_twilight_axis/firearms/sound/arcynepowder/arquefire2.ogg", "modular_twilight_axis/firearms/sound/arcynepowder/arquefire3.ogg",
-						"modular_twilight_axis/firearms/sound/arcynepowder/arquefire4.ogg", "modular_twilight_axis/firearms/sound/arcynepowder/arquefire5.ogg")
-		if("terrorpowder")
-			fire_sound = pick("modular_twilight_axis/firearms/sound/terrorpowder/arquefire.ogg", "modular_twilight_axis/firearms/sound/terrorpowder/arquefire2.ogg", "modular_twilight_axis/firearms/sound/terrorpowder/arquefire3.ogg",
-						"modular_twilight_axis/firearms/sound/terrorpowder/arquefire4.ogg", "modular_twilight_axis/firearms/sound/terrorpowder/arquefire5.ogg")
-		else
-			fire_sound = pick("modular_twilight_axis/firearms/sound/arquefire.ogg", "modular_twilight_axis/firearms/sound/arquefire2.ogg", "modular_twilight_axis/firearms/sound/arquefire3.ogg",
-						"modular_twilight_axis/firearms/sound/arquefire4.ogg", "modular_twilight_axis/firearms/sound/arquefire5.ogg")
+	if(silenced)
+		fire_sound = "modular_twilight_axis/firearms/sound/umbra_fire.ogg"
+	else
+		switch(gunpowder)
+			if("fyrepowder")
+				fire_sound = pick("modular_twilight_axis/firearms/sound/fyrepowder/arquefire.ogg", "modular_twilight_axis/firearms/sound/fyrepowder/arquefire2.ogg", "modular_twilight_axis/firearms/sound/fyrepowder/arquefire3.ogg",
+							"modular_twilight_axis/firearms/sound/fyrepowder/arquefire4.ogg", "modular_twilight_axis/firearms/sound/fyrepowder/arquefire5.ogg")
+			if("thunderpowder")
+				fire_sound = pick("modular_twilight_axis/firearms/sound/thunderpowder/arquefire.ogg", "modular_twilight_axis/firearms/sound/thunderpowder/arquefire2.ogg", "modular_twilight_axis/firearms/sound/thunderpowder/arquefire3.ogg",
+							"modular_twilight_axis/firearms/sound/thunderpowder/arquefire4.ogg", "modular_twilight_axis/firearms/sound/thunderpowder/arquefire5.ogg")
+			if("corrosive gunpowder")
+				fire_sound = pick("modular_twilight_axis/firearms/sound/corrpowder/arquefire.ogg", "modular_twilight_axis/firearms/sound/corrpowder/arquefire2.ogg", "modular_twilight_axis/firearms/sound/corrpowder/arquefire3.ogg",
+							"modular_twilight_axis/firearms/sound/corrpowder/arquefire4.ogg", "modular_twilight_axis/firearms/sound/corrpowder/arquefire5.ogg")
+			if("arcyne gunpowder")
+				fire_sound = pick("modular_twilight_axis/firearms/sound/arcynepowder/arquefire.ogg", "modular_twilight_axis/firearms/sound/arcynepowder/arquefire2.ogg", "modular_twilight_axis/firearms/sound/arcynepowder/arquefire3.ogg",
+							"modular_twilight_axis/firearms/sound/arcynepowder/arquefire4.ogg", "modular_twilight_axis/firearms/sound/arcynepowder/arquefire5.ogg")
+			if("terrorpowder")
+				fire_sound = pick("modular_twilight_axis/firearms/sound/terrorpowder/arquefire.ogg", "modular_twilight_axis/firearms/sound/terrorpowder/arquefire2.ogg", "modular_twilight_axis/firearms/sound/terrorpowder/arquefire3.ogg",
+							"modular_twilight_axis/firearms/sound/terrorpowder/arquefire4.ogg", "modular_twilight_axis/firearms/sound/terrorpowder/arquefire5.ogg")
+			else
+				fire_sound = pick("modular_twilight_axis/firearms/sound/arquefire.ogg", "modular_twilight_axis/firearms/sound/arquefire2.ogg", "modular_twilight_axis/firearms/sound/arquefire3.ogg",
+							"modular_twilight_axis/firearms/sound/arquefire4.ogg", "modular_twilight_axis/firearms/sound/arquefire5.ogg")
 	. = ..()
 
 /obj/item/gun/ballistic/twilight_firearm/attack_right(mob/user)
@@ -315,6 +320,9 @@
 		if(gunpowder)
 			user.visible_message("<span class='notice'>The [name] is already filled with gunpowder!</span>")
 			return
+		else if(W.charges < powder_per_reload)
+			user.visible_message("<span class='notice'>The [W.name] doesn't contain enough gunpowder to reload [src]!</span>")
+			return
 		else
 			switch(W.gunpowder)
 				if("fyrepowder")
@@ -332,8 +340,8 @@
 			if(do_after(user, load_time_skill, src))
 				user.visible_message("<span class='notice'>[user] fills [src] with [W.gunpowder].</span>")
 				gunpowder = W.gunpowder
-				W.charges = W.charges - 1
-				if(W.charges == 0)
+				W.charges = W.charges - powder_per_reload
+				if(W.charges <= 0)
 					qdel(W)
 					var/obj/item/twilight_powderflask_empty/E = new /obj/item/twilight_powderflask_empty(get_turf(user))
 					user.put_in_hands(E)
@@ -503,49 +511,50 @@
 	spark_act()
 
 	..()
-	switch(gunpowder)
-		if("fyrepowder")
-			spawn (5)
-				new/obj/effect/particle_effect/smoke/arquebus/fyre(get_ranged_target_turf(user, user.dir, 1))
-			spawn (10)
-				new/obj/effect/particle_effect/smoke/arquebus/fyre(get_ranged_target_turf(user, user.dir, 2))
-			spawn (16)
-				new/obj/effect/particle_effect/smoke/arquebus/fyre(get_ranged_target_turf(user, user.dir, 1))
-		if("thunderpowder")
-			spawn (5)
-				new/obj/effect/particle_effect/smoke/arquebus/thunder(get_ranged_target_turf(user, user.dir, 1))
-			spawn (10)
-				new/obj/effect/particle_effect/smoke/arquebus/thunder(get_ranged_target_turf(user, user.dir, 2))
-			spawn (16)
-				new/obj/effect/particle_effect/smoke/arquebus/thunder(get_ranged_target_turf(user, user.dir, 1))
-		if("corrosive gunpowder")
-			spawn (5)
-				new/obj/effect/particle_effect/smoke/arquebus/corrosive(get_ranged_target_turf(user, user.dir, 1))
-			spawn (10)
-				new/obj/effect/particle_effect/smoke/arquebus/corrosive(get_ranged_target_turf(user, user.dir, 2))
-			spawn (16)
-				new/obj/effect/particle_effect/smoke/arquebus/corrosive(get_ranged_target_turf(user, user.dir, 1))
-		if("arcyne gunpowder")
-			spawn (5)
-				new/obj/effect/particle_effect/smoke/arquebus/arcyne(get_ranged_target_turf(user, user.dir, 1))
-			spawn (10)
-				new/obj/effect/particle_effect/smoke/arquebus/arcyne(get_ranged_target_turf(user, user.dir, 2))
-			spawn (16)
-				new/obj/effect/particle_effect/smoke/arquebus/arcyne(get_ranged_target_turf(user, user.dir, 1))
-		if("terrorpowder")
-			spawn (5)
-				new/obj/effect/particle_effect/smoke/arquebus/terror(get_ranged_target_turf(user, user.dir, 1))
-			spawn (10)
-				new/obj/effect/particle_effect/smoke/arquebus/terror(get_ranged_target_turf(user, user.dir, 2))
-			spawn (16)
-				new/obj/effect/particle_effect/smoke/arquebus/terror(get_ranged_target_turf(user, user.dir, 1))
-		else
-			spawn (5)
-				new/obj/effect/particle_effect/smoke/arquebus(get_ranged_target_turf(user, user.dir, 1))
-			spawn (10)
-				new/obj/effect/particle_effect/smoke/arquebus(get_ranged_target_turf(user, user.dir, 2))
-			spawn (16)
-				new/obj/effect/particle_effect/smoke/arquebus(get_ranged_target_turf(user, user.dir, 1))
+	if(!silenced)
+		switch(gunpowder)
+			if("fyrepowder")
+				spawn (5)
+					new/obj/effect/particle_effect/smoke/arquebus/fyre(get_ranged_target_turf(user, user.dir, 1))
+				spawn (10)
+					new/obj/effect/particle_effect/smoke/arquebus/fyre(get_ranged_target_turf(user, user.dir, 2))
+				spawn (16)
+					new/obj/effect/particle_effect/smoke/arquebus/fyre(get_ranged_target_turf(user, user.dir, 1))
+			if("thunderpowder")
+				spawn (5)
+					new/obj/effect/particle_effect/smoke/arquebus/thunder(get_ranged_target_turf(user, user.dir, 1))
+				spawn (10)
+					new/obj/effect/particle_effect/smoke/arquebus/thunder(get_ranged_target_turf(user, user.dir, 2))
+				spawn (16)
+					new/obj/effect/particle_effect/smoke/arquebus/thunder(get_ranged_target_turf(user, user.dir, 1))
+			if("corrosive gunpowder")
+				spawn (5)
+					new/obj/effect/particle_effect/smoke/arquebus/corrosive(get_ranged_target_turf(user, user.dir, 1))
+				spawn (10)
+					new/obj/effect/particle_effect/smoke/arquebus/corrosive(get_ranged_target_turf(user, user.dir, 2))
+				spawn (16)
+					new/obj/effect/particle_effect/smoke/arquebus/corrosive(get_ranged_target_turf(user, user.dir, 1))
+			if("arcyne gunpowder")
+				spawn (5)
+					new/obj/effect/particle_effect/smoke/arquebus/arcyne(get_ranged_target_turf(user, user.dir, 1))
+				spawn (10)
+					new/obj/effect/particle_effect/smoke/arquebus/arcyne(get_ranged_target_turf(user, user.dir, 2))
+				spawn (16)
+					new/obj/effect/particle_effect/smoke/arquebus/arcyne(get_ranged_target_turf(user, user.dir, 1))
+			if("terrorpowder")
+				spawn (5)
+					new/obj/effect/particle_effect/smoke/arquebus/terror(get_ranged_target_turf(user, user.dir, 1))
+				spawn (10)
+					new/obj/effect/particle_effect/smoke/arquebus/terror(get_ranged_target_turf(user, user.dir, 2))
+				spawn (16)
+					new/obj/effect/particle_effect/smoke/arquebus/terror(get_ranged_target_turf(user, user.dir, 1))
+			else
+				spawn (5)
+					new/obj/effect/particle_effect/smoke/arquebus(get_ranged_target_turf(user, user.dir, 1))
+				spawn (10)
+					new/obj/effect/particle_effect/smoke/arquebus(get_ranged_target_turf(user, user.dir, 2))
+				spawn (16)
+					new/obj/effect/particle_effect/smoke/arquebus(get_ranged_target_turf(user, user.dir, 1))
 	for(var/mob/M in range(5, user))
 		if(!M.stat)
 			shake_camera(M, 3, 1)
@@ -653,6 +662,16 @@
 			if("onbelt")
 				return list("shrink" = 0.3,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
 
+/obj/item/gun/ballistic/twilight_firearm/arquebus_pistol/umbra
+	name = "Umbra"
+	desc = "Компактное огнестрельное оружие отавианского производства. Ствол изготовлен из вороненой стали, на которую нанесены несколько простых рун. Благодаря необычной конструкции и рунической магии, Умбра стреляет практически бесшумно, что делает её идеальным выбором для агентов Инквизиции."
+	silenced = TRUE
+	icon = 'modular_twilight_axis/firearms/icons/umbra/pistol.dmi'
+	advanced_icon = 'modular_twilight_axis/firearms/icons/umbra/pistol.dmi'
+	advanced_icon_r = 'modular_twilight_axis/firearms/icons/umbra/pistol_r.dmi'
+	advanced_icon_norod	= 'modular_twilight_axis/firearms/icons/umbra/pistol_norod.dmi'
+	advanced_icon_r_norod = 'modular_twilight_axis/firearms/icons/umbra/pistol_r_norod.dmi'
+
 /obj/item/gun/ballistic/twilight_firearm/handgonne
 	name = "culverin"
 	desc = "Тяжелое пороховое оружие, стреляющее крупными свинцовыми ядрами. Важен не размер ствола, а размер отверстия, что он делает в вашем противнике."
@@ -710,49 +729,50 @@
 		..()
 		if(advanced_icon_s)
 			icon = advanced_icon_s
-		switch(gunpowder)
-			if("fyrepowder")
-				spawn (1)
-					new/obj/effect/particle_effect/smoke/arquebus/fyre(get_ranged_target_turf(user, user.dir, 1))
-				spawn (5)
-					new/obj/effect/particle_effect/smoke/arquebus/fyre(get_ranged_target_turf(user, user.dir, 2))
-				spawn (12)
-					new/obj/effect/particle_effect/smoke/arquebus/fyre(get_ranged_target_turf(user, user.dir, 1))
-			if("thunderpowder")
-				spawn (1)
-					new/obj/effect/particle_effect/smoke/arquebus/thunder(get_ranged_target_turf(user, user.dir, 1))
-				spawn (5)
-					new/obj/effect/particle_effect/smoke/arquebus/thunder(get_ranged_target_turf(user, user.dir, 2))
-				spawn (12)
-					new/obj/effect/particle_effect/smoke/arquebus/thunder(get_ranged_target_turf(user, user.dir, 1))
-			if("corrosive gunpowder")
-				spawn (1)
-					new/obj/effect/particle_effect/smoke/arquebus/corrosive(get_ranged_target_turf(user, user.dir, 1))
-				spawn (5)
-					new/obj/effect/particle_effect/smoke/arquebus/corrosive(get_ranged_target_turf(user, user.dir, 2))
-				spawn (12)
-					new/obj/effect/particle_effect/smoke/arquebus/corrosive(get_ranged_target_turf(user, user.dir, 1))
-			if("arcyne gunpowder")
-				spawn (1)
-					new/obj/effect/particle_effect/smoke/arquebus/arcyne(get_ranged_target_turf(user, user.dir, 1))
-				spawn (5)
-					new/obj/effect/particle_effect/smoke/arquebus/arcyne(get_ranged_target_turf(user, user.dir, 2))
-				spawn (12)
-					new/obj/effect/particle_effect/smoke/arquebus/arcyne(get_ranged_target_turf(user, user.dir, 1))
-			if("terrorpowder")
-				spawn (1)
-					new/obj/effect/particle_effect/smoke/arquebus/terror(get_ranged_target_turf(user, user.dir, 1))
-				spawn (5)
-					new/obj/effect/particle_effect/smoke/arquebus/terror(get_ranged_target_turf(user, user.dir, 2))
-				spawn (12)
-					new/obj/effect/particle_effect/smoke/arquebus/terror(get_ranged_target_turf(user, user.dir, 1))
-			else
-				spawn (1)
-					new/obj/effect/particle_effect/smoke/arquebus(get_ranged_target_turf(user, user.dir, 1))
-				spawn (5)
-					new/obj/effect/particle_effect/smoke/arquebus(get_ranged_target_turf(user, user.dir, 2))
-				spawn (12)
-					new/obj/effect/particle_effect/smoke/arquebus(get_ranged_target_turf(user, user.dir, 1))
+		if(!silenced)
+			switch(gunpowder)
+				if("fyrepowder")
+					spawn (1)
+						new/obj/effect/particle_effect/smoke/arquebus/fyre(get_ranged_target_turf(user, user.dir, 1))
+					spawn (5)
+						new/obj/effect/particle_effect/smoke/arquebus/fyre(get_ranged_target_turf(user, user.dir, 2))
+					spawn (12)
+						new/obj/effect/particle_effect/smoke/arquebus/fyre(get_ranged_target_turf(user, user.dir, 1))
+				if("thunderpowder")
+					spawn (1)
+						new/obj/effect/particle_effect/smoke/arquebus/thunder(get_ranged_target_turf(user, user.dir, 1))
+					spawn (5)
+						new/obj/effect/particle_effect/smoke/arquebus/thunder(get_ranged_target_turf(user, user.dir, 2))
+					spawn (12)
+						new/obj/effect/particle_effect/smoke/arquebus/thunder(get_ranged_target_turf(user, user.dir, 1))
+				if("corrosive gunpowder")
+					spawn (1)
+						new/obj/effect/particle_effect/smoke/arquebus/corrosive(get_ranged_target_turf(user, user.dir, 1))
+					spawn (5)
+						new/obj/effect/particle_effect/smoke/arquebus/corrosive(get_ranged_target_turf(user, user.dir, 2))
+					spawn (12)
+						new/obj/effect/particle_effect/smoke/arquebus/corrosive(get_ranged_target_turf(user, user.dir, 1))
+				if("arcyne gunpowder")
+					spawn (1)
+						new/obj/effect/particle_effect/smoke/arquebus/arcyne(get_ranged_target_turf(user, user.dir, 1))
+					spawn (5)
+						new/obj/effect/particle_effect/smoke/arquebus/arcyne(get_ranged_target_turf(user, user.dir, 2))
+					spawn (12)
+						new/obj/effect/particle_effect/smoke/arquebus/arcyne(get_ranged_target_turf(user, user.dir, 1))
+				if("terrorpowder")
+					spawn (1)
+						new/obj/effect/particle_effect/smoke/arquebus/terror(get_ranged_target_turf(user, user.dir, 1))
+					spawn (5)
+						new/obj/effect/particle_effect/smoke/arquebus/terror(get_ranged_target_turf(user, user.dir, 2))
+					spawn (12)
+						new/obj/effect/particle_effect/smoke/arquebus/terror(get_ranged_target_turf(user, user.dir, 1))
+				else
+					spawn (1)
+						new/obj/effect/particle_effect/smoke/arquebus(get_ranged_target_turf(user, user.dir, 1))
+					spawn (5)
+						new/obj/effect/particle_effect/smoke/arquebus(get_ranged_target_turf(user, user.dir, 2))
+					spawn (12)
+						new/obj/effect/particle_effect/smoke/arquebus(get_ranged_target_turf(user, user.dir, 1))
 		gunpowder = null
 		for(var/mob/M in range(5, user))
 			if(!M.stat)
@@ -812,3 +832,35 @@
 		else
 			return 1
 	return chargetime
+
+/obj/item/gun/ballistic/twilight_firearm/handgonne/purgatory
+	name = "Purgatory"
+	desc = "Передовое огнестрельное оружие отавианского ордена Чёрного Пороха, завоевашее зловещую славу на поле боя из-за своей разрушительной мощи, обеспечиваемой двойным зарядом пороха и большим количеством картечи в залпе. Эта ручная пушка вступает в игру, когда одиночного довода против ереси просто недостаточно."
+	icon = 'modular_twilight_axis/firearms/icons/purgatory/purgatory.dmi'
+	icon_state = "purgatory"
+	item_state = "purgatory"
+	mag_type = /obj/item/ammo_box/magazine/internal/twilight_firearm/handgonne/purgatory
+	advanced_icon = 'modular_twilight_axis/firearms/icons/purgatory/purgatory.dmi'
+	advanced_icon_r = 'modular_twilight_axis/firearms/icons/purgatory/purgatory_r.dmi'
+	advanced_icon_f	= 'modular_twilight_axis/firearms/icons/purgatory/purgatory_f.dmi'
+	advanced_icon_s = 'modular_twilight_axis/firearms/icons/purgatory/purgatory_s.dmi'
+	powder_per_reload = 2
+	gripped_intents = list(/datum/intent/shoot/twilight_firearm, /datum/intent/arc/twilight_firearm, INTENT_GENERIC, /datum/intent/spear/thrust/militia)
+	associated_skill = /datum/skill/combat/polearms
+
+/obj/item/gun/ballistic/twilight_firearm/handgonne/purgatory/pre_attack(atom/A, mob/living/user, params)
+	if(!user.used_intent.tranged)
+		if(isliving(A))
+			var/firearm_skill = (user?.mind ? user.get_skill_level(/datum/skill/combat/twilight_firearms) : 1)
+			var/polearms_skill = (user?.mind ? user.get_skill_level(/datum/skill/combat/polearms) : 1)
+			if(firearm_skill > polearms_skill)
+				src.associated_skill = /datum/skill/combat/twilight_firearms
+			else
+				src.associated_skill = /datum/skill/combat/polearms
+		else
+			src.associated_skill = /datum/skill/combat/polearms
+	. = ..()
+
+/obj/item/ammo_box/magazine/internal/twilight_firearm/handgonne/purgatory
+	name = "purgatory internal magazine"
+	caliber = "otavian grapeshot"
