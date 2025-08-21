@@ -165,6 +165,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	var/update_mutant_colors = TRUE
 
 	var/headshot_link
+	var/chatheadshot = FALSE
 	var/nsfw_headshot_link //Twilight Axis edit далее TA
 	var/ooc_extra_link
 	var/ooc_extra
