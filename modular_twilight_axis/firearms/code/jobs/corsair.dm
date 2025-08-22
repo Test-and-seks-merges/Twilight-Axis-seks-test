@@ -1,3 +1,15 @@
+/obj/item/clothing/suit/roguetown/armor/leather/vest/sailor/grenzelhoft
+	name = "reichsmarine sailor's jacket"
+	desc = "A dark coat commonly worn by Grenzelhoft sailors and officers. Made out of studded leather and provides decent protection against blades."
+	color = "#3C3C3C"
+	icon_state = "longcoat"
+	item_state = "longcoat"
+	body_parts_covered = COVERAGE_ALL_BUT_ARMS
+	armor = ARMOR_LEATHER_GOOD
+	prevent_crits = list(BCLASS_CUT, BCLASS_STAB, BCLASS_BLUNT, BCLASS_CHOP, BCLASS_SMASH)
+	max_integrity = ARMOR_INT_CHEST_LIGHT_MASTER
+	sellprice = 25
+
 /datum/advclass/wretch/twilight_corsair
 	name = "Corsair"
 	tutorial = "During the Twilight War, you served aboard a Reichsmarine warship, intercepting, boarding and ravaging Golden Empire's trade vessels on Kaiser's orders. After the war ended, your crew saw it fit to continue with the practice, flying a flag with a different shade of black."
@@ -21,7 +33,7 @@
 	neck = /obj/item/clothing/neck/roguetown/gorget
 	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy/grenzelhoft
 	head = /obj/item/clothing/head/roguetown/helmet/tricorn/grenzel
-	armor = /obj/item/clothing/suit/roguetown/armor/leather/heavy/coat
+	armor = /obj/item/clothing/suit/roguetown/armor/leather/vest/sailor/grenzelhoft
 	pants = /obj/item/clothing/under/roguetown/heavy_leather_pants/grenzelpants
 	shoes = /obj/item/clothing/shoes/roguetown/grenzelhoft
 	gloves = /obj/item/clothing/gloves/roguetown/angle/grenzelgloves

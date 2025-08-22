@@ -846,20 +846,10 @@
 	advanced_icon_s = 'modular_twilight_axis/firearms/icons/purgatory/purgatory_s.dmi'
 	powder_per_reload = 2
 	gripped_intents = list(/datum/intent/shoot/twilight_firearm, /datum/intent/arc/twilight_firearm, INTENT_GENERIC, /datum/intent/spear/thrust/militia)
-	associated_skill = /datum/skill/combat/polearms
-
-/obj/item/gun/ballistic/twilight_firearm/handgonne/purgatory/pre_attack(atom/A, mob/living/user, params)
-	if(!user.used_intent.tranged)
-		if(isliving(A))
-			var/firearm_skill = (user?.mind ? user.get_skill_level(/datum/skill/combat/twilight_firearms) : 1)
-			var/polearms_skill = (user?.mind ? user.get_skill_level(/datum/skill/combat/polearms) : 1)
-			if(firearm_skill > polearms_skill)
-				src.associated_skill = /datum/skill/combat/twilight_firearms
-			else
-				src.associated_skill = /datum/skill/combat/polearms
-		else
-			src.associated_skill = /datum/skill/combat/polearms
-	. = ..()
+	associated_skill = /datum/skill/combat/twilight_firearms
+	is_silver = TRUE
+	force = 15
+	force_wielded = 20
 
 /obj/item/ammo_box/magazine/internal/twilight_firearm/handgonne/purgatory
 	name = "purgatory internal magazine"
