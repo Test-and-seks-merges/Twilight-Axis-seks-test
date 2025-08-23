@@ -809,7 +809,7 @@
 			. += "<a href='?src=[REF(src)];task=assess;'>Assess</a>"
 
 	if(!obscure_name || client?.prefs.masked_examine)
-		if(headshot_link)
+		if((user.client?.prefs.chatheadshot) && headshot_link)
 			. += "<span class='info'><img src=[headshot_link] width=100 height=100/></span>"
 		if(flavortext || headshot_link || ooc_notes)
 			. += "<a href='?src=[REF(src)];task=view_headshot;'>Examine closer</a>"

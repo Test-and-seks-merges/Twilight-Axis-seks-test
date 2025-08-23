@@ -625,7 +625,8 @@
 	if(tcolor)
 		voicecolor_override = tcolor
 	if(speaking && message)
-		playsound(loc, 'sound/vo/mobs/rat/rat_life.ogg', 20, TRUE, -1)
+		var/mob/living/carbon/human/wearer = loc
+		wearer.playsound_local(wearer, 'sound/vo/mobs/rat/rat_life.ogg', 50, TRUE)
 		say(message, language = message_language)
 	voicecolor_override = null
 
@@ -743,7 +744,7 @@
 	desc = initial(desc)
 	hidden = FALSE
 	return TRUE
-/* - REVISIT IN A FUTURE PR. ATTACHABLE LISTENERS.
+/* FINISH THIS AT YOUR OWN LEISURE. IT WON'T TAKE MUCH WORK. AT MOST YOU'LL BE ADDING DISCOVERY CHECKS ON EXAMINE AND THE ABILITY TO RIP OFF DISCOVERED LISTENERS. HAVE FUN! - YISCHE
 /obj/item/listeningdevice/attack(mob/living/M, mob/living/user)
 	if(!active)
 		to_chat(user, span_warning("[src] is inactive.."))
@@ -756,7 +757,7 @@
 	M.contents.Add(src)
 
 	if(M.STAPER > user.STASPD)
-		to_chat(M, span_hidden("I feel something brush against mine own self. It stings."))
+		to_chat(M, span_hidden("I feel something brush against the back of my neck. It stings."))
 
 	..()
 */
