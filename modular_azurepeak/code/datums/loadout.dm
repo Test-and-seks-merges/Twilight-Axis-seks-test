@@ -415,6 +415,14 @@ GLOBAL_LIST_EMPTY(loadout_items_by_name)
 	name = "Cloth Blindfold"
 	path = /obj/item/clothing/mask/rogue/blindfold
 
+/datum/loadout_item/bases
+	name = "Cloth military skirt"
+	path = /obj/item/storage/belt/rogue/leather/battleskirt
+
+/datum/loadout_item/fauldedbelt
+	name = "Belt with faulds"
+	path = /obj/item/storage/belt/rogue/leather/battleskirt/faulds
+
 /datum/loadout_item/psicross
 	name = "Psydonian Cross"
 	path = /obj/item/clothing/neck/roguetown/psicross
@@ -498,12 +506,12 @@ GLOBAL_LIST_EMPTY(loadout_items_by_name)
 	donatitem = TRUE
 
 /datum/loadout_item/donator_sru
-	name = "Donator Kit - Emerald Dress - Required: Dress(No dwarf)"
+	name = "Donator Kit - Emerald Dress - Required: Dress(No Small Races)"
 	path = /obj/item/enchantingkit/srusu
 	donatitem = TRUE
 
 /datum/loadout_item/donator_strudel
-	name = "Donator Kit - Grenzelhoftian Mage Vest - Required: Robe(No dwarf)"
+	name = "Donator Kit - Grenzelhoftian Mage Vest - Required: Robe(No Small Races)"
 	path = /obj/item/enchantingkit/strudle
 	donatitem = TRUE
 
@@ -523,8 +531,28 @@ GLOBAL_LIST_EMPTY(loadout_items_by_name)
 	donatitem = TRUE
 
 /datum/loadout_item/donator_zydras
-	name = "Donator Kit - Padded silky dress - Required: Silky Dress(No dwarf)"
+	name = "Donator Kit - Padded silky dress - Required: Silky Dress(No Small Races)"
 	path = /obj/item/enchantingkit/zydras
+	donatitem = TRUE
+
+/datum/loadout_item/donator_psydonianarmet
+	name = "Donator Kit - Psydonian armet - Required: Armet"
+	path = /obj/item/enchantingkit/psydonianarmet
+	donatitem = TRUE
+
+/datum/loadout_item/donator_psydonbarbute
+	name = "Donator Kit - Psydonian barbute - Required: Barbute"
+	path = /obj/item/enchantingkit/psydonbarbute
+	donatitem = TRUE
+
+/datum/loadout_item/donator_psysallet
+	name = "Donator Kit - Psydonian sallet - Required: Barbute"
+	path = /obj/item/enchantingkit/psysallet
+	donatitem = TRUE
+
+/datum/loadout_item/donator_psybucket
+	name = "Donator Kit - Psydonian bucket helmet - Required: Armet"
+	path = /obj/item/enchantingkit/psybucket
 	donatitem = TRUE
 
 // Разное
