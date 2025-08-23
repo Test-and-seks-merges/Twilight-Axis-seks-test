@@ -13,6 +13,8 @@
 			ritechoices+="Rune of Brotherhood"
 		if(/datum/patron/inhumen/baotha)
 			ritechoices+="Rune of Hedonism"
+		if(/datum/patron/divine/undivided)
+			ritechoices+= "Rune of the Pantheon"
 		if(/datum/patron/divine/astrata)
 			ritechoices+="Rune of Sun"
 		if(/datum/patron/divine/noc)
@@ -33,6 +35,7 @@
 			ritechoices+="Rune of Justice"
 		if(/datum/patron/divine/abyssor)
 			ritechoices+="Rune of Storm"
+			ritechoices+="Rune of Stirring"
 		if(/datum/patron/old_god)
 			ritechoices+="Rune of Sacrament"
 
@@ -89,6 +92,11 @@
 			if(do_after(user, 30, src))
 				playsound(src, 'sound/foley/scribble.ogg', 40, TRUE)
 				new /obj/structure/ritualcircle/abyssor(step_turf)
+		if("Rune of Stirring")
+			to_chat(user,span_cultsmall("I begin inscribing the rune of His Dream..."))
+			if(do_after(user, 30, src))
+				playsound(src, 'sound/foley/scribble.ogg', 40, TRUE)
+				new /obj/structure/ritualcircle/abyssor_alt_inactive(step_turf)
 		if("Rune of Undeath")
 			to_chat(user,span_cultsmall("I begin inscribing the rune of Her Knowledge..."))
 			if(do_after(user, 30, src))
@@ -114,3 +122,8 @@
 			if(do_after(user, 30, src))
 				playsound(src, 'sound/foley/scribble.ogg', 40, TRUE)
 				new /obj/structure/ritualcircle/psydon(step_turf)
+		if("Rune of the Pantheon")
+			to_chat(user,span_cultsmall("I begin inscribing the rune of the Ten Undivided"))
+			if(do_after(user, 30, src))
+				playsound(src, 'sound/foley/scribble.ogg', 40, TRUE)
+				new /obj/structure/ritualcircle/undivided(step_turf)
