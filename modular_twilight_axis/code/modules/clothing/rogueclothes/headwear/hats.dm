@@ -12,3 +12,4 @@
 	icon = 'modular_twilight_axis/icons/roguetown/clothing/head.dmi'
 	mob_overlay_icon = 'modular_twilight_axis/icons/roguetown/clothing/onmob/head.dmi'
 	icon_state = "eaststrawhat"
+	flags_inv = HIDEEARS
