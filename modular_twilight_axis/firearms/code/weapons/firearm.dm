@@ -817,7 +817,7 @@
 /obj/item/gun/ballistic/twilight_firearm/barker
 	name = "barker"
 	desc = "Один из первых образцов огнестрельного оружия, созданный отавийскими мастерами в начале позапрошлого века. Ввиду низкой мощности и точности, ныне используется преимущественно охотниками."
-	icon = 'modular_twilight_axis/firearms/icons/32.dmi'
+	icon = 'modular_twilight_axis/firearms/icons/barker.dmi'
 	icon_state = "barker"
 	item_state = "barker"
 	gripped_intents = list(/datum/intent/shoot/twilight_firearm/flintgonne, /datum/intent/arc/twilight_firearm/flintgonne, INTENT_GENERIC)
