@@ -121,7 +121,7 @@
 						H.wear_ring.obj_break()
 					H.set_silence(5 SECONDS)
 			if("terrorpowder")
-				npc_damage_mult = 2
+				npc_damage_mult += 1
 	. = ..()
 	if(isliving(firer) && (istype(fired_from, /obj/item/gun/ballistic/twilight_firearm) || istype(fired_from, /obj/item/gun/ballistic/revolver/grenadelauncher/twilight_runelock)))
 		var/mob/living/M = firer
@@ -235,10 +235,16 @@
 		src.add_filter("rune_filter", 2, list("type" = "outline", "color" = rgb(112, 28, 28, 1), "alpha" = 200, "size" = 2))
 
 /obj/item/ammo_casing/caseless/twilight_lead/runelock/equipped(mob/living/user)
-	if(!HAS_TRAIT(user, TRAIT_INQUISITION) && !(user.STAINT >= 15) && !(user.patron?.type == /datum/patron/old_god))
+	if(ishuman(user))
+		var/mob/living/carbon/human/H = user
+		if(!HAS_TRAIT(H, TRAIT_INQUISITION) && !(H.STAINT >= 15) && !(H.patron?.type == /datum/patron/old_god) && !(H.merctype == 10))
+			to_chat(H, "<font color='yellow'>The [name] is extremely hot to touch! It burns your hand!</font>")
+			var/def_zone = "[(H.active_hand_index == 2) ? "r" : "l" ]_hand"
+			H.apply_damage(rand(5,15), BURN, def_zone)
+			src.forceMove(get_turf(H))
+	else
 		to_chat(user, "<font color='yellow'>The [name] is extremely hot to touch! It burns your hand!</font>")
-		var/def_zone = "[(user.active_hand_index == 2) ? "r" : "l" ]_hand"
-		user.apply_damage(rand(5,15), BURN, def_zone)
+		user.apply_damage(rand(5,15), BURN)
 		src.forceMove(get_turf(user))
 	..()
 

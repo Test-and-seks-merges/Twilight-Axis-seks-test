@@ -61,6 +61,15 @@
 		else
 			to_chat(loc, span_warning("Full!"))
 		return
+	if(istype(A, /obj/item/gun/ballistic/revolver/grenadelauncher/twilight_runelock))
+		var/obj/item/gun/ballistic/revolver/grenadelauncher/twilight_runelock/B = A
+		if(arrows.len && !B.chambered && B.cocked)
+			for(var/AR in arrows)
+				if(istype(AR, /obj/item/ammo_casing/caseless/twilight_lead/runelock))
+					arrows -= AR
+					B.attackby(AR, loc, params)
+					break
+		return
 	..()
 
 /obj/item/quiver/twilight_bullet/runed/Initialize()

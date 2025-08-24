@@ -152,6 +152,8 @@
 	//sheathe_sound = 'sound/sheath_sounds/put_back_to_holster.ogg'
 	var/spread_num = 10
 	var/damfactor = 1
+	var/critfactor = 1
+	var/npcdamfactor = 1.3
 	var/reloaded = FALSE
 	var/silenced = FALSE
 	var/load_time = 50
@@ -297,17 +299,21 @@
 	var/firearm_skill = (user?.mind ? user.get_skill_level(/datum/skill/combat/twilight_firearms) : 1)
 	var/load_time_skill = load_time - (firearm_skill*5)
 
-	if(istype(A, /obj/item/ammo_box) || istype(A, /obj/item/ammo_casing))
+	if(istype(A, /obj/item/ammo_casing))
+		var/obj/item/ammo_casing/V = A
 		if(chambered)
-			to_chat(user, "<span class='warning'>There is already a [chambered] in [src]!</span>")
+			to_chat(user, "<span class='warning'>There is already a [chambered.name] in [src]!</span>")
 			return
 		if(!gunpowder)
 			to_chat(user, "<span class='warning'>You must fill [src] with gunpowder first!</span>")
 			return
+		if(V.caliber != magazine.caliber)
+			to_chat(user, "<span class='warning'>The [V.name] doesn't fit into [src]!</span>")
+			return
 		if((loc == user) && (user.get_inactive_held_item() != src))
 			return
 		playsound(src, "modular_twilight_axis/firearms/sound/insert.ogg",  100, FALSE)
-		user.visible_message("<span class='notice'>[user] forces a [A] down the barrel of [src].</span>")
+		user.visible_message("<span class='notice'>[user] forces a [V.name] down the barrel of [src].</span>")
 		if(advanced_icon)
 			if(!myrod && advanced_icon_norod)
 				icon = advanced_icon_norod
@@ -501,6 +507,8 @@
 	for(var/obj/item/ammo_casing/CB in get_ammo_list(FALSE, TRUE))
 		var/obj/projectile/bullet/BB = CB.BB
 		BB.damage *= damfactor * (user.STAPER > 10 ? user.STAPER / 10 : 1)
+		BB.critfactor *= critfactor
+		BB.npc_damage_mult *= npcdamfactor
 		BB.gunpowder = gunpowder
 	reloaded = FALSE
 	if(advanced_icon)
@@ -509,77 +517,153 @@
 		else
 			icon = advanced_icon
 	spark_act()
+	if(locktype == "Wheellock")
+		..()
+		if(!silenced)
+			switch(gunpowder)
+				if("fyrepowder")
+					spawn (5)
+						new/obj/effect/particle_effect/smoke/arquebus/fyre(get_ranged_target_turf(user, user.dir, 1))
+					spawn (10)
+						new/obj/effect/particle_effect/smoke/arquebus/fyre(get_ranged_target_turf(user, user.dir, 2))
+					spawn (16)
+						new/obj/effect/particle_effect/smoke/arquebus/fyre(get_ranged_target_turf(user, user.dir, 1))
+				if("thunderpowder")
+					spawn (5)
+						new/obj/effect/particle_effect/smoke/arquebus/thunder(get_ranged_target_turf(user, user.dir, 1))
+					spawn (10)
+						new/obj/effect/particle_effect/smoke/arquebus/thunder(get_ranged_target_turf(user, user.dir, 2))
+					spawn (16)
+						new/obj/effect/particle_effect/smoke/arquebus/thunder(get_ranged_target_turf(user, user.dir, 1))
+				if("corrosive gunpowder")
+					spawn (5)
+						new/obj/effect/particle_effect/smoke/arquebus/corrosive(get_ranged_target_turf(user, user.dir, 1))
+					spawn (10)
+						new/obj/effect/particle_effect/smoke/arquebus/corrosive(get_ranged_target_turf(user, user.dir, 2))
+					spawn (16)
+						new/obj/effect/particle_effect/smoke/arquebus/corrosive(get_ranged_target_turf(user, user.dir, 1))
+				if("arcyne gunpowder")
+					spawn (5)
+						new/obj/effect/particle_effect/smoke/arquebus/arcyne(get_ranged_target_turf(user, user.dir, 1))
+					spawn (10)
+						new/obj/effect/particle_effect/smoke/arquebus/arcyne(get_ranged_target_turf(user, user.dir, 2))
+					spawn (16)
+						new/obj/effect/particle_effect/smoke/arquebus/arcyne(get_ranged_target_turf(user, user.dir, 1))
+				if("terrorpowder")
+					spawn (5)
+						new/obj/effect/particle_effect/smoke/arquebus/terror(get_ranged_target_turf(user, user.dir, 1))
+					spawn (10)
+						new/obj/effect/particle_effect/smoke/arquebus/terror(get_ranged_target_turf(user, user.dir, 2))
+					spawn (16)
+						new/obj/effect/particle_effect/smoke/arquebus/terror(get_ranged_target_turf(user, user.dir, 1))
+				else
+					spawn (5)
+						new/obj/effect/particle_effect/smoke/arquebus(get_ranged_target_turf(user, user.dir, 1))
+					spawn (10)
+						new/obj/effect/particle_effect/smoke/arquebus(get_ranged_target_turf(user, user.dir, 2))
+					spawn (16)
+						new/obj/effect/particle_effect/smoke/arquebus(get_ranged_target_turf(user, user.dir, 1))
+		for(var/mob/M in range(5, user))
+			if(!M.stat)
+				shake_camera(M, 3, 1)
 
-	..()
-	if(!silenced)
-		switch(gunpowder)
-			if("fyrepowder")
-				spawn (5)
-					new/obj/effect/particle_effect/smoke/arquebus/fyre(get_ranged_target_turf(user, user.dir, 1))
-				spawn (10)
-					new/obj/effect/particle_effect/smoke/arquebus/fyre(get_ranged_target_turf(user, user.dir, 2))
-				spawn (16)
-					new/obj/effect/particle_effect/smoke/arquebus/fyre(get_ranged_target_turf(user, user.dir, 1))
-			if("thunderpowder")
-				spawn (5)
-					new/obj/effect/particle_effect/smoke/arquebus/thunder(get_ranged_target_turf(user, user.dir, 1))
-				spawn (10)
-					new/obj/effect/particle_effect/smoke/arquebus/thunder(get_ranged_target_turf(user, user.dir, 2))
-				spawn (16)
-					new/obj/effect/particle_effect/smoke/arquebus/thunder(get_ranged_target_turf(user, user.dir, 1))
-			if("corrosive gunpowder")
-				spawn (5)
-					new/obj/effect/particle_effect/smoke/arquebus/corrosive(get_ranged_target_turf(user, user.dir, 1))
-				spawn (10)
-					new/obj/effect/particle_effect/smoke/arquebus/corrosive(get_ranged_target_turf(user, user.dir, 2))
-				spawn (16)
-					new/obj/effect/particle_effect/smoke/arquebus/corrosive(get_ranged_target_turf(user, user.dir, 1))
-			if("arcyne gunpowder")
-				spawn (5)
-					new/obj/effect/particle_effect/smoke/arquebus/arcyne(get_ranged_target_turf(user, user.dir, 1))
-				spawn (10)
-					new/obj/effect/particle_effect/smoke/arquebus/arcyne(get_ranged_target_turf(user, user.dir, 2))
-				spawn (16)
-					new/obj/effect/particle_effect/smoke/arquebus/arcyne(get_ranged_target_turf(user, user.dir, 1))
-			if("terrorpowder")
-				spawn (5)
-					new/obj/effect/particle_effect/smoke/arquebus/terror(get_ranged_target_turf(user, user.dir, 1))
-				spawn (10)
-					new/obj/effect/particle_effect/smoke/arquebus/terror(get_ranged_target_turf(user, user.dir, 2))
-				spawn (16)
-					new/obj/effect/particle_effect/smoke/arquebus/terror(get_ranged_target_turf(user, user.dir, 1))
-			else
-				spawn (5)
-					new/obj/effect/particle_effect/smoke/arquebus(get_ranged_target_turf(user, user.dir, 1))
-				spawn (10)
-					new/obj/effect/particle_effect/smoke/arquebus(get_ranged_target_turf(user, user.dir, 2))
-				spawn (16)
-					new/obj/effect/particle_effect/smoke/arquebus(get_ranged_target_turf(user, user.dir, 1))
-	for(var/mob/M in range(5, user))
-		if(!M.stat)
-			shake_camera(M, 3, 1)
-
-	gunpowder = null
-	if(prob(accident_chance))
-		user.flash_fullscreen("whiteflash")
-		user.apply_damage(rand(5,15), BURN, pick(BODY_ZONE_PRECISE_R_EYE, BODY_ZONE_PRECISE_L_EYE, BODY_ZONE_PRECISE_NOSE, BODY_ZONE_PRECISE_MOUTH, BODY_ZONE_PRECISE_L_HAND, BODY_ZONE_PRECISE_R_HAND))
-		user.visible_message("<span class='danger'>[user] accidentally burnt themselves while firing the [src].</span>")
-		user.emote("painscream")
-		if(prob(60))
-			user.dropItemToGround(src)
-			user.Knockdown(rand(15,30))
-			user.Immobilize(30)
-	if(prob(accident_chance))
-		user.visible_message("<span class='danger'>[user] is knocked back by the recoil!</span>")
-		user.throw_at(knockback, rand(1,2), 7)
+		gunpowder = null
 		if(prob(accident_chance))
-			user.dropItemToGround(src)
-			user.Knockdown(rand(15,30))
-			user.Immobilize(30)
-		if(firearm_skill <= 2 && prob(50))
-			var/def_zone = "[(user.active_hand_index == 2) ? "r" : "l" ]_arm"
-			var/obj/item/bodypart/BP = user.get_bodypart(def_zone)
-			BP.add_wound(/datum/wound/dislocation)
+			user.flash_fullscreen("whiteflash")
+			user.apply_damage(rand(5,15), BURN, pick(BODY_ZONE_PRECISE_R_EYE, BODY_ZONE_PRECISE_L_EYE, BODY_ZONE_PRECISE_NOSE, BODY_ZONE_PRECISE_MOUTH, BODY_ZONE_PRECISE_L_HAND, BODY_ZONE_PRECISE_R_HAND))
+			user.visible_message("<span class='danger'>[user] accidentally burnt themselves while firing the [src].</span>")
+			user.emote("painscream")
+			if(prob(60))
+				user.dropItemToGround(src)
+				user.Knockdown(rand(15,30))
+				user.Immobilize(30)
+		if(prob(accident_chance))
+			user.visible_message("<span class='danger'>[user] is knocked back by the recoil!</span>")
+			user.throw_at(knockback, rand(1,2), 7)
+			if(prob(accident_chance))
+				user.dropItemToGround(src)
+				user.Knockdown(rand(15,30))
+				user.Immobilize(30)
+			if(firearm_skill <= 2 && prob(50))
+				var/def_zone = "[(user.active_hand_index == 2) ? "r" : "l" ]_arm"
+				var/obj/item/bodypart/BP = user.get_bodypart(def_zone)
+				BP.add_wound(/datum/wound/dislocation)
+	else if(locktype == "Matchlock")
+		if(advanced_icon_f)
+			icon = advanced_icon_f
+		playsound(src, "modular_twilight_axis/firearms/sound/fuse.ogg", 100, FALSE)
+		spawn(rand(10,20))
+			..()
+			if(advanced_icon_s)
+				icon = advanced_icon_s
+			if(!silenced)
+				switch(gunpowder)
+					if("fyrepowder")
+						spawn (1)
+							new/obj/effect/particle_effect/smoke/arquebus/fyre(get_ranged_target_turf(user, user.dir, 1))
+						spawn (5)
+							new/obj/effect/particle_effect/smoke/arquebus/fyre(get_ranged_target_turf(user, user.dir, 2))
+						spawn (12)
+							new/obj/effect/particle_effect/smoke/arquebus/fyre(get_ranged_target_turf(user, user.dir, 1))
+					if("thunderpowder")
+						spawn (1)
+							new/obj/effect/particle_effect/smoke/arquebus/thunder(get_ranged_target_turf(user, user.dir, 1))
+						spawn (5)
+							new/obj/effect/particle_effect/smoke/arquebus/thunder(get_ranged_target_turf(user, user.dir, 2))
+						spawn (12)
+							new/obj/effect/particle_effect/smoke/arquebus/thunder(get_ranged_target_turf(user, user.dir, 1))
+					if("corrosive gunpowder")
+						spawn (1)
+							new/obj/effect/particle_effect/smoke/arquebus/corrosive(get_ranged_target_turf(user, user.dir, 1))
+						spawn (5)
+							new/obj/effect/particle_effect/smoke/arquebus/corrosive(get_ranged_target_turf(user, user.dir, 2))
+						spawn (12)
+							new/obj/effect/particle_effect/smoke/arquebus/corrosive(get_ranged_target_turf(user, user.dir, 1))
+					if("arcyne gunpowder")
+						spawn (1)
+							new/obj/effect/particle_effect/smoke/arquebus/arcyne(get_ranged_target_turf(user, user.dir, 1))
+						spawn (5)
+							new/obj/effect/particle_effect/smoke/arquebus/arcyne(get_ranged_target_turf(user, user.dir, 2))
+						spawn (12)
+							new/obj/effect/particle_effect/smoke/arquebus/arcyne(get_ranged_target_turf(user, user.dir, 1))
+					if("terrorpowder")
+						spawn (1)
+							new/obj/effect/particle_effect/smoke/arquebus/terror(get_ranged_target_turf(user, user.dir, 1))
+						spawn (5)
+							new/obj/effect/particle_effect/smoke/arquebus/terror(get_ranged_target_turf(user, user.dir, 2))
+						spawn (12)
+							new/obj/effect/particle_effect/smoke/arquebus/terror(get_ranged_target_turf(user, user.dir, 1))
+					else
+						spawn (1)
+							new/obj/effect/particle_effect/smoke/arquebus(get_ranged_target_turf(user, user.dir, 1))
+						spawn (5)
+							new/obj/effect/particle_effect/smoke/arquebus(get_ranged_target_turf(user, user.dir, 2))
+						spawn (12)
+							new/obj/effect/particle_effect/smoke/arquebus(get_ranged_target_turf(user, user.dir, 1))
+			gunpowder = null
+			for(var/mob/M in range(5, user))
+				if(!M.stat)
+					shake_camera(M, 3, 1)
+			if(prob(accident_chance))
+				user.flash_fullscreen("whiteflash")
+				user.apply_damage(rand(5,15), BURN, pick(BODY_ZONE_PRECISE_R_EYE, BODY_ZONE_PRECISE_L_EYE, BODY_ZONE_PRECISE_NOSE, BODY_ZONE_PRECISE_MOUTH, BODY_ZONE_PRECISE_L_HAND, BODY_ZONE_PRECISE_R_HAND))
+				user.visible_message(span_danger("[user] accidentally burnt themselves while firing the [src]."))
+				user.emote("painscream")
+				if(prob(60))
+					user.dropItemToGround(src)
+					user.Knockdown(rand(15,30))
+					user.Immobilize(30)
+			if(prob(accident_chance))
+				user.visible_message(span_danger("[user] is knocked back by the recoil!"))
+				user.throw_at(knockback, rand(1,2), 7)
+				if(prob(accident_chance))
+					user.dropItemToGround(src)
+					user.Knockdown(rand(15,30))
+					user.Immobilize(30)
+					if(firearm_skill <= 2 && prob(50))
+						var/def_zone = "[(user.active_hand_index == 2) ? "r" : "l" ]_arm"
+						var/obj/item/bodypart/BP = user.get_bodypart(def_zone)
+						BP.add_wound(/datum/wound/dislocation)
 
 /obj/item/gun/ballistic/twilight_firearm/afterattack(atom/target, mob/living/user, flag, params)
 	. = ..()
@@ -601,14 +685,14 @@
 
 /obj/item/gun/ballistic/twilight_firearm/arquebus
 	name = "arquebus rifle"
-	desc = "Пороховое оружие, стреляющее бронебойными свинцовыми пулями."
+	desc = "Пороховое оружие второго поколения, стреляющее бронебойными свинцовыми пулями."
 	icon = 'modular_twilight_axis/firearms/icons/arquebus.dmi'
 	icon_state = "arquebus"
 	item_state = "arquebus"
 
 /obj/item/gun/ballistic/twilight_firearm/arquebus/bayonet
 	name = "arquebus rifle"
-	desc = "Пороховое оружие, стреляющее бронебойными свинцовыми пулями. Оснащена штыком для использования в ближнем бою."
+	desc = "Пороховое оружие второго поколения, стреляющее бронебойными свинцовыми пулями. Оснащена штыком для использования в ближнем бою."
 	icon = 'modular_twilight_axis/firearms/icons/arquebusbaoynet.dmi'
 	gripped_intents = list(/datum/intent/shoot/twilight_firearm, /datum/intent/arc/twilight_firearm, INTENT_GENERIC, /datum/intent/spear/thrust/militia)
 	associated_skill = /datum/skill/combat/polearms
@@ -685,6 +769,7 @@
 	advanced_icon_r = 'modular_twilight_axis/firearms/icons/handgonne/handgonne_r.dmi'
 	advanced_icon_f	= 'modular_twilight_axis/firearms/icons/handgonne/handgonne_f.dmi'
 	advanced_icon_s = 'modular_twilight_axis/firearms/icons/handgonne/handgonne_s.dmi'
+	npcdamfactor = 1
 
 /obj/item/ammo_box/magazine/internal/twilight_firearm/handgonne
 	name = "handgonne internal magazine"
@@ -693,119 +778,15 @@
 	max_ammo = 1
 	start_empty = TRUE
 
-
-/obj/item/gun/ballistic/twilight_firearm/handgonne/process_fire(atom/target, mob/living/user, message = TRUE, params = null, zone_override = "", bonus_spread = 0)
-	var/accident_chance = 0
-	var/firearm_skill = (user?.mind ? user.get_skill_level(/datum/skill/combat/twilight_firearms) : 1)
-	var/turf/knockback = get_ranged_target_turf(user, turn(user.dir, 180), rand(1,2))
-	spread = (spread_num - firearm_skill)
-	if(firearm_skill < 1)
-		accident_chance =80
-
-	if(firearm_skill < 2)
-		accident_chance =50
-	if(firearm_skill >= 2 && firearm_skill <= 5)
-		accident_chance =10
-	if(firearm_skill >= 5)
-		accident_chance =0
-	if(user.client)
-		if(user.client.chargedprog >= 100)
-			spread = 0
-		else
-			spread = 150 - (150 * (user.client.chargedprog / 100))
-	else
-		spread = 0
-	for(var/obj/item/ammo_casing/CB in get_ammo_list(FALSE, TRUE))
-		var/obj/projectile/bullet/BB = CB.BB
-		BB.damage *= damfactor * (user.STAPER > 10 ? user.STAPER / 10 : 1)
-		BB.gunpowder = gunpowder
-	reloaded = FALSE
-	spark_act()
-
-	if(advanced_icon_f)
-		icon = advanced_icon_f
-	playsound(src, "modular_twilight_axis/firearms/sound/fuse.ogg", 100, FALSE)
-	spawn(rand(10,20))
-		..()
-		if(advanced_icon_s)
-			icon = advanced_icon_s
-		if(!silenced)
-			switch(gunpowder)
-				if("fyrepowder")
-					spawn (1)
-						new/obj/effect/particle_effect/smoke/arquebus/fyre(get_ranged_target_turf(user, user.dir, 1))
-					spawn (5)
-						new/obj/effect/particle_effect/smoke/arquebus/fyre(get_ranged_target_turf(user, user.dir, 2))
-					spawn (12)
-						new/obj/effect/particle_effect/smoke/arquebus/fyre(get_ranged_target_turf(user, user.dir, 1))
-				if("thunderpowder")
-					spawn (1)
-						new/obj/effect/particle_effect/smoke/arquebus/thunder(get_ranged_target_turf(user, user.dir, 1))
-					spawn (5)
-						new/obj/effect/particle_effect/smoke/arquebus/thunder(get_ranged_target_turf(user, user.dir, 2))
-					spawn (12)
-						new/obj/effect/particle_effect/smoke/arquebus/thunder(get_ranged_target_turf(user, user.dir, 1))
-				if("corrosive gunpowder")
-					spawn (1)
-						new/obj/effect/particle_effect/smoke/arquebus/corrosive(get_ranged_target_turf(user, user.dir, 1))
-					spawn (5)
-						new/obj/effect/particle_effect/smoke/arquebus/corrosive(get_ranged_target_turf(user, user.dir, 2))
-					spawn (12)
-						new/obj/effect/particle_effect/smoke/arquebus/corrosive(get_ranged_target_turf(user, user.dir, 1))
-				if("arcyne gunpowder")
-					spawn (1)
-						new/obj/effect/particle_effect/smoke/arquebus/arcyne(get_ranged_target_turf(user, user.dir, 1))
-					spawn (5)
-						new/obj/effect/particle_effect/smoke/arquebus/arcyne(get_ranged_target_turf(user, user.dir, 2))
-					spawn (12)
-						new/obj/effect/particle_effect/smoke/arquebus/arcyne(get_ranged_target_turf(user, user.dir, 1))
-				if("terrorpowder")
-					spawn (1)
-						new/obj/effect/particle_effect/smoke/arquebus/terror(get_ranged_target_turf(user, user.dir, 1))
-					spawn (5)
-						new/obj/effect/particle_effect/smoke/arquebus/terror(get_ranged_target_turf(user, user.dir, 2))
-					spawn (12)
-						new/obj/effect/particle_effect/smoke/arquebus/terror(get_ranged_target_turf(user, user.dir, 1))
-				else
-					spawn (1)
-						new/obj/effect/particle_effect/smoke/arquebus(get_ranged_target_turf(user, user.dir, 1))
-					spawn (5)
-						new/obj/effect/particle_effect/smoke/arquebus(get_ranged_target_turf(user, user.dir, 2))
-					spawn (12)
-						new/obj/effect/particle_effect/smoke/arquebus(get_ranged_target_turf(user, user.dir, 1))
-		gunpowder = null
-		for(var/mob/M in range(5, user))
-			if(!M.stat)
-				shake_camera(M, 3, 1)
-		if(prob(accident_chance))
-			user.flash_fullscreen("whiteflash")
-			user.apply_damage(rand(5,15), BURN, pick(BODY_ZONE_PRECISE_R_EYE, BODY_ZONE_PRECISE_L_EYE, BODY_ZONE_PRECISE_NOSE, BODY_ZONE_PRECISE_MOUTH, BODY_ZONE_PRECISE_L_HAND, BODY_ZONE_PRECISE_R_HAND))
-			user.visible_message(span_danger("[user] accidentally burnt themselves while firing the [src]."))
-			user.emote("painscream")
-			if(prob(60))
-				user.dropItemToGround(src)
-				user.Knockdown(rand(15,30))
-				user.Immobilize(30)
-		if(prob(accident_chance))
-			user.visible_message(span_danger("[user] is knocked back by the recoil!"))
-			user.throw_at(knockback, rand(1,2), 7)
-			if(prob(accident_chance))
-				user.dropItemToGround(src)
-				user.Knockdown(rand(15,30))
-				user.Immobilize(30)
-				if(firearm_skill <= 2 && prob(50))
-					var/def_zone = "[(user.active_hand_index == 2) ? "r" : "l" ]_arm"
-					var/obj/item/bodypart/BP = user.get_bodypart(def_zone)
-					BP.add_wound(/datum/wound/dislocation)
-
 /obj/item/gun/ballistic/twilight_firearm/flintgonne
 	name = "hakenbüchse"
-	desc = "Устаревшее пороховое оружие, стреляющее бронебойными свинцовыми пулями."
+	desc = "Пороховое оружие первого поколения, массово изготавливаемое Грензельхофтом. Изготавливается из дешевых, быстро изнашивающихся материалов, что негативно сказывается на убойности."
 	icon = 'modular_twilight_axis/firearms/icons/flintgonne.dmi'
 	icon_state = "flintgonne"
 	item_state = "flintgonne"
 	gripped_intents = list(/datum/intent/shoot/twilight_firearm/flintgonne, /datum/intent/arc/twilight_firearm/flintgonne, INTENT_GENERIC)
 	damfactor = 0.7
+	critfactor = 0.7
 
 /datum/intent/shoot/twilight_firearm/flintgonne/get_chargetime()
 	if(mastermob && chargetime)
@@ -832,6 +813,18 @@
 		else
 			return 1
 	return chargetime
+
+/obj/item/gun/ballistic/twilight_firearm/barker
+	name = "barker"
+	desc = "Один из первых образцов огнестрельного оружия, созданный отавийскими мастерами в начале позапрошлого века. Ввиду низкой мощности и точности, ныне используется преимущественно охотниками."
+	icon = 'modular_twilight_axis/firearms/icons/32.dmi'
+	icon_state = "barker"
+	item_state = "barker"
+	gripped_intents = list(/datum/intent/shoot/twilight_firearm/flintgonne, /datum/intent/arc/twilight_firearm/flintgonne, INTENT_GENERIC)
+	locktype = "Matchlock"
+	damfactor = 0.7
+	critfactor = 0.3
+	npcdamfactor = 2
 
 /obj/item/gun/ballistic/twilight_firearm/handgonne/purgatory
 	name = "Purgatory"

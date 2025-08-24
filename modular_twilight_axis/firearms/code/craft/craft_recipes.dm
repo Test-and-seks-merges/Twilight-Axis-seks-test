@@ -20,6 +20,14 @@
                 /obj/item/natural/fibers = 2)
     craftdiff = 2
 
+/datum/crafting_recipe/roguetown/leather/container/twilight_ammoholder
+	name = "ammo bag (cured leather, 1 fibers)"
+	result = /obj/item/quiver/twilight_bullet
+	reqs = list(/obj/item/natural/hide/cured = 1,
+				/obj/item/natural/fibers = 1)
+	sellprice = 6
+	craftdiff = 0
+
 /datum/crafting_recipe/roguetown/leather/twilight_powderflask
 	name = "empty powderflask (cured leather, 2 fibers)"
 	result = /obj/item/twilight_powderflask_empty

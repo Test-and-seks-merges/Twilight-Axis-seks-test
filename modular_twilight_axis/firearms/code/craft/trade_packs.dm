@@ -5,9 +5,16 @@
 					/obj/item/gun/ballistic/twilight_firearm/flintgonne,
 				)
 
+/datum/supply_pack/rogue/ranged_weapons/twilight_barker
+	name = "Barker"
+	cost = 50
+	contains = list(
+					/obj/item/gun/ballistic/twilight_firearm/barker,
+				)
+
 /datum/supply_pack/rogue/ranged_weapons/twilight_bullets
 	name = "Lead bullets (30)"
-	cost = 60
+	cost = 50
 	contains = list(
 					/obj/item/quiver/twilight_bullet/lead,
 				)
