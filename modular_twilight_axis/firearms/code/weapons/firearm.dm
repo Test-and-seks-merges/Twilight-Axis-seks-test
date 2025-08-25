@@ -824,7 +824,7 @@
 	locktype = "Matchlock"
 	damfactor = 0.7
 	critfactor = 0.3
-	npcdamfactor = 2
+	npcdamfactor = 2.5
 
 /obj/item/gun/ballistic/twilight_firearm/barker/getonmobprop(tag)
 	. = ..()
