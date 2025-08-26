@@ -357,6 +357,7 @@
 		STATS_ALCOHOL_CONSUMED = list("points" = 0.05, "capacity" = 90),
 		STATS_ALCOHOLICS = list("points" = 4, "capacity" = 60),
 		STATS_JUNKIES = list("points" = 5, "capacity" = 90),
+		STATS_KNOTTED = list("points" = 5, "capacity" = 50),
 	)
 
 /datum/storyteller/graggar
