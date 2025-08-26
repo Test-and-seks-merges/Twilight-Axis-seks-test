@@ -104,10 +104,6 @@
 			else
 				. += span_notice("A noble!")
 
-		// Knotted effect message // TA EDIT START
-		if(has_status_effect(/datum/status_effect/knot_tied)) 
-			. += span_warning("A knot is locked inside them. They're being pulled around like a pet.") // TA EDIT END
-
 		if (HAS_TRAIT(src, TRAIT_OUTLANDER) && !HAS_TRAIT(user, TRAIT_OUTLANDER)) 
 			. += span_phobia("A foreigner...")
 
