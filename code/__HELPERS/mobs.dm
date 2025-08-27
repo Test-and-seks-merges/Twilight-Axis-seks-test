@@ -237,6 +237,9 @@ GLOBAL_LIST_EMPTY(species_list)
 	var/pronouns = null // LETHALSTONE ADDITION: this is cheap so i'm doing it. preferences in human will set this appropriately
 	var/obscured_flags = NONE
 
+#define DO_AFTER_MAX_STEPS_LONG 10
+#define DO_AFTER_MAX_STEPS_SHORT 3
+#define DO_AFTER_SHORT_THRESHOLD 2 SECONDS
 /**
  * Timed action involving one mob user. Target is optional.
  *
@@ -289,8 +292,10 @@ GLOBAL_LIST_EMPTY(species_list)
 	var/endtime = world.time + delay
 	var/starttime = world.time
 	. = 1
+
+	var/stoplag_steps = max(delay/(delay <= DO_AFTER_SHORT_THRESHOLD ? DO_AFTER_MAX_STEPS_SHORT : DO_AFTER_MAX_STEPS_LONG), 1) 
 	while (world.time < endtime)
-		stoplag(1)
+		stoplag(stoplag_steps)
 		if (progress)
 			progbar.update(world.time - starttime)
 
@@ -366,8 +371,10 @@ GLOBAL_LIST_EMPTY(species_list)
 	var/endtime = world.time + delay
 	var/starttime = world.time
 	. = 1
+
+	var/stoplag_steps = max(delay/(delay < DO_AFTER_SHORT_THRESHOLD ? DO_AFTER_MAX_STEPS_SHORT : DO_AFTER_MAX_STEPS_LONG), 1) 
 	while (world.time < endtime)
-		stoplag(1)
+		stoplag(stoplag_steps)
 		if (progress)
 			progbar.update(world.time - starttime)
 
@@ -446,9 +453,11 @@ GLOBAL_LIST_EMPTY(species_list)
 	if(isliving(user))
 		L = user
 	. = 1
+
+	var/stoplag_steps = max(time/(time < DO_AFTER_SHORT_THRESHOLD ? DO_AFTER_MAX_STEPS_SHORT : DO_AFTER_MAX_STEPS_LONG), 1) 
 	mainloop:
 		while(world.time < endtime)
-			stoplag(1)
+			stoplag(stoplag_steps)
 			if(progress)
 				progbar.update(world.time - starttime)
 			if(QDELETED(user) || !targets)
@@ -476,6 +485,10 @@ GLOBAL_LIST_EMPTY(species_list)
 	user.doing = 0
 	if(progbar)
 		qdel(progbar)
+
+#undef DO_AFTER_MAX_STEPS_LONG
+#undef DO_AFTER_MAX_STEPS_SHORT
+#undef DO_AFTER_SHORT_THRESHOLD
 
 /proc/is_species(A, species_datum)
 	. = FALSE

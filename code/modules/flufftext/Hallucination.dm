@@ -640,9 +640,9 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 		//Spooky scary skeletons
 		if("skele")
 			target.playsound_local(source, pick('sound/vo/mobs/skel/skeleton_idle (1).ogg','sound/vo/mobs/skel/skeleton_idle (2).ogg','sound/vo/mobs/skel/skeleton_idle (3).ogg'), 80, 1)
-			sleep(30)
+			stoplag(30 SECONDS)
 			target.playsound_local(source, pick('sound/vo/mobs/skel/skeleton_idle (1).ogg','sound/vo/mobs/skel/skeleton_idle (2).ogg','sound/vo/mobs/skel/skeleton_idle (3).ogg'), 80, 1)
-			sleep(105)
+			stoplag(10.5 SECONDS)
 			target.playsound_local(source, pick('sound/vo/mobs/skel/skeleton_laugh.ogg'), 60, 1)
 		//Hacking a door
 		if("door pick")

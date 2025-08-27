@@ -210,6 +210,7 @@
 #include "code\__HELPERS\skills.dm"
 #include "code\__HELPERS\spatial_info.dm"
 #include "code\__HELPERS\stat_tracking.dm"
+#include "code\__HELPERS\stoplag.dm"
 #include "code\__HELPERS\text.dm"
 #include "code\__HELPERS\time.dm"
 #include "code\__HELPERS\turf.dm"

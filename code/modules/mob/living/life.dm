@@ -104,7 +104,7 @@
 					emote("painscream")
 					visible_message(span_warning("[src] freezes in pain!"),
 								span_warning("I'm frozen in pain!"))
-					sleep(10)
+					stoplag(10)
 					Stun(110)
 					Knockdown(110)
 
@@ -193,7 +193,7 @@
 
 /mob/living/proc/gravity_pulse_animation()
 	animate(get_filter("gravity"), y = 1, time = 10)
-	sleep(10)
+	stoplag(10)
 	animate(get_filter("gravity"), y = 0, time = 10)
 
 /mob/living/proc/handle_high_gravity(gravity)

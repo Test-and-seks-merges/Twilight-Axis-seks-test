@@ -725,13 +725,6 @@ GLOBAL_LIST_EMPTY(respawncounts)
 	return 1
 */
 
-	///////////
-	//CONNECT//
-	///////////
-#if (PRELOAD_RSC == 0)
-GLOBAL_LIST_EMPTY(external_rsc_urls)
-#endif
-
 /client/New(TopicData)
 	var/tdata = TopicData //save this for later use
 	TopicData = null							//Prevent calls to client.Topic from connect
@@ -950,7 +943,7 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 	check_ip_intel()
 	validate_key_in_db()
 
-//	send_resources()
+	send_resources()
 
 
 	generate_clickcatcher()
