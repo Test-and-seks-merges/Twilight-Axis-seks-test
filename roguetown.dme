@@ -1614,6 +1614,7 @@
 #include "code\modules\jobs\job_types\roguetown\mercenaries\classes\grenzelhoft.dm"
 #include "code\modules\jobs\job_types\roguetown\mercenaries\classes\grudgebearer.dm"
 #include "code\modules\jobs\job_types\roguetown\mercenaries\classes\routier.dm"
+#include "code\modules\jobs\job_types\roguetown\mercenaries\classes\rumaclan.dm"
 #include "code\modules\jobs\job_types\roguetown\mercenaries\classes\seonjang.dm"
 #include "code\modules\jobs\job_types\roguetown\mercenaries\classes\steppesman.dm"
 #include "code\modules\jobs\job_types\roguetown\mercenaries\classes\underdweller.dm"
@@ -2590,7 +2591,6 @@
 #include "modular_twilight_axis\code\modules\hairstyles\module.dm"
 #include "modular_twilight_axis\code\modules\jobs\job_types\roguetown\adventurer\types\wretch\lunacyembracer.dm"
 #include "modular_twilight_axis\code\modules\jobs\job_types\roguetown\church\templar.dm"
-#include "modular_twilight_axis\code\modules\jobs\job_types\roguetown\mercenaries\classes\seonjang.dm"
 #include "modular_twilight_axis\code\modules\jobs\job_types\roguetown\youngfolk\mage_apprentice.dm"
 #include "modular_twilight_axis\code\modules\mob\dead\new_player\body_markings\body_marking_aura.dm"
 #include "modular_twilight_axis\code\modules\mob\dead\new_player\body_markings\body_marking_sets.dm"
@@ -2629,5 +2629,4 @@
 #include "modular_twilight_axis\firearms\code\weapons\runelock.dm"
 #include "modular_twilight_axis\firearms\code\weapons\virtues.dm"
 #include "modular_twilight_axis\firearms\code\weapons\wounds_logic.dm"
-#include "code\modules\jobs\job_types\roguetown\mercenaries\classes\rumaclan.dm"
 // END_INCLUDE
