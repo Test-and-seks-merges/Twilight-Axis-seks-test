@@ -636,6 +636,11 @@ GLOBAL_LIST_EMPTY(loadout_items_by_name)
 	path = /obj/item/clothing/cloak/raincloak/furcloak
 	donatitem = TRUE
 
+/datum/loadout_item/donat/snowcloak
+	name = "Снежный плащ"
+	path = /obj/item/clothing/cloak/forrestercloak/snow
+	donatitem = TRUE
+
 /datum/loadout_item/donat/tabard/astata
 	name = "Табард-плащ Астраты"
 	path = /obj/item/clothing/cloak/templar/astratan
