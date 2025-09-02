@@ -508,7 +508,7 @@
 		var/obj/projectile/bullet/BB = CB.BB
 		BB.damage *= damfactor * (user.STAPER > 10 ? user.STAPER / 10 : 1)
 		BB.critfactor *= critfactor
-		BB.npc_damage_mult *= npcdamfactor
+		BB.npc_simple_damage_mult *= npcdamfactor
 		BB.gunpowder = gunpowder
 	reloaded = FALSE
 	if(advanced_icon)

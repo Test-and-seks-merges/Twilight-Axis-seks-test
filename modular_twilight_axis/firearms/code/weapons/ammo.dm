@@ -121,7 +121,7 @@
 						H.wear_ring.obj_break()
 					H.set_silence(5 SECONDS)
 			if("terrorpowder")
-				npc_damage_mult += 1
+				npc_simple_damage_mult += 1
 	. = ..()
 	if(isliving(firer) && (istype(fired_from, /obj/item/gun/ballistic/twilight_firearm) || istype(fired_from, /obj/item/gun/ballistic/revolver/grenadelauncher/twilight_runelock)))
 		var/mob/living/M = firer
