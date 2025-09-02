@@ -217,6 +217,21 @@
 	cost = 100
 	contains = list(/obj/item/gun/ballistic/twilight_firearm/flintgonne)
 
+/datum/supply_pack/rogue/Afreet/culverin
+	name = "Culverin"
+	cost = 150
+	contains = list(/obj/item/gun/ballistic/twilight_firearm/handgonne)
+
+/datum/supply_pack/rogue/Afreet/arquebuspistol
+	name = "Arquebus Pistol"
+	cost = 200
+	contains = list(/obj/item/gun/ballistic/twilight_firearm/arquebus_pistol)
+
+/datum/supply_pack/rogue/Afreet/arquebus
+	name = "Arquebus"
+	cost = 200
+	contains = list(/obj/item/gun/ballistic/twilight_firearm/arquebus)
+
 /datum/supply_pack/rogue/Afreet/bulletbag
 	name = "Bullet bag (empty)"
 	cost = 10
