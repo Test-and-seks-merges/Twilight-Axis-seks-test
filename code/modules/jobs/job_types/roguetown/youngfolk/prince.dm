@@ -64,11 +64,11 @@
 	H.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/riding, 3, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
-	H.change_stat("strength", 1)
-	H.change_stat("perception", 1)
-	H.change_stat("constitution", 1)
-	H.change_stat("speed", 1)
-	H.change_stat("fortune", 1)
+	H.change_stat(STATKEY_STR, 1)
+	H.change_stat(STATKEY_PER, 1)
+	H.change_stat(STATKEY_CON, 1)
+	H.change_stat(STATKEY_SPD, 1)
+	H.change_stat(STATKEY_LCK, 1)
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 
 /datum/advclass/heir/bookworm
@@ -109,12 +109,12 @@
 	ADD_TRAIT(H, TRAIT_MAGEARMOR, TRAIT_GENERIC)
 	if(H.mind)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/touch/prestidigitation)
-		H.mind.adjust_spellpoints(16)
-	H.change_stat("strength", -1)
-	H.change_stat("intelligence", 2)
-	H.change_stat("speed", 1)
-	H.change_stat("constitution", -1)
-	H.change_stat("fortune", 1)
+		H.mind.adjust_spellpoints(14)
+	H.change_stat(STATKEY_STR, -1)
+	H.change_stat(STATKEY_INT, 2)
+	H.change_stat(STATKEY_SPD, 1)
+	H.change_stat(STATKEY_CON, -1)
+	H.change_stat(STATKEY_LCK, 1)
 
 /datum/advclass/heir/aristocrat
 	name = "Sheltered Aristocrat"
@@ -155,11 +155,11 @@
 	H.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
 	H.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/sewing, 3, TRUE)
-	H.change_stat("perception", 2)
-	H.change_stat("strength", -1)
-	H.change_stat("intelligence", 2)
-	H.change_stat("fortune", 1)
-	H.change_stat("speed", 1)
+	H.change_stat(STATKEY_PER, 2)
+	H.change_stat(STATKEY_STR, -1)
+	H.change_stat(STATKEY_INT, 2)
+	H.change_stat(STATKEY_LCK, 1)
+	H.change_stat(STATKEY_SPD, 1)
 
 /datum/advclass/heir/inbred
 	name = "Inbred wastrel"
@@ -197,12 +197,12 @@
 	H.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
 	H.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
-	H.change_stat("strength", -2)
-	H.change_stat("perception", -2)
-	H.change_stat("intelligence", -2)
-	H.change_stat("constitution", -2)
-	H.change_stat("endurance", -2)
-	H.change_stat("fortune", -2) //They already can't run, no need to do speed and torture their move speed.
+	H.change_stat(STATKEY_STR, -2)
+	H.change_stat(STATKEY_PER, -2)
+	H.change_stat(STATKEY_INT, -2)
+	H.change_stat(STATKEY_CON, -2)
+	H.change_stat(STATKEY_WIL, -2)
+	H.change_stat(STATKEY_LCK, -2) //They already can't run, no need to do speed and torture their move speed.
 
 /datum/advclass/heir/scamp
 	name = "Nettlesome Scamp"
@@ -242,11 +242,11 @@
 	H.adjust_skillrank(/datum/skill/misc/riding, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
 
-	H.change_stat("strength", -3)
-	H.change_stat("constitution", -3)	//Not standard weighted. Not intended to be considering the stat ceiling. -F
+	H.change_stat(STATKEY_STR, -3)
+	H.change_stat(STATKEY_CON, -3)	//Not standard weighted. Not intended to be considering the stat ceiling. -F
 
-	H.change_stat("speed", 4)
-	H.change_stat("perception", 2)
-	H.change_stat("intelligence", 2)
-	H.change_stat("endurance", 1)
-	H.change_stat("fortune", 1)
+	H.change_stat(STATKEY_SPD, 4)
+	H.change_stat(STATKEY_PER, 2)
+	H.change_stat(STATKEY_INT, 2)
+	H.change_stat(STATKEY_WIL, 1)
+	H.change_stat(STATKEY_LCK, 1)
