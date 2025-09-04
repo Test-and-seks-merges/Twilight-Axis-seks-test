@@ -50,6 +50,10 @@ GLOBAL_LIST_EMPTY(loadout_items_by_name)
 	name = "Straw Hat"
 	path = /obj/item/clothing/head/roguetown/strawhat
 
+/datum/loadout_item/eaststrawhat
+	name = "Worn rice hat"
+	path = /obj/item/clothing/head/roguetown/eaststrawhat
+
 /datum/loadout_item/witchhat
 	name = "Witch Hat"
 	path = /obj/item/clothing/head/roguetown/witchhat
@@ -479,6 +483,14 @@ GLOBAL_LIST_EMPTY(loadout_items_by_name)
 	name = "Amulet of Eora"
 	path = /obj/item/clothing/neck/roguetown/psicross/eora
 
+/datum/loadout_item/psicross/undivided
+	name = "Amulet of Ten"
+	path = /obj/item/clothing/neck/roguetown/psicross/undivided
+
+/datum/loadout_item/psicross/zizo
+	name = "Decrepit Zcross"
+	path = /obj/item/clothing/neck/roguetown/zcross/aalloy
+
 /datum/loadout_item/wedding_band
 	name = "silver wedding band"
 	path = /obj/item/clothing/ring/band
@@ -638,6 +650,11 @@ GLOBAL_LIST_EMPTY(loadout_items_by_name)
 /datum/loadout_item/donat/furcloak
 	name = "Меховой плащ"
 	path = /obj/item/clothing/cloak/raincloak/furcloak
+	donatitem = TRUE
+
+/datum/loadout_item/donat/snowcloak
+	name = "Снежный плащ"
+	path = /obj/item/clothing/cloak/forrestercloak/snow
 	donatitem = TRUE
 
 /datum/loadout_item/donat/tabard/astata

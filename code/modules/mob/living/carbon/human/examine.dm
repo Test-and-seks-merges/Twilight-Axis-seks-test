@@ -716,7 +716,7 @@
 			msg += span_warning("[m1] barely conscious.")
 		else
 			if(stat >= UNCONSCIOUS)
-				msg += "[m1] [IsSleeping() ? "sleeping" : "unconscious"]."
+				msg += "[m1] [IsSleeping() ? "sleeping" : "unconscious"].[client && ((world.time - disconnected_at) > 120 SECONDS) ? "" : " <b>[m1] won't be able to wake up soon. [m1]'s been like this for about [ceil(((world.time - disconnected_at)/10)/60)] minutes.</b>"]"
 			else if(eyesclosed)
 				msg += "[capitalize(m2)] eyes are closed."
 			else if(has_status_effect(/datum/status_effect/debuff/sleepytime))
@@ -818,7 +818,6 @@
 		if(flavortext || headshot_link || ooc_notes)
 			. += "<a href='?src=[REF(src)];task=view_headshot;'>Examine closer</a>"
 
-	var/list/lines = build_cool_description(get_mob_descriptors(obscure_name, user), src)
 	if(lip_style)
 		switch(lip_color)
 			if("red")
@@ -829,6 +828,13 @@
 				. += "<span class='info' style='color: #00FF00'>[m1] wearing lime lipstick.</span>"
 			if("black")
 				. += "<span class='info' style='color: #313131ff'>[m1] wearing black lipstick.</span>"
+
+
+	var/list/lines
+	if(get_visible_name() in unknown_names)
+		lines = build_cool_description_unknown(get_mob_descriptors_unknown(obscure_name, user), src)
+	else
+		lines = build_cool_description(get_mob_descriptors(obscure_name, user), src)
 
 	for(var/line in lines)
 		. += span_info(line)

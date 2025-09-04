@@ -508,7 +508,7 @@
 		var/obj/projectile/bullet/BB = CB.BB
 		BB.damage *= damfactor * (user.STAPER > 10 ? user.STAPER / 10 : 1)
 		BB.critfactor *= critfactor
-		BB.npc_damage_mult *= npcdamfactor
+		BB.npc_simple_damage_mult *= npcdamfactor
 		BB.gunpowder = gunpowder
 	reloaded = FALSE
 	if(advanced_icon)
@@ -732,6 +732,7 @@
 	gripsprite = FALSE
 	cartridge_wording = "bullet"
 	damfactor = 0.7
+	critfactor = 0.7
 	advanced_icon = 'modular_twilight_axis/firearms/icons/pistol/pistol.dmi'
 	advanced_icon_r = 'modular_twilight_axis/firearms/icons/pistol/pistol_r.dmi'
 	advanced_icon_norod	= 'modular_twilight_axis/firearms/icons/pistol/pistol_norod.dmi'
@@ -750,6 +751,7 @@
 	name = "Umbra"
 	desc = "Компактное огнестрельное оружие отавианского производства. Ствол изготовлен из вороненой стали, на которую нанесены несколько простых рун. Благодаря необычной конструкции и рунической магии, Умбра стреляет практически бесшумно, что делает её идеальным выбором для агентов Инквизиции."
 	silenced = TRUE
+	critfactor = 1
 	icon = 'modular_twilight_axis/firearms/icons/umbra/pistol.dmi'
 	advanced_icon = 'modular_twilight_axis/firearms/icons/umbra/pistol.dmi'
 	advanced_icon_r = 'modular_twilight_axis/firearms/icons/umbra/pistol_r.dmi'
