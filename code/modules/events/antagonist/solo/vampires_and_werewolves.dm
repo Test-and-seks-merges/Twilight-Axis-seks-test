@@ -41,7 +41,7 @@
 		"Steward",
 		"Court Physician",
 		"Town Crier",
-		"Captain",
+		"Knight Captain",
 		"Archivist",
 		"Knight",
 		"Court Magician",
