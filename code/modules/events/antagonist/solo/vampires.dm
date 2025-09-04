@@ -53,6 +53,7 @@
 		"Warden",
 		"Squire",
 		"Veteran",
+		"Court Agent",
 		"Apothecary"
 	)
 
