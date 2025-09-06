@@ -51,9 +51,9 @@
 	H.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/medicine, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/tracking, 4, TRUE)
-	H.change_stat("constitution", 1)
-	H.change_stat("endurance", 2)
-	H.change_stat("perception", 2)
-	H.change_stat("speed", 3)
+	H.change_stat(STATKEY_CON, 1)
+	H.change_stat(STATKEY_WIL, 2)
+	H.change_stat(STATKEY_PER, 2)
+	H.change_stat(STATKEY_SPD, 3)
 
 	H.merctype = 7
