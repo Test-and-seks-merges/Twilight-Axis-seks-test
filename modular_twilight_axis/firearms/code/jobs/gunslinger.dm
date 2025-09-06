@@ -80,8 +80,8 @@
 	backr = /obj/item/rogueweapon/scabbard/sword
 	cloak = /obj/item/clothing/suit/roguetown/armor/longcoat
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
-	H.change_stat("strength", 1)
-	H.change_stat("endurance", 2)
-	H.change_stat("speed", 2)
-	H.change_stat("perception", 2)
-	H.change_stat("constitution", 1)
+	H.change_stat(STATKEY_STR, 1)
+	H.change_stat(STATKEY_WIL, 2)
+	H.change_stat(STATKEY_SPD, 2)
+	H.change_stat(STATKEY_PER, 2)
+	H.change_stat(STATKEY_CON, 1)
