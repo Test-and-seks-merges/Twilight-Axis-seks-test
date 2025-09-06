@@ -1,6 +1,5 @@
 /obj/projectile/bullet
 	var/silver = FALSE
-	var/blessed = FALSE
 	var/critfactor = 1
 	var/gunpowder
 
@@ -32,7 +31,6 @@
 	ammo_type = /obj/item/ammo_casing/caseless/twilight_lead/runelock/blessed
 	icon_state = "musketball_blessed"
 	silver = TRUE
-	blessed = TRUE
 
 /**
  * Generic ammo used by handgonnes and arquebuses
@@ -136,16 +134,27 @@
 					adjust_experience(M, /datum/skill/combat/twilight_firearms, M.STAINT * 3)
 				else if(ishuman(T) && (T.stat != DEAD || (T.stat == DEAD && T.timeofdeath == world.time)))
 					adjust_experience(M, /datum/skill/combat/twilight_firearms, M.STAINT * 6)
-			if(silver && HAS_TRAIT(T, TRAIT_SILVER_WEAK))
-				if(blessed)
-					if(!T.has_status_effect(/datum/status_effect/fire_handler/fire_stacks/sunder))
-						to_chat(T, span_danger("The trice-cursed Otavan silver! My powers wane!"))
-					T.adjust_fire_stacks(3, /datum/status_effect/fire_handler/fire_stacks/sunder/blessed)
-				else
-					if(!T.has_status_effect(/datum/status_effect/fire_handler/fire_stacks/sunder/blessed))
-						to_chat(T, span_danger("Silver rebukes my presence! These fires are lashing at my very soul!"))
-					T.adjust_fire_stacks(3, /datum/status_effect/fire_handler/fire_stacks/sunder)
-				T.ignite_mob()
+			if(silver) //Silver bullet effects
+				if(T.mind)
+					var/datum/antagonist/werewolf/W = T.mind.has_antag_datum(/datum/antagonist/werewolf/)
+					var/datum/antagonist/vampirelord/lesser/V = T.mind.has_antag_datum(/datum/antagonist/vampirelord/lesser)
+					var/datum/antagonist/vampirelord/V_lord = T.mind.has_antag_datum(/datum/antagonist/vampirelord/)
+					if(V)
+						T.visible_message("<font color='white'>The silver weapon weakens the curse temporarily!</font>")
+						to_chat(T, span_userdanger("I'm hit by my BANE!"))
+						T.apply_status_effect(/datum/status_effect/debuff/silver_curse)
+					if(V_lord)
+						if(V_lord.vamplevel < 4 && !V)
+							T.visible_message("<font color='white'>The silver weapon weakens the curse temporarily!</font>")
+							to_chat(T, span_userdanger("I'm hit by my BANE!"))
+							T.apply_status_effect(/datum/status_effect/debuff/silver_curse)
+						if(V_lord.vamplevel == 4 && !V)
+							to_chat(T, "<font color='red'> The silver weapon fails!</font>")
+							T.visible_message(T, span_userdanger("This feeble metal can't hurt me, I AM ANCIENT!"))
+					if(W && W.transformed == TRUE)
+						T.visible_message("<font color='white'>The silver weapon weakens the curse temporarily!</font>")
+						to_chat(T, span_userdanger("I'm hit by my BANE!"))
+						T.apply_status_effect(/datum/status_effect/debuff/silver_curse)
 
 /mob/living/carbon/check_projectile_wounding(obj/projectile/P, def_zone, blocked)
 	if(isliving(P.firer) && (istype(P.fired_from, /obj/item/gun/ballistic/twilight_firearm) || istype(P.fired_from, /obj/item/gun/ballistic/revolver/grenadelauncher/twilight_runelock)))
@@ -245,18 +254,6 @@
 	projectile_type = /obj/projectile/bullet/twilight_lead/silver
 	icon_state = "musketball_silver"
 
-/obj/item/ammo_casing/caseless/twilight_lead/silver/ComponentInitialize()
-	. = ..()
-	AddComponent(\
-		/datum/component/silverbless,\
-		pre_blessed = BLESSING_NONE,\
-		silver_type = SILVER_TENNITE,\
-		added_force = 0,\
-		added_blade_int = 0,\
-		added_int = 0,\
-		added_def = 0,\
-	)
-
 /obj/item/ammo_casing/caseless/twilight_lead/runelock/blessed
 	name = "blessed sphere"
 	desc = "Небольшой, идеально круглый шар, изготовленный из чистого серебра. Такие боеприпасы создаются лучшими из отавианских кузнецов и освящяются лично Великим Магистром. Смертоностны против нежити, но весьма эффективны и против других еретиков."
@@ -264,18 +261,6 @@
 	icon_state = "musketball_blessed"
 	w_class = WEIGHT_CLASS_TINY
 	smeltresult = /obj/item/rogueore/silver
-
-/obj/item/ammo_casing/caseless/twilight_lead/runelock/blessed/ComponentInitialize()
-	. = ..()
-	AddComponent(\
-		/datum/component/silverbless,\
-		pre_blessed = BLESSING_PSYDONIAN,\
-		silver_type = SILVER_PSYDONIAN,\
-		added_force = 0,\
-		added_blade_int = 0,\
-		added_int = 0,\
-		added_def = 0,\
-	)
 
 /obj/item/ammo_casing/caseless/twilight_cannonball
 	name = "lead cannonball"
@@ -309,15 +294,3 @@
 	icon_state = "grapeshot_silver"
 	pellets = 12
 	variance = 30
-
-/obj/item/ammo_casing/caseless/twilight_cannonball/grapeshot/otavian/ComponentInitialize()
-	. = ..()
-	AddComponent(\
-		/datum/component/silverbless,\
-		pre_blessed = BLESSING_NONE,\
-		silver_type = SILVER_PSYDONIAN,\
-		added_force = 0,\
-		added_blade_int = 0,\
-		added_int = 0,\
-		added_def = 0,\
-	)
