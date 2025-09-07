@@ -61,9 +61,9 @@
 	H.adjust_skillrank(/datum/skill/misc/sneaking, 4, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/stealing, 4, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/lockpicking, 3, TRUE)
-	H.change_stat("perception", 2)
-	H.change_stat("endurance", 2)
-	H.change_stat("speed", 2)
+	H.change_stat(STATKEY_PER, 2)
+	H.change_stat(STATKEY_WIL, 2)
+	H.change_stat(STATKEY_SPD, 2)
 
 	var/masks = list(
 		"Steel Houndmask" 	= /obj/item/clothing/mask/rogue/facemask/steel/hound,
