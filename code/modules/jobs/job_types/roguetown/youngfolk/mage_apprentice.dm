@@ -31,13 +31,13 @@
 	)
 
 /datum/outfit/job/roguetown/wapprentice
-	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
-	pants = /obj/item/clothing/under/roguetown/tights/random
+
+	
 	belt = /obj/item/storage/belt/rogue/leather
 	beltl = /obj/item/storage/magebag
-	beltr = /obj/item/storage/keyring/mageapprentice
+
 	backl = /obj/item/storage/backpack/rogue/satchel
-	backr = /obj/item/rogueweapon/woodstaff
+
 	shoes = /obj/item/clothing/shoes/roguetown/gladiator // FANCY SANDALS
 
 /datum/job/roguetown/wapprentice/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
@@ -63,12 +63,16 @@
 /datum/outfit/job/roguetown/wapprentice/associate/pre_equip(mob/living/carbon/human/H)
 	armor = /obj/item/clothing/suit/roguetown/shirt/robe/mage
 	head = /obj/item/clothing/head/roguetown/roguehood/mage
+	backr = /obj/item/rogueweapon/woodstaff
+	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
+	pants = /obj/item/clothing/under/roguetown/tights/random
 	backpack_contents = list(
 		/obj/item/roguegem/amethyst = 1, 
 		/obj/item/spellbook_unfinished/pre_arcyne = 1,
 		/obj/item/recipe_book/alchemy = 1,
 		/obj/item/recipe_book/magic = 1,
 		/obj/item/chalk = 1,
+		/obj/item/storage/keyring/mageapprentice,
 		)
 	H.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
@@ -107,6 +111,9 @@
 	)
 
 /datum/outfit/job/roguetown/wapprentice/alchemist/pre_equip(mob/living/carbon/human/H)
+	backr = /obj/item/rogueweapon/woodstaff
+	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
+	pants = /obj/item/clothing/under/roguetown/tights/random
 	backpack_contents = list(
 		/obj/item/roguegem/amethyst = 1, 
 		/obj/item/seeds/swampweed = 1, 
@@ -114,7 +121,8 @@
 		/obj/item/recipe_book/alchemy = 1,
 		/obj/item/recipe_book/magic = 1,
 		/obj/item/chalk = 1,
-		/obj/item/spellbook_unfinished/pre_arcyne = 1
+		/obj/item/spellbook_unfinished/pre_arcyne = 1,
+		/obj/item/storage/keyring/mageapprentice,
 		)
 	H.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/reading, 5, TRUE)
@@ -154,12 +162,16 @@
 
 
 /datum/outfit/job/roguetown/wapprentice/apprentice/pre_equip(mob/living/carbon/human/H)
+	backr = /obj/item/rogueweapon/woodstaff
+	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
+	pants = /obj/item/clothing/under/roguetown/tights/random
 	backpack_contents = list(
 		/obj/item/roguegem/amethyst = 1, 
 		/obj/item/recipe_book/alchemy = 1,
 		/obj/item/recipe_book/magic = 1,
 		/obj/item/spellbook_unfinished/pre_arcyne = 1,
 		/obj/item/chalk = 1,
+		/obj/item/storage/keyring/mageapprentice,
 		)
 	H.adjust_skillrank(/datum/skill/misc/reading, 5, TRUE)
 	H.adjust_skillrank(/datum/skill/magic/arcane, 2, TRUE)

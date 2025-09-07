@@ -44,8 +44,11 @@
 		/datum/advclass/mercenary/blackoak/ranger,
 		/datum/advclass/mercenary/underdweller,
 		/datum/advclass/mercenary/grudgebearer,
-		/datum/advclass/mercenary/grudgebearer/soldier
+		/datum/advclass/mercenary/grudgebearer/soldier,
+    /datum/advclass/mercenary/twilight_gunslinger,
+    /datum/advclass/mercenary/twilight_grenzelhoft_jager
 	)
+	same_job_respawn_delay = 30 MINUTES
 
 /datum/job/roguetown/mercenary/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
 	..()
