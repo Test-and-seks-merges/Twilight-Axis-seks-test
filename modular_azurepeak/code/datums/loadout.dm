@@ -42,7 +42,11 @@ GLOBAL_LIST_EMPTY(loadout_items_by_name)
 	name = "Tricorn Hat"
 	path = /obj/item/clothing/head/roguetown/helmet/tricorn
 
-/datum/loadout_item/archercapc
+/datum/loadout_item/nurseveil
+	name = "Nurse Veil"
+	path = /obj/item/clothing/head/roguetown/veiled
+
+/datum/loadout_item/archercap
 	name = "Archer cap"
 	path = /obj/item/clothing/head/roguetown/archercap
 
