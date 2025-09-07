@@ -29,7 +29,8 @@
 	job_subclasses = list(
 		/datum/advclass/manorguard/footsman,
 		/datum/advclass/manorguard/skirmisher,
-		/datum/advclass/manorguard/cavalry
+		/datum/advclass/manorguard/cavalry,
+		/datum/advclass/manorguard/twilight_grenadier
 	)
 
 /datum/outfit/job/roguetown/manorguard

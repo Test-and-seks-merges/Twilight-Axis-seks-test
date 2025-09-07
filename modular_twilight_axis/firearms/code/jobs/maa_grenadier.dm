@@ -4,6 +4,13 @@
 	outfit = /datum/outfit/job/roguetown/manorguard/twilight_grenadier
 	maximum_possible_slots = 2
 	category_tags = list(CTAG_MENATARMS)
+	traits_applied = list(TRAIT_MEDIUMARMOR)
+	subclass_stats = list(
+		STATKEY_WIL = 1,// seems kinda lame but remember guardsman bonus!!
+		STATKEY_PER = 2,
+		STATKEY_SPD = 1,
+		STATKEY_INT = 1,
+	)
 
 /datum/outfit/job/roguetown/manorguard/twilight_grenadier/pre_equip(mob/living/carbon/human/H)
 	..()

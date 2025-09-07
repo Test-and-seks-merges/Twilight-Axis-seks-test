@@ -36,7 +36,8 @@
 		/datum/advclass/knave,
 		/datum/advclass/roguemage,
 		/datum/advclass/sawbones,
-		/datum/advclass/sellsword
+		/datum/advclass/sellsword,
+		/datum/advclass/twilight_afreet
 	)
 
 /datum/job/roguetown/bandit/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
