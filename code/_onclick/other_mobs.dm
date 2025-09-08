@@ -47,7 +47,7 @@
 			if(L.has_status_effect(/datum/status_effect/buff/necras_vow))
 				if(isnull(mind))
 					adjust_fire_stacks(5)
-					IgniteMob()
+					ignite_mob()
 				else
 					if(prob(30))
 						to_chat(src, span_warning("The Undermaiden protects me!"))
@@ -683,12 +683,12 @@
 		if(jextra)
 			throw_at(A, jrange, 1, src, spin = FALSE)
 			while(src.throwing)
-				sleep(1)
+				stoplag(1)
 			throw_at(get_step(src, src.dir), 1, 1, src, spin = FALSE)
 		else
 			throw_at(A, jrange, 1, src, spin = FALSE)
 			while(src.throwing)
-				sleep(1)
+				stoplag(1)
 		if(!HAS_TRAIT(src, TRAIT_ZJUMP) && (m_intent == MOVE_INTENT_RUN))	//Jesters and werewolves don't get immobilized at all
 			Immobilize((HAS_TRAIT(src, TRAIT_LEAPER) ? 5 : 10))	//Acrobatics get half the time
 		if(isopenturf(src.loc))
