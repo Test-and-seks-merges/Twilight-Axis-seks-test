@@ -10,6 +10,7 @@
 	maximum_possible_slots = 4
 	min_pq = 15
 	cmode_music = 'sound/music/combat_grenzelhoft.ogg'
+	class_select_category = CLASS_CAT_GRENZELHOFT
 	category_tags = list(CTAG_MERCENARY)
 	traits_applied = list(TRAIT_OUTLANDER, TRAIT_DODGEEXPERT)
 	subclass_stats = list(

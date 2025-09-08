@@ -7,6 +7,7 @@
 	maximum_possible_slots = 2
 	min_pq = 10
 	cmode_music = 'modular_twilight_axis/firearms/sound/music/combat_gunslinger.ogg'
+	class_select_category = CLASS_CAT_OTAVA
 	category_tags = list(CTAG_MERCENARY)
 	traits_applied = list(TRAIT_OUTLANDER, TRAIT_MEDIUMARMOR)
 	classes = list("Lone Wolf" = "With no allegiance but to self, you travel through many different lands, finding yourself in employ of those who can afford to pay for your meals and ammunition. Working for the Guild is a novelty for you, but perhaps this is where you'll find a camaraderie you've never known?",
