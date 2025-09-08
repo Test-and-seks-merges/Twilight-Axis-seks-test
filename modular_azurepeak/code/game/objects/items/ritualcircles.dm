@@ -46,7 +46,7 @@
 							loc.visible_message(span_warning("[user]'s bursts to flames! Embraced by Her Warmth wholly!"))
 							playsound(loc, 'sound/combat/hits/burn (1).ogg', 100, FALSE, -1)
 							user.adjust_fire_stacks(10)
-							user.IgniteMob()
+							user.ignite_mob()
 							user.flash_fullscreen("redflash3")
 							user.emote("firescream")
 						guidinglight(src) // Actually starts the proc for applying the buff
@@ -680,7 +680,7 @@ var/forgerites = list("Ritual of Blessed Reforgance")
 			turf_data[T] = T.type
 			T.ChangeTurf(/turf/open/floor/rogue/dark_ice, flags = CHANGETURF_IGNORE_AIR)
 			playsound(T, 'sound/magic/fleshtostone.ogg', 30, TRUE)
-			sleep(10)
+			stoplag(1 SECONDS)
 
 	end_conversion()
 

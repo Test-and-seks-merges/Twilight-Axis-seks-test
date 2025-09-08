@@ -42,7 +42,11 @@ GLOBAL_LIST_EMPTY(loadout_items_by_name)
 	name = "Tricorn Hat"
 	path = /obj/item/clothing/head/roguetown/helmet/tricorn
 
-/datum/loadout_item/archercapc
+/datum/loadout_item/nurseveil
+	name = "Nurse Veil"
+	path = /obj/item/clothing/head/roguetown/veiled
+
+/datum/loadout_item/archercap
 	name = "Archer cap"
 	path = /obj/item/clothing/head/roguetown/archercap
 
@@ -563,26 +567,6 @@ GLOBAL_LIST_EMPTY(loadout_items_by_name)
 	path = /obj/item/enchantingkit/zydras
 	donatitem = TRUE
 
-/datum/loadout_item/donator_psydonianarmet
-	name = "Donator Kit - Psydonian armet - Required: Armet"
-	path = /obj/item/enchantingkit/psydonianarmet
-	donatitem = TRUE
-
-/datum/loadout_item/donator_psydonbarbute
-	name = "Donator Kit - Psydonian barbute - Required: Barbute"
-	path = /obj/item/enchantingkit/psydonbarbute
-	donatitem = TRUE
-
-/datum/loadout_item/donator_psysallet
-	name = "Donator Kit - Psydonian sallet - Required: Barbute"
-	path = /obj/item/enchantingkit/psysallet
-	donatitem = TRUE
-
-/datum/loadout_item/donator_psybucket
-	name = "Donator Kit - Psydonian bucket helmet - Required: Armet"
-	path = /obj/item/enchantingkit/psybucket
-	donatitem = TRUE
-
 // Разное
 /datum/loadout_item/donat
 	name = "Музыкальная коробка"
@@ -722,4 +706,11 @@ GLOBAL_LIST_EMPTY(loadout_items_by_name)
 /datum/loadout_item/donat/eoramask
 	name = "Эоранская маска"
 	path = /obj/item/clothing/head/roguetown/eoramask
+	donatitem = TRUE
+
+// Шляпы
+
+/datum/loadout_item/donat/grenzelhofthat_decorated
+	name = "Грензельхофтская шляпа(без брони, декоративная)"
+	path = /obj/item/clothing/head/roguetown/grenzelhofthat/decorated
 	donatitem = TRUE
