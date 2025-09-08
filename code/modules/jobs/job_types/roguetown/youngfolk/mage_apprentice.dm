@@ -59,6 +59,21 @@
 		STATKEY_PER = 2,
 		STATKEY_SPD = 1
 	)
+	subclass_skills = list(
+		/datum/skill/combat/polearms = SKILL_LEVEL_APPRENTICE,
+		/datum/skill/misc/climbing = SKILL_LEVEL_APPRENTICE,
+		/datum/skill/combat/wrestling = SKILL_LEVEL_NOVICE,
+		/datum/skill/combat/unarmed = SKILL_LEVEL_NOVICE,
+		/datum/skill/misc/swimming = SKILL_LEVEL_NOVICE,
+		/datum/skill/misc/athletics = SKILL_LEVEL_NOVICE,
+		/datum/skill/craft/crafting = SKILL_LEVEL_APPRENTICE,
+		/datum/skill/misc/medicine = SKILL_LEVEL_NOVICE,
+		/datum/skill/misc/riding = SKILL_LEVEL_NOVICE,
+		/datum/skill/misc/reading = SKILL_LEVEL_MASTER,
+		/datum/skill/craft/alchemy = SKILL_LEVEL_JOURNEYMAN,
+		/datum/skill/magic/arcane = SKILL_LEVEL_JOURNEYMAN,
+		/datum/skill/craft/cooking = SKILL_LEVEL_NOVICE,
+	)
 
 /datum/outfit/job/roguetown/wapprentice/associate/pre_equip(mob/living/carbon/human/H)
 	armor = /obj/item/clothing/suit/roguetown/shirt/robe/mage
@@ -74,19 +89,6 @@
 		/obj/item/chalk = 1,
 		/obj/item/storage/keyring/mageapprentice,
 		)
-	H.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
-	H.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
-	H.adjust_skillrank(/datum/skill/misc/athletics, 1, TRUE)
-	H.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
-	H.adjust_skillrank(/datum/skill/misc/riding, 1, TRUE)
-	H.adjust_skillrank(/datum/skill/misc/reading, 5, TRUE)
-	H.adjust_skillrank(/datum/skill/craft/alchemy, 3, TRUE)
-	H.adjust_skillrank(/datum/skill/magic/arcane, 3, TRUE)
-	H.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)
 	if(H.age == AGE_OLD)
 		H.adjust_skillrank(/datum/skill/magic/arcane, 1, TRUE)
 		H.change_stat(STATKEY_SPD, -1)
@@ -109,6 +111,22 @@
 		STATKEY_PER = 3,
 		STATKEY_WIL = 1
 	)
+	subclass_skills = list(
+		/datum/skill/combat/polearms = SKILL_LEVEL_NOVICE,
+		/datum/skill/misc/reading = SKILL_LEVEL_MASTER,
+		/datum/skill/craft/alchemy = SKILL_LEVEL_EXPERT,
+		/datum/skill/misc/medicine = SKILL_LEVEL_APPRENTICE,
+		/datum/skill/combat/wrestling = SKILL_LEVEL_NOVICE,
+		/datum/skill/combat/unarmed = SKILL_LEVEL_NOVICE,
+		/datum/skill/misc/swimming = SKILL_LEVEL_NOVICE,
+		/datum/skill/misc/climbing = SKILL_LEVEL_NOVICE,
+		/datum/skill/magic/arcane = SKILL_LEVEL_APPRENTICE,
+		/datum/skill/labor/farming = SKILL_LEVEL_JOURNEYMAN,
+		/datum/skill/misc/sewing = SKILL_LEVEL_NOVICE,
+		/datum/skill/craft/cooking = SKILL_LEVEL_APPRENTICE,
+		/datum/skill/labor/mining = SKILL_LEVEL_APPRENTICE,
+		/datum/skill/labor/fishing = SKILL_LEVEL_NOVICE,
+	)
 
 /datum/outfit/job/roguetown/wapprentice/alchemist/pre_equip(mob/living/carbon/human/H)
 	backr = /obj/item/rogueweapon/woodstaff
@@ -124,20 +142,6 @@
 		/obj/item/spellbook_unfinished/pre_arcyne = 1,
 		/obj/item/storage/keyring/mageapprentice,
 		)
-	H.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
-	H.adjust_skillrank(/datum/skill/misc/reading, 5, TRUE)
-	H.adjust_skillrank(/datum/skill/craft/alchemy, 4, TRUE)
-	H.adjust_skillrank(/datum/skill/misc/medicine, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
-	H.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
-	H.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
-	H.adjust_skillrank(/datum/skill/magic/arcane, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/labor/farming, 3, TRUE)
-	H.adjust_skillrank(/datum/skill/misc/sewing, 1, TRUE)
-	H.adjust_skillrank(/datum/skill/craft/cooking, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/labor/mining, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/labor/fishing, 1, TRUE)
 	if(H.age == AGE_OLD)
 		H.adjust_skillrank(/datum/skill/craft/alchemy, 1, TRUE)
 		H.change_stat(STATKEY_PER, -1)
@@ -159,7 +163,13 @@
 		STATKEY_SPD = 1,
 		STATKEY_LCK = 1 // this is just a carrot for the folk who are mad enough to take this role...
 	)
-
+	subclass_skills = list(
+		/datum/skill/misc/reading = SKILL_LEVEL_MASTER,
+		/datum/skill/magic/arcane = SKILL_LEVEL_APPRENTICE,
+		/datum/skill/craft/crafting = SKILL_LEVEL_APPRENTICE,
+		/datum/skill/craft/alchemy = SKILL_LEVEL_APPRENTICE,
+		/datum/skill/combat/polearms = SKILL_LEVEL_NOVICE,
+	)
 
 /datum/outfit/job/roguetown/wapprentice/apprentice/pre_equip(mob/living/carbon/human/H)
 	backr = /obj/item/rogueweapon/woodstaff
@@ -173,11 +183,6 @@
 		/obj/item/chalk = 1,
 		/obj/item/storage/keyring/mageapprentice,
 		)
-	H.adjust_skillrank(/datum/skill/misc/reading, 5, TRUE)
-	H.adjust_skillrank(/datum/skill/magic/arcane, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/craft/alchemy, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
 	H.mind?.adjust_spellpoints(18)
 	if(H.age == AGE_OLD)
 		H.adjust_skillrank(/datum/skill/craft/alchemy, 1, TRUE)
