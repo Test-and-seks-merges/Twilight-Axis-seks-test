@@ -25,6 +25,7 @@
 		/datum/advclass/hand/spymaster,
 		/datum/advclass/hand/advisor
 	)
+	same_job_respawn_delay = 30 MINUTES
 
 /datum/outfit/job/roguetown/hand
 	shoes = /obj/item/clothing/shoes/roguetown/boots
