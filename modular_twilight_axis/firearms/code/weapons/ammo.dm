@@ -109,7 +109,7 @@
 		switch(gunpowder) //Hande gunpowder types
 			if("fyrepowder")
 				T.adjust_fire_stacks(round(10 * (damage / 100)))
-				T.IgniteMob()
+				T.ignite_mob()
 			if("thunderpowder")
 				T.Immobilize(30)
 			if("corrosive gunpowder")
