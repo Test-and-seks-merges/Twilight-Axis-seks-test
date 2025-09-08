@@ -1284,7 +1284,7 @@
 		fixed = 1
 	if(on && !(movement_type & FLOATING) && !fixed)
 		animate(src, pixel_y = pixel_y + 2, time = 10, loop = -1)
-		sleep(10)
+		stoplag(1 SECONDS)
 		animate(src, pixel_y = pixel_y - 2, time = 10, loop = -1)
 		setMovetype(movement_type | FLOATING)
 	else if(((!on || fixed) && (movement_type & FLOATING)))

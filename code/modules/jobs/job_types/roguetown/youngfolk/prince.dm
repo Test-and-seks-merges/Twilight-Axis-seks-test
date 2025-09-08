@@ -17,7 +17,7 @@
 	display_order = JDO_PRINCE
 	give_bank_account = 30
 	noble_income = 20
-	min_pq = 1
+	min_pq = 6
 	max_pq = null
 	round_contrib_points = 3
 	cmode_music = 'sound/music/combat_noble.ogg'
@@ -43,6 +43,7 @@
 	tutorial = "You're a somebody, someone important. It only makes sense you want to make a name for yourself, to gain your own glory so people see how great you really are beyond your bloodline. Plus, if you're beloved by the people for your exploits you'll be chosen! Probably. Shame you're as useful and talented as a squire, despite your delusions to the contrary."
 	outfit = /datum/outfit/job/roguetown/heir/daring
 	category_tags = list(CTAG_HEIR)
+	traits_applied = list(TRAIT_MEDIUMARMOR)
 	subclass_stats = list(
 		STATKEY_STR = 1,
 		STATKEY_PER = 1,
@@ -54,7 +55,7 @@
 /datum/outfit/job/roguetown/heir/daring/pre_equip(mob/living/carbon/human/H)
 	..()
 	head = /obj/item/clothing/head/roguetown/circlet
-	armor = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy
+	armor = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy/otavan
 	pants = /obj/item/clothing/under/roguetown/tights
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt/guard
 	shoes = /obj/item/clothing/shoes/roguetown/boots/nobleboot
@@ -65,12 +66,12 @@
 	neck = /obj/item/storage/belt/rogue/pouch/coins/rich
 	backr = /obj/item/storage/backpack/rogue/satchel
 	H.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/crossbows, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/bows, 3, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/crossbows, 3, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/swords, 4, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/wrestling, 3, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/unarmed, 3, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
@@ -81,7 +82,7 @@
 	name = "Introverted Bookworm"
 	tutorial = "Despite your standing, sociability is not your strong suit, and you have kept mostly to yourself and your books. This hardly makes you a favourite among the lords and ladies of the court, and an exit from your room is often met with amusement from nobility and servants alike. But maybe... just maybe, some of your reading interests may be bearing fruit."
 	outfit = /datum/outfit/job/roguetown/heir/bookworm
-	traits_applied = list(TRAIT_ARCYNE_T1, TRAIT_MAGEARMOR)
+	traits_applied = list(TRAIT_ARCYNE_T2, TRAIT_MAGEARMOR)
 	category_tags = list(CTAG_HEIR)
 	subclass_stats = list(
 		STATKEY_STR = -1,
@@ -109,13 +110,19 @@
 	neck = /obj/item/storage/belt/rogue/pouch/coins/rich
 
 	H.adjust_skillrank(/datum/skill/misc/reading, 5, TRUE)
-	H.adjust_skillrank(/datum/skill/magic/arcane, 1, TRUE)
+	H.adjust_skillrank(/datum/skill/magic/arcane, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/craft/alchemy, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/medicine, 1, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/athletics, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/misc/stealing, 2, TRUE)
 	if(H.mind)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/touch/prestidigitation)
-		H.mind.adjust_spellpoints(9)
+		H.mind.adjust_spellpoints(14)
 
 /datum/advclass/heir/aristocrat
 	name = "Sheltered Aristocrat"
@@ -130,6 +137,7 @@
 		STATKEY_LCK = 1,
 		STATKEY_SPD = 1
 	)
+	noble_income = 80
 
 /datum/outfit/job/roguetown/heir/aristocrat/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -149,14 +157,15 @@
 		armor = /obj/item/clothing/suit/roguetown/armor/silkcoat
 		shirt = /obj/item/clothing/suit/roguetown/shirt/dress/royal/princess
 		shoes = /obj/item/clothing/shoes/roguetown/shortboots
+	H.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/bows, 1, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/crossbows, pick(0,1), TRUE)
+	H.adjust_skillrank(/datum/skill/combat/crossbows, 1, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/wrestling, 1, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/knives, 1, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/swimming, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/climbing, 1, TRUE)
-	H.adjust_skillrank(/datum/skill/misc/athletics, pick(0,1), TRUE)
+	H.adjust_skillrank(/datum/skill/misc/athletics, 1, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/riding, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/reading, 3, TRUE)
 	H.adjust_skillrank(/datum/skill/craft/cooking, 1, TRUE)

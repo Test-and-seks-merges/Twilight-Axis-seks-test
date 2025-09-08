@@ -25,6 +25,7 @@
 		/datum/advclass/disciple,
 		/datum/advclass/confessor
 	)
+	same_job_respawn_delay = 30 MINUTES
 
 /datum/job/roguetown/orthodoxist/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
 	..()
