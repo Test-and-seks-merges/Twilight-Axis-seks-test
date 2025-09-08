@@ -95,6 +95,10 @@
 			else
 				. += span_notice("Something about them seems... different.")
 
+		// Leashed pet status effect message
+		if(has_status_effect(/datum/status_effect/leash_pet))
+			. += span_warning("A leash is hooked to their collar. They are being led like a pet.")
+
 		if(GLOB.lord_titles[name])
 			. += span_notice("[m3] been granted the title of \"[GLOB.lord_titles[name]]\".")
 
