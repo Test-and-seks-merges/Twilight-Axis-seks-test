@@ -34,8 +34,7 @@
 
 	
 	belt = /obj/item/storage/belt/rogue/leather
-	beltl = /obj/item/storage/magebag
-
+	beltl = /obj/item/storage/magebag/associate
 	backl = /obj/item/storage/backpack/rogue/satchel
 
 	shoes = /obj/item/clothing/shoes/roguetown/gladiator // FANCY SANDALS
@@ -83,7 +82,7 @@
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 	pants = /obj/item/clothing/under/roguetown/tights/random
 	backpack_contents = list(
-		/obj/item/roguegem/amethyst = 1, 
+		/obj/item/roguegem/amethyst = 1,
 		/obj/item/spellbook_unfinished/pre_arcyne = 1,
 		/obj/item/recipe_book/alchemy = 1,
 		/obj/item/recipe_book/magic = 1,
@@ -134,8 +133,8 @@
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 	pants = /obj/item/clothing/under/roguetown/tights/random
 	backpack_contents = list(
-		/obj/item/roguegem/amethyst = 1, 
-		/obj/item/seeds/swampweed = 1, 
+		/obj/item/roguegem/amethyst = 1,
+		/obj/item/seeds/swampweed = 1,
 		/obj/item/seeds/pipeweed = 1,
 		/obj/item/recipe_book/alchemy = 1,
 		/obj/item/recipe_book/magic = 1,
@@ -177,7 +176,7 @@
 	shirt = /obj/item/clothing/suit/roguetown/shirt/undershirt
 	pants = /obj/item/clothing/under/roguetown/tights/random
 	backpack_contents = list(
-		/obj/item/roguegem/amethyst = 1, 
+		/obj/item/roguegem/amethyst = 1,
 		/obj/item/recipe_book/alchemy = 1,
 		/obj/item/recipe_book/magic = 1,
 		/obj/item/spellbook_unfinished/pre_arcyne = 1,
