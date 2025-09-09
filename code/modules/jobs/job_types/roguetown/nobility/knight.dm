@@ -20,6 +20,7 @@
 	min_pq = 8
 	max_pq = null
 	round_contrib_points = 2
+	same_job_respawn_delay = 30 MINUTES
 
 	cmode_music = 'sound/music/combat_knight.ogg'
 
@@ -40,14 +41,14 @@
 		H.advsetup = 1
 		H.invisibility = INVISIBILITY_MAXIMUM
 		H.become_blind("advsetup")
-		if(istype(H.cloak, /obj/item/clothing/cloak/stabard/surcoat/guard))
+	/*	if(istype(H.cloak, /obj/item/clothing/cloak)) //TA EDIT
 			var/obj/item/clothing/S = H.cloak
 			var/index = findtext(H.real_name, " ")
 			if(index)
 				index = copytext(H.real_name, 1,index)
 			if(!index)
 				index = H.real_name
-			S.name = "knight's tabard ([index])"
+			S.name = "[S.name] ([index])" */
 		var/prev_real_name = H.real_name
 		var/prev_name = H.name
 		var/honorary = "Ser"
@@ -63,7 +64,7 @@
 					H.mind.person_knows_me(MF)
 
 /datum/outfit/job/roguetown/knight
-	cloak = /obj/item/clothing/cloak/stabard/surcoat/guard
+	//cloak = /obj/item/clothing/cloak/stabard/surcoat/guard
 	neck = /obj/item/clothing/neck/roguetown/bevor
 	gloves = /obj/item/clothing/gloves/roguetown/plate
 	wrists = /obj/item/clothing/wrists/roguetown/bracers
@@ -75,6 +76,25 @@
 		/obj/item/storage/keyring/guardknight = 1,
 		/obj/item/reagent_containers/glass/bottle/rogue/healthpot = 1,
 	)
+
+
+/datum/outfit/job/roguetown/knight/pre_equip(mob/living/carbon/human/H)
+	..()
+	ADD_TRAIT(H, TRAIT_STEELHEARTED, TRAIT_GENERIC)	
+	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
+	ADD_TRAIT(H, TRAIT_GUARDSMAN, TRAIT_GENERIC) 
+	ADD_TRAIT(H, TRAIT_GOODTRAINER, TRAIT_GENERIC)
+
+/datum/outfit/job/roguetown/knight/post_equip(mob/living/carbon/human/H)  //TA EDIT
+	..()
+	if(istype(H.cloak, /obj/item/clothing/cloak))
+		var/obj/item/clothing/S = H.cloak
+		var/index = findtext(H.name_archive, " ")
+		if(index)
+			index = copytext(H.name_archive, 1,index)
+		if(!index)
+			index = H.name
+		S.name = "[S.name] ([index])" //TA EDIT
 
 /datum/advclass/knight/heavy
 	name = "Heavy Knight"
@@ -137,6 +157,14 @@
 
 	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
 	pants = /obj/item/clothing/under/roguetown/chainlegs
+
+	var/heraldy = list(
+				"Surcoat" 	= /obj/item/clothing/cloak/stabard/guard,
+				"Tabard"		= /obj/item/clothing/cloak/tabard/knight,
+				"Jupon"		= /obj/item/clothing/cloak/stabard/surcoat/guard,
+				)
+	var/heraldychoice = input("Choose your heraldy.", "RAISE UP THE BANNER") as anything in heraldy
+	cloak = heraldy[heraldychoice]
 
 	var/helmets = list(
 		"Pigface Bascinet" 	= /obj/item/clothing/head/roguetown/helmet/bascinet/pigface,
@@ -222,6 +250,14 @@
 	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
 	pants = /obj/item/clothing/under/roguetown/chainlegs
 	backl = /obj/item/rogueweapon/shield/tower/metal
+
+	var/heraldy = list(
+				"Surcoat" 	= /obj/item/clothing/cloak/stabard/guard,
+				"Tabard"		= /obj/item/clothing/cloak/tabard/knight,
+				"Jupon"		= /obj/item/clothing/cloak/stabard/surcoat/guard,
+				)
+	var/heraldychoice = input("Choose your heraldy.", "RAISE UP THE BANNER") as anything in heraldy
+	cloak = heraldy[heraldychoice]
 
 	var/helmets = list(
 		"Pigface Bascinet" 	= /obj/item/clothing/head/roguetown/helmet/bascinet/pigface,
@@ -331,6 +367,14 @@
 	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
 	pants = /obj/item/clothing/under/roguetown/chainlegs
 
+	var/heraldy = list(
+				"Surcoat" 	= /obj/item/clothing/cloak/stabard/guard,
+				"Tabard"		= /obj/item/clothing/cloak/tabard/knight,
+				"Jupon"		= /obj/item/clothing/cloak/stabard/surcoat/guard,
+				)
+	var/heraldychoice = input("Choose your heraldy.", "RAISE UP THE BANNER") as anything in heraldy
+	cloak = heraldy[heraldychoice]
+
 	var/helmets = list(
 		"Pigface Bascinet" 	= /obj/item/clothing/head/roguetown/helmet/bascinet/pigface,
 		"Guard Helmet"		= /obj/item/clothing/head/roguetown/helmet/heavy/guard,
@@ -401,7 +445,17 @@
 	H.verbs |= /mob/proc/haltyell
 
 	H.adjust_blindness(-3)
-	var/weapons = list("Rapier + Longbow","Estoc + Recurve Bow","Sabre + Buckler","Whip + Crossbow","Greataxe + Sling")
+	var/heraldy = list( //Champions get lord's heraldy with a bit more variety, due to their unusual equipment
+				"Surcoat" 	= /obj/item/clothing/cloak/stabard/guard,
+				"Tabard"		= /obj/item/clothing/cloak/tabard/knight,
+				"Jupon"		= /obj/item/clothing/cloak/stabard/surcoat/guard,
+				"Halfcloak" = /obj/item/clothing/cloak/half/knight,
+				"Fur Cloak" = /obj/item/clothing/cloak/raincloak/furcloak/knight,
+				)
+	var/heraldychoice = input("Choose your heraldy.", "RAISE UP THE BANNER") as anything in heraldy
+	cloak = heraldy[heraldychoice]
+
+	var/weapons = list("Rapier + Longbow","Estoc + Recurve Bow","Sabre + Buckler","Whip + Crossbow","Greataxe + Sling", "Shamshir + Pistol")
 	var/armor_options = list("Light Armor", "Medium Armor", "Medium Cuirass")
 	var/weapon_choice = input("Choose your weapon.", "TAKE UP ARMS") as anything in weapons
 	var/armor_choice = input("Choose your armor.", "TAKE UP ARMS") as anything in armor_options
@@ -436,6 +490,14 @@
 			backl = /obj/item/rogueweapon/scabbard/gwstrap
 			beltr = /obj/item/quiver/sling/iron
 			beltl = /obj/item/gun/ballistic/revolver/grenadelauncher/sling
+
+		if("Shamshir + Pistol")
+			l_hand = /obj/item/twilight_powderflask
+			r_hand = /obj/item/rogueweapon/sword/sabre/shamshir
+			backl = /obj/item/rogueweapon/scabbard/sword
+			beltr = /obj/item/gun/ballistic/twilight_firearm/arquebus_pistol
+			beltl = /obj/item/quiver/twilight_bullet/lead
+			H.adjust_skillrank_up_to(/datum/skill/combat/twilight_firearms, 4, TRUE)
 	
 	switch(armor_choice)
 		if("Light Armor")
