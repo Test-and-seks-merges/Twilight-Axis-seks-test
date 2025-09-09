@@ -405,7 +405,7 @@ GLOBAL_LIST_EMPTY(loadout_items_by_name)
 
 /datum/loadout_item/collar
 	name = "Collar"
-	path = /obj/item/clothing/neck/roguetown/collar
+	path = /obj/item/clothing/neck/roguetown/collar/leather
 
 /datum/loadout_item/forlon_collar
 	name = "Light Forlorn Collar"
@@ -413,11 +413,11 @@ GLOBAL_LIST_EMPTY(loadout_items_by_name)
 
 /datum/loadout_item/catbell_collar
 	name = "Catbell Collar"
-	path = /obj/item/clothing/neck/roguetown/collar/catbell
+	path = /obj/item/clothing/neck/roguetown/collar/bell/catbell
 
 /datum/loadout_item/bell_collar
 	name = "Cowbell Collar"
-	path = /obj/item/clothing/neck/roguetown/collar/cowbell
+	path = /obj/item/clothing/neck/roguetown/collar/bell/cowbell
 
 /datum/loadout_item/cursed_collar
 	name = "Cursed Collar"

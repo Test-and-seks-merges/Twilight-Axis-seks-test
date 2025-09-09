@@ -9,7 +9,7 @@
 
 /datum/crafting_recipe/roguetown/leather/neck/catbell_collar
 	name = "catbell collar (1 cured leather, catbell)"
-	result = /obj/item/clothing/neck/roguetown/collar/catbell
+	result = /obj/item/clothing/neck/roguetown/collar/bell/catbell
 	reqs = list(/obj/item/natural/hide/cured = 1, /obj/item/catbell = 1)
 	tools = list(/obj/item/needle)
 	time = 10 SECONDS
@@ -19,7 +19,7 @@
 
 /datum/crafting_recipe/roguetown/leather/neck/cowbell_collar
 	name = "cowbell collar (1 curedleather, cowbell)"
-	result = /obj/item/clothing/neck/roguetown/collar/cowbell
+	result = /obj/item/clothing/neck/roguetown/collar/bell/cowbell
 	reqs = list(/obj/item/natural/hide/cured = 1, /obj/item/catbell/cow = 1)
 	tools = list(/obj/item/needle)
 	time = 10 SECONDS
