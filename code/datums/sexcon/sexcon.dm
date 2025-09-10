@@ -400,7 +400,7 @@
 	id = "knot_tied"
 	status_type = STATUS_EFFECT_UNIQUE
 	alert_type = /atom/movable/screen/alert/status_effect/knot_tied
-	effectedstats = list("strength" = -1, "endurance" = -2, "speed" = -2, "intelligence" = -3)
+	effectedstats = list(STAT_STRENGTH = -1, STAT_WILLPOWER = -2, STAT_SPEED = -2, STAT_INTELLIGENCE = -3)
 
 /atom/movable/screen/alert/status_effect/knot_tied
 	name = "Knotted"
@@ -410,7 +410,7 @@
 	duration = 2 MINUTES
 	status_type = STATUS_EFFECT_UNIQUE
 	alert_type = /atom/movable/screen/alert/status_effect/knot_fucked_stupid
-	effectedstats = list("intelligence" = -10)
+	effectedstats = list(STAT_INTELLIGENCE = -10)
 
 /atom/movable/screen/alert/status_effect/knot_fucked_stupid
 	name = "Fucked Stupid"
@@ -422,7 +422,7 @@
 	tick_interval = 100 // every 10 seconds
 	status_type = STATUS_EFFECT_UNIQUE
 	alert_type = /atom/movable/screen/alert/status_effect/knot_gaped
-	effectedstats = list("strength" = -1, "speed" = -2, "intelligence" = -1)
+	effectedstats = list(STAT_STRENGTH = -1, STAT_SPEED = -2, STAT_INTELLIGENCE = -1)
 	var/last_loc
 
 /datum/status_effect/knot_gaped/on_apply()
