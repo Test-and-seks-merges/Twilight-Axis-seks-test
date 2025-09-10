@@ -210,11 +210,12 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 	else
 		src.log_talk(message, LOG_SAY, forced_by=forced)
 
-	if(src.client)
+	if(client)
+		last_words = message
 		record_featured_stat(FEATURED_STATS_SPEAKERS, src)	//Yappin'
 	var/regex/abyssor_regex = regex("Абиссор", "i")
 	if(abyssor_regex.Find(message))
-		GLOB.azure_round_stats[STATS_ABYSSOR_REMEMBERED]++
+		record_round_statistic(STATS_ABYSSOR_REMEMBERED)
 
 	spans |= speech_span
 
