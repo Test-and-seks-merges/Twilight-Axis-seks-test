@@ -64,19 +64,19 @@
 	H.equipOutfit(/datum/outfit/job/roguetown/unbound_deathknight)
 
 /datum/antagonist/unbound_death_knight/greet()
-	sleep(5 SECONDS) // Lets all other messages finish before we start.
+	stoplag(5 SECONDS) // Lets all other messages finish before we start.
 	to_chat(owner, span_warning("You feel the power of unknown energy course through you."))
-	sleep(1 SECONDS)
+	stoplag(1 SECONDS)
 	to_chat(owner, span_warning("You are... Awake? But how?"))
-	sleep(1 SECONDS)
+	stoplag(1 SECONDS)
 	to_chat(owner, span_warning("The realization of what is happening slowly overwhelms you with horror..."))
-	sleep(2 SECONDS)
+	stoplag(2 SECONDS)
 	to_chat(owner, "<span class='pulsedeath'>Your master is gone!</span>")
-	sleep(1 SECONDS)
+	stoplag(1 SECONDS)
 	to_chat(owner, "<span class='pulsedeath'>You have no orders!</span>")
-	sleep(1 SECONDS)
+	stoplag(1 SECONDS)
 	to_chat(owner, "<span class='pulsedeath'>You have no goal!</span>")
-	sleep(2 SECONDS)
+	stoplag(2 SECONDS)
 	to_chat(owner, "<span class='pulsedeath'>You have no reason to be here. But you are awake.</span>")
 
 /datum/antagonist/unbound_death_knight/proc/forge_objectives()
@@ -157,11 +157,11 @@
 	gloves = /obj/item/clothing/gloves/roguetown/plate/blk/death
 	backr = /obj/item/storage/backpack/rogue/satchel/black
 
-	H.change_stat("intelligence", 3)
-	H.change_stat("strength", 2)
-	H.change_stat("endurance", 2)
-	H.change_stat("constitution", 2)
-	H.change_stat("speed", -3)
+	H.change_stat(STATKEY_INT, 3)
+	H.change_stat(STATKEY_STR, 2)
+	H.change_stat(STATKEY_WIL, 2)
+	H.change_stat(STATKEY_CON, 2)
+	H.change_stat(STATKEY_SPD, -3)
 
 	H.ambushable = FALSE
 

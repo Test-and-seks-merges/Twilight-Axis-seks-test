@@ -37,7 +37,7 @@
 	response_harm_continuous = "kicks"
 	response_harm_simple = "kick"
 	STASTR = 3
-	STAEND = 4
+	STAWIL = 4
 	STASPD = 3
 	STACON = 3
 	var/turns_since_scan = 0
@@ -74,7 +74,7 @@
 
 /mob/living/simple_animal/proc/personal_space()
 	if(locate(/mob/living/carbon) in get_turf(src))
-		sleep(1)
+		stoplag(1)
 		dir = pick(GLOB.alldirs)
 		step(src, dir)
 		personal_space()

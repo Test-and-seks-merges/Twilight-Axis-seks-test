@@ -42,13 +42,21 @@ GLOBAL_LIST_EMPTY(loadout_items_by_name)
 	name = "Tricorn Hat"
 	path = /obj/item/clothing/head/roguetown/helmet/tricorn
 
-/datum/loadout_item/archercapc
+/datum/loadout_item/nurseveil
+	name = "Nurse Veil"
+	path = /obj/item/clothing/head/roguetown/veiled
+
+/datum/loadout_item/archercap
 	name = "Archer cap"
 	path = /obj/item/clothing/head/roguetown/archercap
 
 /datum/loadout_item/strawhat
 	name = "Straw Hat"
 	path = /obj/item/clothing/head/roguetown/strawhat
+
+/datum/loadout_item/eaststrawhat
+	name = "Worn rice hat"
+	path = /obj/item/clothing/head/roguetown/eaststrawhat
 
 /datum/loadout_item/witchhat
 	name = "Witch Hat"
@@ -397,19 +405,35 @@ GLOBAL_LIST_EMPTY(loadout_items_by_name)
 
 /datum/loadout_item/collar
 	name = "Collar"
-	path = /obj/item/clothing/neck/roguetown/collar
+	path = /obj/item/clothing/neck/roguetown/collar/leather
 
 /datum/loadout_item/forlon_collar
 	name = "Light Forlorn Collar"
 	path = /obj/item/clothing/neck/roguetown/collar/forlorn
 
+/datum/loadout_item/catbell_collar
+	name = "Catbell Collar"
+	path = /obj/item/clothing/neck/roguetown/collar/bell/catbell
+
 /datum/loadout_item/bell_collar
-	name = "Bell Collar"
-	path = /obj/item/clothing/neck/roguetown/collar/bell_collar
+	name = "Cowbell Collar"
+	path = /obj/item/clothing/neck/roguetown/collar/bell/cowbell
 
 /datum/loadout_item/cursed_collar
 	name = "Cursed Collar"
 	path = /obj/item/clothing/neck/roguetown/gorget/cursed_collar
+
+/datum/loadout_item/rope_leash
+	name = "Rope Leash"
+	path = /obj/item/leash
+
+/datum/loadout_item/leather_leash
+	name = "Leather Leash"
+	path = /obj/item/leash/leather
+
+/datum/loadout_item/chain_leash
+	name = "Chain Leash"
+	path = /obj/item/leash/chain
 
 /datum/loadout_item/cloth_blindfold
 	name = "Cloth Blindfold"
@@ -462,6 +486,14 @@ GLOBAL_LIST_EMPTY(loadout_items_by_name)
 /datum/loadout_item/psicross/eora
 	name = "Amulet of Eora"
 	path = /obj/item/clothing/neck/roguetown/psicross/eora
+
+/datum/loadout_item/psicross/undivided
+	name = "Amulet of Ten"
+	path = /obj/item/clothing/neck/roguetown/psicross/undivided
+
+/datum/loadout_item/psicross/zizo
+	name = "Decrepit Zcross"
+	path = /obj/item/clothing/neck/roguetown/zcross/aalloy
 
 /datum/loadout_item/wedding_band
 	name = "silver wedding band"
@@ -535,26 +567,6 @@ GLOBAL_LIST_EMPTY(loadout_items_by_name)
 	path = /obj/item/enchantingkit/zydras
 	donatitem = TRUE
 
-/datum/loadout_item/donator_psydonianarmet
-	name = "Donator Kit - Psydonian armet - Required: Armet"
-	path = /obj/item/enchantingkit/psydonianarmet
-	donatitem = TRUE
-
-/datum/loadout_item/donator_psydonbarbute
-	name = "Donator Kit - Psydonian barbute - Required: Barbute"
-	path = /obj/item/enchantingkit/psydonbarbute
-	donatitem = TRUE
-
-/datum/loadout_item/donator_psysallet
-	name = "Donator Kit - Psydonian sallet - Required: Barbute"
-	path = /obj/item/enchantingkit/psysallet
-	donatitem = TRUE
-
-/datum/loadout_item/donator_psybucket
-	name = "Donator Kit - Psydonian bucket helmet - Required: Armet"
-	path = /obj/item/enchantingkit/psybucket
-	donatitem = TRUE
-
 // Разное
 /datum/loadout_item/donat
 	name = "Музыкальная коробка"
@@ -624,6 +636,11 @@ GLOBAL_LIST_EMPTY(loadout_items_by_name)
 	path = /obj/item/clothing/cloak/raincloak/furcloak
 	donatitem = TRUE
 
+/datum/loadout_item/donat/snowcloak
+	name = "Снежный плащ"
+	path = /obj/item/clothing/cloak/forrestercloak/snow
+	donatitem = TRUE
+
 /datum/loadout_item/donat/tabard/astata
 	name = "Табард-плащ Астраты"
 	path = /obj/item/clothing/cloak/templar/astratan
@@ -689,4 +706,11 @@ GLOBAL_LIST_EMPTY(loadout_items_by_name)
 /datum/loadout_item/donat/eoramask
 	name = "Эоранская маска"
 	path = /obj/item/clothing/head/roguetown/eoramask
+	donatitem = TRUE
+
+// Шляпы
+
+/datum/loadout_item/donat/grenzelhofthat_decorated
+	name = "Грензельхофтская шляпа(без брони, декоративная)"
+	path = /obj/item/clothing/head/roguetown/grenzelhofthat/decorated
 	donatitem = TRUE

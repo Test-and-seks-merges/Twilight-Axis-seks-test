@@ -62,9 +62,9 @@
 				msg += span_bloody("[m1] [bleed_wording]!")
 
 	//Fire/water stacks
-	if(fire_stacks + divine_fire_stacks > 0)
+	if(has_status_effect(/datum/status_effect/fire_handler))
 		msg += "[m1] covered in something flammable."
-	else if(fire_stacks < 0)
+	else if(has_status_effect(/datum/status_effect/fire_handler/wet_stacks))
 		msg += "[m1] soaked."
 
 	//Grabbing
@@ -72,7 +72,7 @@
 		msg += "[m1] being grabbed by [pulledby]."
 	
 	if(stat >= UNCONSCIOUS)
-		msg += "[m1] unconscious."
+		msg += "[m1] [IsSleeping() ? "sleeping" : "unconscious"].[client && ((world.time - disconnected_at) > 120 SECONDS) ? "" : " <b>[m1] won't be able to wake up soon. [m1]'s been like this for about [ceil(((world.time - disconnected_at)/10)/60)] minutes.</b>"]"
 
 	if(length(msg))
 		. += span_warning("[msg.Join("\n")]")

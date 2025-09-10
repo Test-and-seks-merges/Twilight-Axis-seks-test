@@ -9,6 +9,11 @@
 
 	. += integrity_check()
 
+	if(istype(src, /mob/living))
+		var/mob/living/L = src
+		if(L.has_status_effect(/datum/status_effect/leash_pet))
+			. += "<A href='?src=[REF(src)];'><span class='warning'>A leash is hooked to a collar!</span></A>"
+
 	var/real_value = get_real_price()
 	if(real_value > 0)
 		if(HAS_TRAIT(user, TRAIT_SEEPRICES) || simpleton_price)
@@ -19,6 +24,9 @@
 			var/fumbled_value = max(1, round(real_value + (real_value * clamp(noise_hash(real_value, fumbling_seed) - 0.25, -0.25, 0.25)), 1))
 			. += span_info("Value: [fumbled_value] mammon... <i>I think</i>")
 
+	if(smeltresult)
+		var/obj/item/smelted = smeltresult
+		. += span_info("Smelts into [smelted.name].")
 	for(var/datum/examine_effect/E in examine_effects)
 		E.trigger(user)
 
