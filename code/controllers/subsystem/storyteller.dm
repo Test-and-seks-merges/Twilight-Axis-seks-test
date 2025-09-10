@@ -1306,7 +1306,7 @@ SUBSYSTEM_DEF(gamemode)
 				record_round_statistic(STATS_ALIVE_LUPIANS)
 			if(ismoth(human_mob))
 				record_round_statistic(STATS_ALIVE_MOTHS)
-      if(isaura(human_mob))
+			if(isaura(human_mob))
 				record_round_statistic(STATS_ALIVE_AURA)
 
 			// Chronicle statistics

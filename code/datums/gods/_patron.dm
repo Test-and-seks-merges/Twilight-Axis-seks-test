@@ -92,8 +92,8 @@ GLOBAL_LIST_EMPTY(prayers)
 		follower.mob_timers[MT_PSYPRAY] = world.time
 
 	. = TRUE //the prayer has succeeded by this point forward
-  GLOB.prayers |= prayer 
-  record_round_statistic(STATS_PRAYERS_MADE)
+	GLOB.prayers |= prayer 
+	record_round_statistic(STATS_PRAYERS_MADE)
 	for(var/patron_namerus in rusgodnames)
 		var/regex/p_name = regex("([patron_namerus])", "im")
 		if(p_name.Find(prayer))
