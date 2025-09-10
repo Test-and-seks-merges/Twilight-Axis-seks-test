@@ -487,7 +487,7 @@
 		"Set 4" = list(
 			STATS_JUNKIES = list("name" = "Number of junkies:", "points" = 9, "capacity" = 70),
 		),
-    "Set 5" = list(
+		"Set 5" = list(
 			STATS_KNOTTED = list("name" = "Number of knottings:", "points" = 5, "capacity" = 50),
 		),
 	)
