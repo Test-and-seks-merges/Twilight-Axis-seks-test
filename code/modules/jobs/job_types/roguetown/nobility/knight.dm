@@ -165,14 +165,14 @@
 		)
 		var/armorchoice = input("Choose your armor.", "TAKE UP ARMOR") as anything in armors
 		armor = armors[armorchoice]
-    
-    var/heraldy = list(
+
+		var/heraldy = list(
 				"Surcoat" 	= /obj/item/clothing/cloak/stabard/guard,
 				"Tabard"		= /obj/item/clothing/cloak/tabard/knight,
 				"Jupon"		= /obj/item/clothing/cloak/stabard/surcoat/guard,
 				)
-	var/heraldychoice = input("Choose your heraldy.", "RAISE UP THE BANNER") as anything in heraldy
-	cloak = heraldy[heraldychoice]
+		var/heraldychoice = input("Choose your heraldy.", "RAISE UP THE BANNER") as anything in heraldy
+		cloak = heraldy[heraldychoice]
  
 	backpack_contents = list(
 		/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1, 
@@ -260,13 +260,13 @@
 		var/armorchoice = input("Choose your armor.", "TAKE UP ARMOR") as anything in armors
 		armor = armors[armorchoice]
     
-    var/heraldy = list(
+		var/heraldy = list(
 				"Surcoat" 	= /obj/item/clothing/cloak/stabard/guard,
 				"Tabard"		= /obj/item/clothing/cloak/tabard/knight,
 				"Jupon"		= /obj/item/clothing/cloak/stabard/surcoat/guard,
 				)
-	var/heraldychoice = input("Choose your heraldy.", "RAISE UP THE BANNER") as anything in heraldy
-	cloak = heraldy[heraldychoice]
+		var/heraldychoice = input("Choose your heraldy.", "RAISE UP THE BANNER") as anything in heraldy
+		cloak = heraldy[heraldychoice]
 
 	backpack_contents = list(
 		/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1, 
@@ -378,13 +378,13 @@
 		var/armorchoice = input("Choose your armor.", "TAKE UP ARMOR") as anything in armors
 		armor = armors[armorchoice]
     
-    var/heraldy = list(
+		var/heraldy = list(
 				"Surcoat" 	= /obj/item/clothing/cloak/stabard/guard,
 				"Tabard"		= /obj/item/clothing/cloak/tabard/knight,
 				"Jupon"		= /obj/item/clothing/cloak/stabard/surcoat/guard,
 				)
-	var/heraldychoice = input("Choose your heraldy.", "RAISE UP THE BANNER") as anything in heraldy
-	cloak = heraldy[heraldychoice]
+		var/heraldychoice = input("Choose your heraldy.", "RAISE UP THE BANNER") as anything in heraldy
+		cloak = heraldy[heraldychoice]
 
 	backpack_contents = list(
 		/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1, 
@@ -466,7 +466,15 @@
 				backl = /obj/item/rogueweapon/scabbard/gwstrap
 				beltr = /obj/item/quiver/sling/iron
 				beltl = /obj/item/gun/ballistic/revolver/grenadelauncher/sling
-		
+
+			if("Shamshir + Pistol")
+				l_hand = /obj/item/twilight_powderflask
+				r_hand = /obj/item/rogueweapon/sword/sabre/shamshir
+				backl = /obj/item/rogueweapon/scabbard/sword
+				beltr = /obj/item/gun/ballistic/twilight_firearm/arquebus_pistol
+				beltl = /obj/item/quiver/twilight_bullet/lead
+				H.adjust_skillrank_up_to(/datum/skill/combat/twilight_firearms, 4, TRUE)
+
 		switch(armor_choice)
 			if("Light Armor")
 				shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy
@@ -499,15 +507,15 @@
 		if(helmchoice != "None")
 			head = helmets[helmchoice]
     
-    var/heraldy = list( //Champions get lord's heraldy with a bit more variety, due to their unusual equipment
+		var/heraldy = list( //Champions get lord's heraldy with a bit more variety, due to their unusual equipment
 				"Surcoat" 	= /obj/item/clothing/cloak/stabard/guard,
 				"Tabard"		= /obj/item/clothing/cloak/tabard/knight,
 				"Jupon"		= /obj/item/clothing/cloak/stabard/surcoat/guard,
 				"Halfcloak" = /obj/item/clothing/cloak/half/knight,
 				"Fur Cloak" = /obj/item/clothing/cloak/raincloak/furcloak/knight,
 				)
-	var/heraldychoice = input("Choose your heraldy.", "RAISE UP THE BANNER") as anything in heraldy
-	cloak = heraldy[heraldychoice]
+		var/heraldychoice = input("Choose your heraldy.", "RAISE UP THE BANNER") as anything in heraldy
+		cloak = heraldy[heraldychoice]
  
 	backpack_contents = list(
 		/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1, 
