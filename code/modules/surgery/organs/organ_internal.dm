@@ -67,6 +67,10 @@
 
 	owner = M
 	last_owner = M
+
+	if (visible_organ)
+		M.visible_organs |= src
+
 	M.internal_organs |= src
 	M.internal_organs_slot[slot] = src
 	moveToNullspace()
@@ -84,6 +88,9 @@
 /obj/item/organ/proc/Remove(mob/living/carbon/M, special = FALSE, drop_if_replaced = TRUE)
 	owner = null
 	if(M)
+		if (visible_organ)
+			M.visible_organs -= src
+			
 		M.internal_organs -= src
 		if(M.internal_organs_slot[slot] == src)
 			M.internal_organs_slot.Remove(slot)
