@@ -10,7 +10,7 @@
 	cmode_music = 'sound/music/combat_grenzelhoft.ogg'
 	class_select_category = CLASS_CAT_GRENZELHOFT
 	category_tags = list(CTAG_MERCENARY)
-	traits_applied = list(TRAIT_OUTLANDER, TRAIT_DODGEEXPERT)
+	traits_applied = list(TRAIT_DODGEEXPERT)
 	subclass_stats = list(
 		STATKEY_CON = 1,
 		STATKEY_WIL = 2,
