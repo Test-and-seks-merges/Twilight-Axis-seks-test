@@ -131,15 +131,18 @@
 		var/skill = (M?.mind ? M.get_skill_level(/datum/skill/combat/twilight_firearms) : 1)
 		if(isliving(target))
 			var/mob/living/T = target
-			if(skill >= 1) //Exp gain from firing a gun
+			if(skill >= 1 && M.mind) //Exp gain from firing a gun
 				if(isanimal(T) && (T.stat != DEAD || (T.stat == DEAD && T.timeofdeath == world.time)))
-					adjust_experience(M, /datum/skill/combat/twilight_firearms, M.STAINT * 3)
+					M.mind.add_sleep_experience(/datum/skill/combat/twilight_firearms, M.STAINT * 3)
 				else if(ishuman(T) && (T.stat != DEAD || (T.stat == DEAD && T.timeofdeath == world.time)))
-					adjust_experience(M, /datum/skill/combat/twilight_firearms, M.STAINT * 6)
+					M.mind.add_sleep_experience(/datum/skill/combat/twilight_firearms, M.STAINT * 6)
 			if(silver && HAS_TRAIT(T, TRAIT_SILVER_WEAK))
 				if(blessed)
 					if(!T.has_status_effect(/datum/status_effect/fire_handler/fire_stacks/sunder))
-						to_chat(T, span_danger("The trice-cursed Otavan silver! My powers wane!"))
+						if(T.patron)
+							to_chat(T, span_danger("The trice-cursed Otavan silver! By [T.patron.name], it hurts!!"))
+						else
+							to_chat(T, span_danger("The trice-cursed Otavan silver! By all that's holy, it hurts!!"))
 					T.adjust_fire_stacks(3, /datum/status_effect/fire_handler/fire_stacks/sunder/blessed)
 				else
 					if(!T.has_status_effect(/datum/status_effect/fire_handler/fire_stacks/sunder/blessed))

@@ -135,7 +135,7 @@
 	w_class = WEIGHT_CLASS_BULKY
 	randomspread = 1
 	spread = 0
-
+	wdefense = 3
 	can_parry = TRUE
 	minstr = 6
 	walking_stick = TRUE
@@ -695,12 +695,13 @@
 	desc = "Пороховое оружие второго поколения, стреляющее бронебойными свинцовыми пулями. Оснащена штыком для использования в ближнем бою."
 	icon = 'modular_twilight_axis/firearms/icons/arquebusbaoynet.dmi'
 	gripped_intents = list(/datum/intent/shoot/twilight_firearm, /datum/intent/arc/twilight_firearm, INTENT_GENERIC, /datum/intent/spear/thrust/militia)
+	wdefense = 5
 	associated_skill = /datum/skill/combat/polearms
 
 /obj/item/gun/ballistic/twilight_firearm/arquebus/bayonet/pre_attack(atom/A, mob/living/user, params)
 	if(!user.used_intent.tranged)
-		if(isliving(A))
-			var/firearm_skill = (user?.mind ? user.get_skill_level(/datum/skill/combat/twilight_firearms) : 1)
+		if(!istype(A, /obj/structure/fluff/statue/tdummy))
+			var/firearm_skill = (user?.mind ? user.get_skill_level(/datum/skill/combat/twilight_firearms) : 0)
 			var/polearms_skill = (user?.mind ? user.get_skill_level(/datum/skill/combat/polearms) : 1)
 			if(firearm_skill > polearms_skill)
 				src.associated_skill = /datum/skill/combat/twilight_firearms
@@ -856,7 +857,19 @@
 	is_silver = TRUE
 	force = 15
 	force_wielded = 20
+	wdefense = 5
 
 /obj/item/ammo_box/magazine/internal/twilight_firearm/handgonne/purgatory
 	name = "purgatory internal magazine"
 	caliber = "otavian grapeshot"
+
+/obj/item/gun/ballistic/twilight_firearm/handgonne/purgatory/ComponentInitialize()
+	AddComponent(\
+		/datum/component/silverbless,\
+		pre_blessed = BLESSING_PSYDONIAN,\
+		silver_type = SILVER_PSYDONIAN,\
+		added_force = 0,\
+		added_blade_int = 0,\
+		added_int = 0,\
+		added_def = 2,\
+	)
