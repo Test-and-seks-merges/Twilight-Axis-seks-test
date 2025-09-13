@@ -734,6 +734,7 @@
 	cartridge_wording = "bullet"
 	damfactor = 0.7
 	critfactor = 0.7
+	wdefense = 0
 	advanced_icon = 'modular_twilight_axis/firearms/icons/pistol/pistol.dmi'
 	advanced_icon_r = 'modular_twilight_axis/firearms/icons/pistol/pistol_r.dmi'
 	advanced_icon_norod	= 'modular_twilight_axis/firearms/icons/pistol/pistol_norod.dmi'
