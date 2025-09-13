@@ -170,7 +170,7 @@
 		qdel(src)
 		return
 	for(var/obj/item/ammo_casing/CB in get_ammo_list(FALSE, TRUE))
-		var/obj/projectile/BB = CB.BB
+		var/obj/projectile/bullet/BB = CB.BB
 		BB.range *= rangefactor
 		BB.critfactor *= critfactor
 		BB.damage *= damfactor * (user.STAPER > 10 ? user.STAPER / 10 : 1)
