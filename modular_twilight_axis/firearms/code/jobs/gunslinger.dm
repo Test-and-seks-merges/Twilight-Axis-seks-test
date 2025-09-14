@@ -31,6 +31,7 @@
 		/datum/skill/misc/medicine = SKILL_LEVEL_NOVICE,
 		/datum/skill/misc/tracking = SKILL_LEVEL_APPRENTICE,
 	)
+	extra_context = "Chooses between Lone Wolf (Sabre & Arquebus Pistol) and Otavan Dragoon (Falchion & Runelock Pistol) subclasses."
 
 /datum/outfit/job/roguetown/mercenary/twilight_gunslinger/pre_equip(mob/living/carbon/human/H)
 	..()
