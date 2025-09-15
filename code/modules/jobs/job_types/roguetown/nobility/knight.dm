@@ -40,14 +40,14 @@
 		H.advsetup = 1
 		H.invisibility = INVISIBILITY_MAXIMUM
 		H.become_blind("advsetup")
-		if(istype(H.cloak, /obj/item/clothing/cloak/stabard/surcoat/guard))
+	/*	if(istype(H.cloak, /obj/item/clothing/cloak)) //TA EDIT
 			var/obj/item/clothing/S = H.cloak
 			var/index = findtext(H.real_name, " ")
 			if(index)
 				index = copytext(H.real_name, 1,index)
 			if(!index)
 				index = H.real_name
-			S.name = "knight's tabard ([index])"
+			S.name = "[S.name] ([index])" */
 		var/prev_real_name = H.real_name
 		var/prev_name = H.name
 		var/honorary = "Ser"
@@ -61,6 +61,17 @@
 				if(MF.known_people)
 					MF.known_people -= prev_real_name
 					H.mind.person_knows_me(MF)
+
+/datum/outfit/job/roguetown/knight/post_equip(mob/living/carbon/human/H)  //TA EDIT
+	..()
+	if(istype(H.cloak, /obj/item/clothing/cloak))
+		var/obj/item/clothing/S = H.cloak
+		var/index = findtext(H.name_archive, " ")
+		if(index)
+			index = copytext(H.name_archive, 1,index)
+		if(!index)
+			index = H.name
+		S.name = "[S.name] ([index])" //TA EDIT
 
 /datum/outfit/job/roguetown/knight
 	//cloak = /obj/item/clothing/cloak/stabard/surcoat/guard
