@@ -35,7 +35,6 @@
 	GLOB.lordcolor += src
 
 /obj/item/clothing/cloak/half/knight/lordcolor(primary,secondary)
-
 	color = primary
 	detail_color = secondary
 	update_icon()
