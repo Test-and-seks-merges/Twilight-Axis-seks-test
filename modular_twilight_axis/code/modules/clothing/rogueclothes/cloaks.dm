@@ -73,16 +73,17 @@
 /obj/item/clothing/cloak/twilight_elven
 	name = "elven cloak"
 	desc = "It is said that this design might predate the War in Heaven and the consequient fall of the ancient Elven Empire."
-	icon = "modular_twilight_axis/icons/roguetown/clothing/cloaks.dmi"
+	icon = 'modular_twilight_axis/icons/roguetown/clothing/cloaks.dmi'
 	mob_overlay_icon = 'modular_twilight_axis/icons/roguetown/clothing/onmob/cloaks.dmi'
-	icon_state = "cape_blue"
-	item_state = "cape_blue"
+	icon_state = "cape"
+	item_state = "cape"
 	slot_flags = ITEM_SLOT_BACK_R|ITEM_SLOT_CLOAK
 	sleeved = 'modular_twilight_axis/icons/roguetown/clothing/onmob/cloaks.dmi'
 	sleevetype = "shirt"
 	nodismemsleeves = TRUE
 	inhand_mod = TRUE
 	var/elven_colors = list("Blue Cloak", "Red Cloak", "Blue Furcloak", "Red Furcloak", "Blue Short Cloak", "Red Short Cloak", "Blue Short Furcloak", "Red Short Furcloak")
+	var/picked = FALSE
 
 /obj/item/clothing/cloak/twilight_elven/ComponentInitialize()
 	. = ..()
@@ -92,60 +93,63 @@
 	..()
 	if(!picked)
 		var/choice = input(user, "Choose a style.", "Elven styles") as anything in elven_colors
-		var/playerchoice = elven_colors[choice]
 		picked = TRUE
-		swith(playerchoice)
+		switch(choice)
 			if("Blue Cloak")
-				icon_state = "cape_blue"
-				item_state = "cape_blue"
+				detail_tag = "_blue"
 			if("Red Cloak")
-				icon_state = "cape_red"
-				item_state = "cape_red"
+				detail_tag = "_red"
 			if("Blue Furcloak")
-				icon_state = "cape_blue_alt"
-				item_state = "cape_blue_alt"
+				detail_tag = "_blue_alt"
 			if("Red Furcloak")
-				icon_state = "cape_red_alt"
-				item_state = "cape_red_alt"
-			if("Blue Short Cloak"")
-				icon_state = "shortcape_blue"
-				item_state = "shortcape_blue"
-			if("Red Short Cloak"")
-				icon_state = "shortcape_red"
-				item_state = "shortcape_red"
-			if("Blue Short Furcloak"")
-				icon_state = "shortcape_blue_alt"
-				item_state = "shortcape_blue_alt"
-			if("Red Short Furcloak"")
-				icon_state = "shortcape_red_alt"
-				item_state = "shortcape_red_alt"
+				detail_tag = "_red_alt"
+			if("Blue Short Cloak")
+				detail_tag = "_blue_short"
+			if("Red Short Cloak")
+				detail_tag = "_red_short"
+			if("Blue Short Furcloak")
+				detail_tag = "_blue_alt_short"
+			if("Red Short Furcloak")
+				detail_tag = "_red_alt_short"
 		update_icon()
 		if(loc == user && ishuman(user))
 			var/mob/living/carbon/H = user
 			H.update_inv_neck()
 
+/obj/item/clothing/cloak/twilight_elven/update_icon()
+	cut_overlays()
+	if(get_detail_tag())
+		var/mutable_appearance/pic = mutable_appearance(icon(icon, "[icon_state][detail_tag]"))
+		add_overlay(pic)
+
 /obj/item/clothing/cloak/twilight_scarf
 	name = "scarf"
 	desc = "A long piece of cloth, meant to be worn around one's neck, Keeps you warm even under colder winds."
-	icon = "modular_twilight_axis/icons/roguetown/clothing/cloaks.dmi"
+	icon = 'modular_twilight_axis/icons/roguetown/clothing/cloaks.dmi'
 	mob_overlay_icon = 'modular_twilight_axis/icons/roguetown/clothing/onmob/cloaks.dmi'
-	icon_state = "scarf_white"
-	item_state = "scarf_white"
+	icon_state = "scarf"
+	item_state = "scarf"
 	sleeved = 'modular_twilight_axis/icons/roguetown/clothing/onmob/cloaks.dmi'
 	sleevetype = "shirt"
 	nodismemsleeves = TRUE
 	inhand_mod = TRUE
 	var/elven_colors = list("blue", "black", "green", "beige", "brown", "white")
+	var/picked = FALSE
 
 /obj/item/clothing/cloak/twilight_scarf/attack_right(mob/user)
 	..()
 	if(!picked)
 		var/choice = input(user, "Choose a color.", "Elven colors") as anything in elven_colors
-		var/playerchoice = elven_colors[choice]
 		picked = TRUE
-		icon_state = "scarf_[playerchoice]"
-		item_state = "scarf_[playerchoice]"
+		detail_tag = "_[choice]"
 		update_icon()
 		if(loc == user && ishuman(user))
 			var/mob/living/carbon/H = user
 			H.update_inv_neck()
+			update_icon()
+
+/obj/item/clothing/cloak/twilight_scarf/update_icon()
+	cut_overlays()
+	if(get_detail_tag())
+		var/mutable_appearance/pic = mutable_appearance(icon(icon, "[icon_state][detail_tag]"))
+		add_overlay(pic)
