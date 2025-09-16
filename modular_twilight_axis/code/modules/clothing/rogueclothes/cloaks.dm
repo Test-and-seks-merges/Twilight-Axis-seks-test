@@ -81,7 +81,7 @@
 	sleevetype = "shirt"
 	nodismemsleeves = TRUE
 	inhand_mod = TRUE
-	var/elven_colors = list("Blue Cloak", "Red Cloak", "Blue Furcloak", "Red Furcloak", "Blue Short Cloak", "Red Short Cloak", "Blue Short Furcloak", "Red Short Furcloak")
+	var/elven_colors = list("Blue Cloak", "Red Cloak", "Blue Furcloak", "Red Furcloak")
 	var/picked = FALSE
 
 /obj/item/clothing/cloak/twilight_elven/ComponentInitialize()
@@ -113,13 +113,20 @@
 		update_icon()
 		if(loc == user && ishuman(user))
 			var/mob/living/carbon/H = user
-			H.update_inv_neck()
+			H.update_inv_cloak()
+			update_icon()
 
 /obj/item/clothing/cloak/twilight_elven/update_icon()
 	cut_overlays()
 	if(get_detail_tag())
 		var/mutable_appearance/pic = mutable_appearance(icon(icon, "[icon_state][detail_tag]"))
 		add_overlay(pic)
+
+/obj/item/clothing/cloak/twilight_elven/short
+	name = "elven shortcloak"
+	icon_state = "cape_short"
+	item_state = "cape_short"
+	elven_colors = list("Blue Short Cloak", "Red Short Cloak", "Blue Short Furcloak", "Red Short Furcloak")
 
 /obj/item/clothing/cloak/twilight_scarf
 	name = "scarf"
@@ -144,7 +151,7 @@
 		update_icon()
 		if(loc == user && ishuman(user))
 			var/mob/living/carbon/H = user
-			H.update_inv_neck()
+			H.update_inv_cloak()
 			update_icon()
 
 /obj/item/clothing/cloak/twilight_scarf/update_icon()
