@@ -35,3 +35,11 @@
 					/obj/item/clothing/cloak/twilight_elven,
 					/obj/item/clothing/cloak/twilight_elven,
 				)
+
+/datum/supply_pack/rogue/wardrobe/cloaks/elven_cloaks_short
+	name = "Elven Shortcloacks"
+	cost = 20
+	contains = list(
+					/obj/item/clothing/cloak/twilight_elven/short,
+					/obj/item/clothing/cloak/twilight_elven/short,
+				)
