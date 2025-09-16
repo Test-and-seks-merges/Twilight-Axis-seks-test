@@ -35,6 +35,7 @@
 	GLOB.lordcolor += src
 
 /obj/item/clothing/cloak/half/knight/lordcolor(primary,secondary)
+
 	color = primary
 	detail_color = secondary
 	update_icon()
@@ -68,3 +69,83 @@
 /obj/item/clothing/cloak/half/knight/Destroy()
 	GLOB.lordcolor -= src
 	return ..()
+
+/obj/item/clothing/cloak/twilight_elven
+	name = "elven cloak"
+	desc = "It is said that this design might predate the War in Heaven and the consequient fall of the ancient Elven Empire."
+	icon = "modular_twilight_axis/icons/roguetown/clothing/cloaks.dmi"
+	mob_overlay_icon = 'modular_twilight_axis/icons/roguetown/clothing/onmob/cloaks.dmi'
+	icon_state = "cape_blue"
+	item_state = "cape_blue"
+	slot_flags = ITEM_SLOT_BACK_R|ITEM_SLOT_CLOAK
+	sleeved = 'modular_twilight_axis/icons/roguetown/clothing/onmob/cloaks.dmi'
+	sleevetype = "shirt"
+	nodismemsleeves = TRUE
+	inhand_mod = TRUE
+	var/elven_colors = list("Blue Cloak", "Red Cloak", "Blue Furcloak", "Red Furcloak", "Blue Short Cloak", "Red Short Cloak", "Blue Short Furcloak", "Red Short Furcloak")
+
+/obj/item/clothing/cloak/twilight_elven/ComponentInitialize()
+	. = ..()
+	AddComponent(/datum/component/storage/concrete/roguetown/cloak)
+
+/obj/item/clothing/cloak/twilight_elven/attack_right(mob/user)
+	..()
+	if(!picked)
+		var/choice = input(user, "Choose a style.", "Elven styles") as anything in elven_colors
+		var/playerchoice = elven_colors[choice]
+		picked = TRUE
+		swith(playerchoice)
+			if("Blue Cloak")
+				icon_state = "cape_blue"
+				item_state = "cape_blue"
+			if("Red Cloak")
+				icon_state = "cape_red"
+				item_state = "cape_red"
+			if("Blue Furcloak")
+				icon_state = "cape_blue_alt"
+				item_state = "cape_blue_alt"
+			if("Red Furcloak")
+				icon_state = "cape_red_alt"
+				item_state = "cape_red_alt"
+			if("Blue Short Cloak"")
+				icon_state = "shortcape_blue"
+				item_state = "shortcape_blue"
+			if("Red Short Cloak"")
+				icon_state = "shortcape_red"
+				item_state = "shortcape_red"
+			if("Blue Short Furcloak"")
+				icon_state = "shortcape_blue_alt"
+				item_state = "shortcape_blue_alt"
+			if("Red Short Furcloak"")
+				icon_state = "shortcape_red_alt"
+				item_state = "shortcape_red_alt"
+		update_icon()
+		if(loc == user && ishuman(user))
+			var/mob/living/carbon/H = user
+			H.update_inv_neck()
+
+/obj/item/clothing/cloak/twilight_scarf
+	name = "scarf"
+	desc = "A long piece of cloth, meant to be worn around one's neck, Keeps you warm even under colder winds."
+	icon = "modular_twilight_axis/icons/roguetown/clothing/cloaks.dmi"
+	mob_overlay_icon = 'modular_twilight_axis/icons/roguetown/clothing/onmob/cloaks.dmi'
+	icon_state = "scarf_white"
+	item_state = "scarf_white"
+	sleeved = 'modular_twilight_axis/icons/roguetown/clothing/onmob/cloaks.dmi'
+	sleevetype = "shirt"
+	nodismemsleeves = TRUE
+	inhand_mod = TRUE
+	var/elven_colors = list("blue", "black", "green", "beige", "brown", "white")
+
+/obj/item/clothing/cloak/twilight_scarf/attack_right(mob/user)
+	..()
+	if(!picked)
+		var/choice = input(user, "Choose a color.", "Elven colors") as anything in elven_colors
+		var/playerchoice = elven_colors[choice]
+		picked = TRUE
+		icon_state = "scarf_[playerchoice]"
+		item_state = "scarf_[playerchoice]"
+		update_icon()
+		if(loc == user && ishuman(user))
+			var/mob/living/carbon/H = user
+			H.update_inv_neck()
