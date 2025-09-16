@@ -59,7 +59,6 @@
 			var/mob/living/carbon/H = user
 			H.update_inv_shirt()
 			H.update_inv_armor()
-			update_icon()
 
 /obj/item/clothing/suit/roguetown/shirt/twilight_elven/coat/update_icon()
 	cut_overlays()
@@ -85,7 +84,6 @@
 			var/mob/living/carbon/H = user
 			H.update_inv_shirt()
 			H.update_inv_armor()
-			update_icon()
 
 /obj/item/clothing/suit/roguetown/shirt/twilight_elven/coat/alt/update_icon()
 	cut_overlays()

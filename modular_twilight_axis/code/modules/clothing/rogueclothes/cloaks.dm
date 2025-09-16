@@ -103,13 +103,13 @@
 			if("Red Furcloak")
 				detail_tag = "_red_alt"
 			if("Blue Short Cloak")
-				detail_tag = "_blue_short"
+				detail_tag = "_blue"
 			if("Red Short Cloak")
-				detail_tag = "_red_short"
+				detail_tag = "_red"
 			if("Blue Short Furcloak")
-				detail_tag = "_blue_alt_short"
+				detail_tag = "_blue_alt"
 			if("Red Short Furcloak")
-				detail_tag = "_red_alt_short"
+				detail_tag = "_red_alt"
 		update_icon()
 		if(loc == user && ishuman(user))
 			var/mob/living/carbon/H = user
