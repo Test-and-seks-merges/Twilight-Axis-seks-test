@@ -1,4 +1,4 @@
-/*/datum/job/roguetown/lunatic
+/datum/job/roguetown/lunatic
 	title = "Lunatic"
 	flag = LUNATIC
 	department_flag = PEASANTS
@@ -68,5 +68,3 @@
 	belt  = /obj/item/storage/belt/rogue/leather/rope
 	beltl = /obj/item/rogueweapon/huntingknife/stoneknife
 	beltr = /obj/item/flashlight/flare/torch
-
-*/ //Требование PQ не работает как и слоты, до фикса будет вырезано.
