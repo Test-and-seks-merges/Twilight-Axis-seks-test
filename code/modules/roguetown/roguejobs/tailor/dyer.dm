@@ -263,6 +263,13 @@ var/global/list/pridelist = list(
 	grid_height = 32
 
 	var/dye = null
+	var/list/allowed_types = list(
+		/obj/item/roguestatue,
+		/obj/item/reagent_containers/glass/bottle/claybottle,
+		/obj/item/reagent_containers/glass/bottle/clayvase,
+		/obj/item/reagent_containers/glass/bottle/clayfancyvase,
+		/obj/item/reagent_containers/glass/cup/claycup
+		)
 
 /obj/item/dye_brush/update_icon()
 	if(dye)
