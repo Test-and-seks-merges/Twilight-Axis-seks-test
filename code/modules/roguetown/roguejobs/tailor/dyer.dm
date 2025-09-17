@@ -323,8 +323,8 @@ var/global/list/pridelist = list(
 	..()
 
 /obj/item/dye_brush/attack_obj(obj/O, mob/living/user)
-	if(!isstructure(O))
-		return
+	if(!is_type_in_list(O, allowed_types) && (!isstructure(O)))
+		to_chat(user, span_warning("[O] cannot be dyed!"))
 	if(!dye)
 		to_chat(user, span_warning("[src] has no dye!"))
 		return
