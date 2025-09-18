@@ -614,6 +614,21 @@ GLOBAL_LIST_EMPTY(loadout_items_by_name)
 	path = /obj/item/clothing/suit/roguetown/armor/corset
 	donatitem = TRUE
 
+/datum/loadout_item/donat/elven_suit
+	name = "Эльфийский костюм"
+	path = /obj/item/clothing/suit/roguetown/shirt/twilight_elven
+	donatitem = TRUE
+
+/datum/loadout_item/donat/elven_coat
+	name = "Эльфийское пальто"
+	path = /obj/item/clothing/suit/roguetown/shirt/twilight_elven/coat
+	donatitem = TRUE
+
+/datum/loadout_item/donat/elven_coat_alt
+	name = "Эльфийское меховое пальто"
+	path = /obj/item/clothing/suit/roguetown/shirt/twilight_elven/coat/alt
+	donatitem = TRUE
+
 // Табарды и плащи
 
 /datum/loadout_item/donat/matron
@@ -694,6 +709,21 @@ GLOBAL_LIST_EMPTY(loadout_items_by_name)
 /datum/loadout_item/donat/tabard/crusader/psydon
 	name = "Табард Псайдона"
 	path = /obj/item/clothing/cloak/psydontabard
+	donatitem = TRUE
+
+/datum/loadout_item/donat/elvencloak
+	name = "Эльфийский плащ"
+	path = /obj/item/clothing/cloak/twilight_elven
+	donatitem = TRUE
+
+/datum/loadout_item/donat/elvencloak_short
+	name = "Короткий эльфийский плащ"
+	path = /obj/item/clothing/cloak/twilight_elven/short
+	donatitem = TRUE
+
+/datum/loadout_item/donat/scarf
+	name = "Шарф"
+	path = /obj/item/clothing/cloak/twilight_scarf
 	donatitem = TRUE
 
 // Маски
