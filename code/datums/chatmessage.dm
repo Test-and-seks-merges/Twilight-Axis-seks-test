@@ -132,7 +132,7 @@
 	// Note we have to replace HTML encoded metacharacters otherwise MeasureText will return a zero height
 	// BYOND Bug #2563917
 	// Construct text
-	var/static/regex/html_metachars = new(@"&[A-Za-z]{1,7};", "g")
+	var/static/regex/html_metachars = new(@"&[A-Za-zА-Яа-я]{1,7};", "g");
 	var/complete_text = "<span class='center maptext [extra_classes.Join(" ")]' style='color: [tgt_color]'>[text]</span>"
 
 	var/mheight
