@@ -532,3 +532,6 @@ BLIND     // can't see anything
 	if(text)
 		filtered_balloon_alert(TRAIT_COMBAT_AWARE, text, -20, y_offset)
 	. = ..()
+
+/obj/item/storage/proc/step_action() //this was made to rewrite clown shoes squeaking
+	SEND_SIGNAL(src, COMSIG_CLOTHING_STEP_ACTION)
