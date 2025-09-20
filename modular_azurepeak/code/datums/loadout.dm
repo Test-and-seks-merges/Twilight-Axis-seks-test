@@ -726,6 +726,11 @@ GLOBAL_LIST_EMPTY(loadout_items_by_name)
 	path = /obj/item/clothing/cloak/twilight_scarf
 	donatitem = TRUE
 
+/datum/loadout_item/donat/elven_burka
+	name = "Эльфийская бурка"
+	path = /obj/item/clothing/head/roguetown/twilight_elven_hat
+	donatitem = TRUE
+
 // Маски
 
 /datum/loadout_item/donat/naledimask
