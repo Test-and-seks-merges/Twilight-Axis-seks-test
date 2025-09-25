@@ -420,6 +420,8 @@ GLOBAL_LIST_EMPTY(chosen_names)
 
 			dat += "<b>Unrevivable:</b> <a href='?_src_=prefs;preference=dnr;task=input'>[dnr_pref ? "Yes" : "No"]</a><BR>"
 
+			dat += "<b>Be a Familiar:</b><a href='?_src_=prefs;preference=familiar_prefs;task=input'>Familiar Preferences</a>"
+
 /*
 			dat += "<br><br><b>Special Names:</b><BR>"
 			var/old_group
@@ -505,8 +507,6 @@ GLOBAL_LIST_EMPTY(chosen_names)
 			dat += "<br><a href='?_src_=prefs;preference=ooc_preview;task=input'><b>Preview Examine</b></a>"
 
 			dat += "<br><b>Loadout Items:</b> <a href='?_src_=prefs;preference=loadout_item;task=input'>Change</a>"
-
-			dat += "<br><b>Be a Familiar:</b><a href='?_src_=prefs;preference=familiar_prefs;task=input'>Familiar Preferences</a>"
 
 			dat += "</td>"
 
@@ -784,7 +784,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 
 	winshow(user, "preferencess_window", TRUE)
 	winset(user, "preferencess_window", "size=820x850")
-	winset(user, "preferencess_window", "pos=370,90")
+	winset(user, "preferencess_window", "pos=280,80")
 	var/datum/browser/noclose/popup = new(user, "preferences_browser", "<div align='center'>[used_title]</div>")
 	popup.set_window_options("can_close=0")
 	popup.set_content(dat.Join())
