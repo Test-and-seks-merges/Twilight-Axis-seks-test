@@ -77,9 +77,14 @@
 //Eiren - Custom zweihander type
 /obj/item/enchantingkit/eiren
 	name = "'Regret' morphing elixir"
-	desc = "A small container of special morphing dust, perfect to make a specifc item. Required: Any Greatsword"
-	target_items = list(/obj/item/rogueweapon/greatsword)		//Takes any type of GREATSWORD so estoc etc
-	result_item = /obj/item/rogueweapon/greatsword/eiren
+	target_items = list(/obj/item/rogueweapon/greatsword/zwei)		//now only takes the zwei and nothing else
+	result_item = /obj/item/rogueweapon/greatsword/zwei/eiren
+
+//pretzel - custom steel greatsword. PSYDON LYVES. PSYDON ENDVRES.
+/obj/item/enchantingkit/waff
+	name = "'Weeper's Lathe' morphing elixir"
+	target_items = list(/obj/item/rogueweapon/greatsword)		// i, uh. i really do promise i'm only gonna use it on steel greatswords.
+	result_item = /obj/item/rogueweapon/greatsword/weeperslathe
  
 /obj/item/enchantingkit/psydonianarmet
 	name = "'Psydonian armet morphing elixir"
