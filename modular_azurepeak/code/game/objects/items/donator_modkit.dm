@@ -74,6 +74,12 @@
 	target_items = list(/obj/item/clothing/suit/roguetown/shirt/dress/silkydress)
 	result_item = /obj/item/clothing/suit/roguetown/shirt/dress/silkydress/zydrasdress
 
+//Eiren - Custom zweihander type
+/obj/item/enchantingkit/eiren
+	name = "'Regret' morphing elixir"
+	target_items = list(/obj/item/rogueweapon/greatsword)		//Takes any type of GREATSWORD so estoc etc
+	result_item = /obj/item/rogueweapon/greatsword/eiren
+ 
 /obj/item/enchantingkit/psydonianarmet
 	name = "'Psydonian armet morphing elixir"
 	desc = "A small container of special morphing dust, perfect to make a specifc item. Required: Armet"

@@ -565,6 +565,11 @@ GLOBAL_LIST_EMPTY(loadout_items_by_name)
 /datum/loadout_item/donator_zydras
 	name = "Donator Kit - Padded silky dress - Required: Silky Dress(No Small Races)"
 	path = /obj/item/enchantingkit/zydras
+  donatitem = TRUE
+
+/datum/loadout_item/donator_eiren
+	name = "Donator Kit - Regret - Required: Any Greatsword"
+	path = /obj/item/enchantingkit/eiren
 	donatitem = TRUE
 
 // Разное
