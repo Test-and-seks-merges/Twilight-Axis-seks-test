@@ -160,6 +160,7 @@
 	var/gunpowder
 	var/powder_per_reload = 1
 	var/locktype = "Wheellock"
+	var/match_delay = 10
 	var/obj/item/twilight_ramrod/myrod = null
 
 	//Advanced icon stuff
@@ -596,7 +597,7 @@
 		if(advanced_icon_f)
 			icon = advanced_icon_f
 		playsound(src, "modular_twilight_axis/firearms/sound/fuse.ogg", 100, FALSE)
-		spawn(10)
+		spawn(match_delay)
 			..()
 			if(advanced_icon_s)
 				icon = advanced_icon_s
@@ -833,6 +834,7 @@
 	damfactor = 0.7
 	critfactor = 0.3
 	npcdamfactor = 2.5
+	match_delay = 4
 
 /obj/item/gun/ballistic/twilight_firearm/handgonne/purgatory
 	name = "Purgatory"
@@ -852,6 +854,7 @@
 	force = 15
 	force_wielded = 20
 	wdefense = 5
+	match_delay = 8
 
 /obj/item/ammo_box/magazine/internal/twilight_firearm/handgonne/purgatory
 	name = "purgatory internal magazine"
