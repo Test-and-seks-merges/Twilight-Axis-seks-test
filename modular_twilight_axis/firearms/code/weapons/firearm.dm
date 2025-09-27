@@ -488,15 +488,19 @@
 	var/firearm_skill = (user?.mind ? user.get_skill_level(/datum/skill/combat/twilight_firearms) : 1)
 	var/turf/knockback = get_ranged_target_turf(user, turn(user.dir, 180), rand(1,2))
 	spread = (spread_num - firearm_skill)
-	if(firearm_skill < 1)
-		accident_chance =80
-
-	if(firearm_skill < 2)
-		accident_chance =50
-	if(firearm_skill >= 2 && firearm_skill <= 5)
-		accident_chance =10
-	if(firearm_skill >= 5)
-		accident_chance =0
+	switch(firearm_skill)
+		if(0)
+			accident_chance = 80
+		if(1)
+			accident_chance = 50
+		if(2)
+			accident_chance = 30
+		if(3)
+			accident_chance = 10
+		if(4)
+			accident_chance = 10
+		else
+			accident_chance = 0
 	if(user.client)
 		if(user.client.chargedprog >= 100)
 			spread = 0
@@ -508,7 +512,7 @@
 		var/obj/projectile/bullet/BB = CB.BB
 		BB.damage *= damfactor * (user.STAPER > 10 ? user.STAPER / 10 : 1)
 		BB.critfactor *= critfactor
-		BB.npc_simple_damage_mult *= npcdamfactor
+		BB.gunpowder_npc_critfactor *= npcdamfactor
 		BB.gunpowder = gunpowder
 	reloaded = FALSE
 	if(advanced_icon)
@@ -573,18 +577,18 @@
 			user.apply_damage(rand(5,15), BURN, pick(BODY_ZONE_PRECISE_R_EYE, BODY_ZONE_PRECISE_L_EYE, BODY_ZONE_PRECISE_NOSE, BODY_ZONE_PRECISE_MOUTH, BODY_ZONE_PRECISE_L_HAND, BODY_ZONE_PRECISE_R_HAND))
 			user.visible_message("<span class='danger'>[user] accidentally burnt themselves while firing the [src].</span>")
 			user.emote("painscream")
-			if(prob(60))
+			if(prob(60) && firearm_skill < 4)
 				user.dropItemToGround(src)
 				user.Knockdown(rand(15,30))
 				user.Immobilize(30)
 		if(prob(accident_chance))
 			user.visible_message("<span class='danger'>[user] is knocked back by the recoil!</span>")
 			user.throw_at(knockback, rand(1,2), 7)
-			if(prob(accident_chance))
+			if(prob(accident_chance) && firearm_skill < 4)
 				user.dropItemToGround(src)
 				user.Knockdown(rand(15,30))
 				user.Immobilize(30)
-			if(firearm_skill <= 2 && prob(50))
+			if(firearm_skill < 3 && prob(50))
 				var/def_zone = "[(user.active_hand_index == 2) ? "r" : "l" ]_arm"
 				var/obj/item/bodypart/BP = user.get_bodypart(def_zone)
 				BP.add_wound(/datum/wound/dislocation)
@@ -592,7 +596,7 @@
 		if(advanced_icon_f)
 			icon = advanced_icon_f
 		playsound(src, "modular_twilight_axis/firearms/sound/fuse.ogg", 100, FALSE)
-		spawn(rand(10,20))
+		spawn(10)
 			..()
 			if(advanced_icon_s)
 				icon = advanced_icon_s
