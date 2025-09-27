@@ -776,7 +776,7 @@
 							var/datum/antagonist/vampirelord/lesser/new_antag = new /datum/antagonist/vampirelord/lesser()
 							new_antag.sired = TRUE
 							C.mind.add_antag_datum(new_antag)
-							sleep(10 SECONDS)
+							stoplag(10 SECONDS)
 							C.fully_heal()
 							C.energy = C.max_energy
 							C.update_health_hud()
