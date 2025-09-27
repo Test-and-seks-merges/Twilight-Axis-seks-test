@@ -3,6 +3,7 @@
 	var/blessed = FALSE
 	var/always_drop = FALSE
 	var/critfactor = 1
+	var/gunpowder_npc_critfactor = 1
 	var/gunpowder
 
 /**
@@ -125,7 +126,9 @@
 						H.wear_ring.obj_break()
 					H.set_silence(5 SECONDS)
 			if("terrorpowder")
-				npc_simple_damage_mult += 1
+				gunpowder_npc_critfactor += 1
+		if(!T.mind)
+			damage *= gunpowder_npc_critfactor
 	. = ..()
 	if(isliving(firer) && (istype(fired_from, /obj/item/gun/ballistic/twilight_firearm) || istype(fired_from, /obj/item/gun/ballistic/revolver/grenadelauncher/twilight_runelock)))
 		var/mob/living/M = firer
