@@ -1,5 +1,6 @@
 /datum/sex_action/titjob
 	name = "Вздрочнуть сиськами"
+	user_sex_part = SEX_PART_COCK
 
 /datum/sex_action/titjob/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)
