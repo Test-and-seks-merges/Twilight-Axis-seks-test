@@ -305,5 +305,4 @@ SUBSYSTEM_DEF(treasury)
 		return taxation_cat_settings[TAX_CAT_CHURCH]["fineExemption"]
 	else
 		return taxation_cat_settings[TAX_CAT_PEASANTS]["fineExemption"]
-=======
 	return TRUE
