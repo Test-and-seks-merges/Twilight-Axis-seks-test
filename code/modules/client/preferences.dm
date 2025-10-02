@@ -1232,7 +1232,7 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 	if(href_list["boosty"])
 		var/url = CONFIG_GET(string/boostyurl)
 		if (url)
-			user << link(CONFIG_GET(string/boostyurl))
+			user << link(url)
 		return
 
 	if(href_list["bancheck"])
