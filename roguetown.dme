@@ -2656,7 +2656,6 @@
 #include "modular_hearthstone\code\modules\mob\living\simple_animal\rogue\orc.dm"
 #include "modular_hearthstone\code\modules\mob\living\simple_animal\rogue\rogue_corpse.dm"
 #include "modular_hearthstone\code\modules\reagents\reagent_containers\lux.dm"
-#include "code\modules\admin\agevetting.dm"
 #include "modular_twilight_axis\code\datums\mob_descriptors\descriptors\other.dm"
 #include "modular_twilight_axis\code\datums\sexcon\sexcon.dm"
 #include "modular_twilight_axis\code\datums\sexcon\sexcon_helpers.dm"
