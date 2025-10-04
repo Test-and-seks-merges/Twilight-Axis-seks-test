@@ -43,8 +43,3 @@
 					/obj/item/clothing/cloak/twilight_elven/short,
 					/obj/item/clothing/cloak/twilight_elven/short,
 				)
-
-/datum/supply_pack/rogue/luxury/lovepotion
-	name = "Love Potion"
-	cost = 300
-	contains = list(/obj/item/lovepotion)
