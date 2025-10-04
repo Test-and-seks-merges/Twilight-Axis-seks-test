@@ -18,6 +18,10 @@
 		to_chat(user, span_warning("[capitalize(M.name)] уже одержим[M.gender == FEMALE ? "а" : ""] кем-то другим!"))
 		return ..()
 
+	if(M.client.prefs.defiant = TRUE)
+		to_chat(user, span_warning("[capitalize(M.name)] сопротивляется эффекту зелья!"))
+		return ..()
+
 	M.visible_message(span_danger("[capitalize(user.name)] поит [M.name] любовным зельем!"),
 		span_danger("[capitalize(user.name)] поит вас любовным зельем!"))
 
