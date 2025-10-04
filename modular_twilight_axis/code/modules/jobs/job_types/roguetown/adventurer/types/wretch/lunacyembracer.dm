@@ -24,7 +24,7 @@
 
 	H.adjust_skillrank(/datum/skill/combat/wrestling, 5, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/unarmed, 5, TRUE)
-	H.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
+	H.adjust_skillrank(/datum/skill/craft/sewing, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/craft/tanning, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/labor/farming, 5, TRUE)
 	H.adjust_skillrank(/datum/skill/craft/carpentry, 2, TRUE)
@@ -38,7 +38,7 @@
 	H.adjust_skillrank(/datum/skill/labor/fishing, 3, TRUE)
 
 	H.change_stat("strength", 3)
-	H.change_stat("endurance", 2)
+	H.change_stat("willpower", 2)
 	H.change_stat("constitution", 2)
 	H.change_stat("speed", 2)
 	H.change_stat("fortune", 2) //nature smiles at me!

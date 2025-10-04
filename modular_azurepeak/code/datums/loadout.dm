@@ -567,6 +567,16 @@ GLOBAL_LIST_EMPTY(loadout_items_by_name)
 	path = /obj/item/enchantingkit/zydras
 	donatitem = TRUE
 
+/datum/loadout_item/donator_eiren
+	name = "Donator Kit - Regret - Required: Zweihander"
+	path = /obj/item/enchantingkit/eiren
+	donatitem = TRUE
+
+/datum/loadout_item/donator_waff
+	name = "Donator Kit - Weeper Lathe - Required: Any Greatsword"
+	path = /obj/item/enchantingkit/waff
+	donatitem = TRUE
+
 // Разное
 /datum/loadout_item/donat
 	name = "Музыкальная коробка"
@@ -729,6 +739,10 @@ GLOBAL_LIST_EMPTY(loadout_items_by_name)
 /datum/loadout_item/donat/elven_burka
 	name = "Эльфийская бурка"
 	path = /obj/item/clothing/head/roguetown/twilight_elven_hat
+
+/datum/loadout_item/donat/loveamulet
+	name = "Амулет Слез Любви"
+	path = /obj/item/clothing/neck/roguetown/loveamulet
 	donatitem = TRUE
 
 // Маски
