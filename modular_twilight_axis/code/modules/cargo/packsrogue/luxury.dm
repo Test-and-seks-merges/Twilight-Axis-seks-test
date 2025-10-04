@@ -44,6 +44,7 @@
 					/obj/item/clothing/cloak/twilight_elven/short,
 				)
 
+
 /datum/supply_pack/rogue/wardrobe/cloaks/elven_burkas
 	name = "Elven Burkas"
 	cost = 30
@@ -71,3 +72,9 @@
 	name = "Elver Rider Gloves"
 	cost = 25
 	contains = list(/obj/item/clothing/gloves/roguetown/angle/twilight_elven)
+
+/datum/supply_pack/rogue/luxury/lovepotion
+	name = "Love Potion"
+	cost = 300
+	contains = list(/obj/item/lovepotion)
+
