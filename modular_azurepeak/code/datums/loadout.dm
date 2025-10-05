@@ -577,6 +577,26 @@ GLOBAL_LIST_EMPTY(loadout_items_by_name)
 	path = /obj/item/enchantingkit/waff
 	donatitem = TRUE
 
+/datum/loadout_item/donator_kumie
+	name = "Donator Kit - Kumie - Required: Heavy Leather Boots"
+	path = /obj/item/enchantingkit/kumie_boots
+	donatitem = TRUE
+
+/datum/loadout_item/donator_kumie2
+	name = "Donator Kit - Kumie Gloves - Required: Fingerless Leather Gloves"
+	path = /obj/item/enchantingkit/kumie_gloves
+	donatitem = TRUE
+
+/datum/loadout_item/donator_kumie3
+	name = "Donator Kit - Kumie Shirt - Required: Gambeson(No Small Races)"
+	path = /obj/item/enchantingkit/kumie_shirt
+	donatitem = TRUE
+
+/datum/loadout_item/donator_kumie4
+	name = "Donator Kit - Kumie Coat - Required: Hardened Leather Coat(No Small Races)"
+	path = /obj/item/enchantingkit/kumie_coat
+	donatitem = TRUE
+
 // Разное
 /datum/loadout_item/donat
 	name = "Музыкальная коробка"
