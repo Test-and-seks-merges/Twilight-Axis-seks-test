@@ -269,7 +269,6 @@ GLOBAL_LIST_EMPTY(respawncounts)
 		connecting_admin = TRUE
 	else if(GLOB.deadmins[ckey])
 		verbs += /client/proc/readmin
-		verbs += /client/proc/adminwho
 		connecting_admin = TRUE
 	if(CONFIG_GET(flag/autoadmin))
 		if(!GLOB.admin_datums[ckey])
