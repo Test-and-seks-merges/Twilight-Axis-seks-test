@@ -1140,7 +1140,7 @@ GLOBAL_LIST_EMPTY(respawncounts)
 	if(whitelisted != 2)
 		return whitelisted
 	else
-		if(check_whitelist(ckey))
+		if(BC_IsKeyWhitelisted(ckey))
 			whitelisted = 1
 		else
 			whitelisted = 0
