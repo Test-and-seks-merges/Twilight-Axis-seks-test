@@ -254,6 +254,8 @@
 		return
 
 	show_player_panel_next(M)
+	message_admins("Admin [key_name_admin(usr)] checked the player panel of [key_name_admin(M)]!")
+	log_admin("Admin [key_name(usr)] checked the player panel of [key_name_admin(M)]!")
 
 /client/proc/show_player_panel_next(mob/M)
 	holder?.show_player_panel_next(M)
