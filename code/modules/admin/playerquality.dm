@@ -124,7 +124,7 @@
 	check_pq_menu(theykey)
 
 /proc/check_pq_menu(ckey)
-	var/canonical_ckey = ckey(ckey)
+	var/canonical_ckey = lowertext(ckey)
 	if(!fexists("data/player_saves/[copytext(ckey,1,2)]/[canonical_ckey]/preferences.sav"))
 		to_chat(usr, span_boldwarning("User does not exist."))
 		return
@@ -183,7 +183,8 @@
 		if(!selection)
 			return
 		theykey = selection
-	if(!fexists("data/player_saves/[copytext(theykey,1,2)]/[theykey]/preferences.sav"))
+	var/canonical_ckey = lowertext(theykey)
+	if(!fexists("data/player_saves/[copytext(theykey,1,2)]/[canonical_ckey]/preferences.sav"))
 		to_chat(src, span_boldwarning("User does not exist."))
 		return
 	var/amt2change = input("How much to modify the PQ by? (20 to -20, or 0 to just add a note)") as null|num
