@@ -126,7 +126,7 @@
 /proc/check_pq_menu(ckey)
 	var/canonical_ckey = replacetext(replacetext(lowertext(ckey), " ", ""), "_", "")
 	if(!fexists("data/player_saves/[copytext(ckey,1,2)]/[canonical_ckey]/preferences.sav"))
-		to_chat(src, span_boldwarning("2canonical_ckey = [canonical_ckey]"))
+		to_chat(usr, span_boldwarning("2canonical_ckey = [canonical_ckey]"))
 		to_chat(usr, span_boldwarning("User does not exist."))
 		return
 	var/popup_window_data = "<center>[canonical_ckey]</center>"
