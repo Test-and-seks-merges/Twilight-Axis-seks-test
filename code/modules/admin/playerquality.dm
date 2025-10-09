@@ -124,7 +124,7 @@
 	check_pq_menu(theykey)
 
 /proc/check_pq_menu(ckey)
-	var/canonical_ckey = lowertext(ckey)
+	var/canonical_ckey = replacetext(replacetext(lowertext(ckey), " ", ""), "_", "")
 	if(!fexists("data/player_saves/[copytext(ckey,1,2)]/[canonical_ckey]/preferences.sav"))
 		to_chat(usr, span_boldwarning("User does not exist."))
 		return
@@ -183,7 +183,7 @@
 		if(!selection)
 			return
 		theykey = selection
-	var/canonical_ckey = lowertext(theykey)
+	var/canonical_ckey = replacetext(replacetext(lowertext(theykey), " ", ""), "_", "")
 	if(!fexists("data/player_saves/[copytext(theykey,1,2)]/[canonical_ckey]/preferences.sav"))
 		to_chat(src, span_boldwarning("User does not exist."))
 		return

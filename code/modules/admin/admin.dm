@@ -341,12 +341,13 @@
 
 	var/ckey = lowertext(M.ckey)
 	var/admin = lowertext(usr.key)
+	var/canonical_ckey = replacetext(replacetext(lowertext(ckey), " ", ""), "_", "")
 
 	/*if(ckey == admin)
 		to_chat(src, span_boldwarning("That's you!"))
 		return
 	*/
-	if(!fexists("data/player_saves/[copytext(ckey,1,2)]/[ckey]/preferences.sav"))
+	if(!fexists("data/player_saves/[copytext(ckey,1,2)]/[canonical_ckey]/preferences.sav"))
 		to_chat(src, span_boldwarning("User does not exist."))
 		return
 	var/amt2change = input("How much to modify the PQ by? (20 to -20, or 0 to just add a note)") as null|num
