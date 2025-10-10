@@ -137,7 +137,7 @@
 //	dat += "<table width=100%><tr><td width=33%><div style='text-align:left'><a href='?_src_=prefs;preference=playerquality;task=menu'><b>PQ:</b></a> [get_playerquality(user.ckey, text = TRUE)]</div></td><td width=34%><center><a href='?_src_=prefs;preference=triumphs;task=menu'><b>TRIUMPHS:</b></a> [user.get_triumphs() ? "\Roman [user.get_triumphs()]" : "None"]</center></td><td width=33%></td></tr></table>"
 	popup_window_data += "<center><a href='?_src_=holder;[HrefToken()];cursemenu=[canonical_ckey]'>CURSES</a></center>"
 	popup_window_data += "<table width=100%><tr><td width=33%><div style='text-align:left'>"
-	popup_window_data += "Commends: <a href='?_src_=holder;[HrefToken()];readcommends=[ckey]'>[get_commends(canonical_ckey)]</a></div></td>"
+	popup_window_data += "Commends: <a href='?_src_=holder;[HrefToken()];readcommends=[canonical_ckey]'>[get_commends(canonical_ckey)]</a></div></td>"
 	popup_window_data += "<td width=34%><center>Round Contributor Points: [get_roundpoints(canonical_ckey)]</center></td>"
 	popup_window_data += "<td width=33%><div style='text-align:right'>Rounds Survived: [get_roundsplayed(canonical_ckey)]</div></td></tr></table>"
 	var/list/listy = world.file2list("data/player_saves/[folder_prefix]/[canonical_ckey]/playerquality.txt")
