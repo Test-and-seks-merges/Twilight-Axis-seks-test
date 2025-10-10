@@ -125,11 +125,15 @@
 
 /proc/check_pq_menu(ckey)
 	var/canonical_ckey = replacetext(replacetext(lowertext(ckey), " ", ""), "_", "")
-	if(!fexists("data/player_saves/[copytext(ckey,1,2)]/[canonical_ckey]/preferences.sav"))
+	var/folder_prefix = copytext(canonical_ckey, 1, 2)
+	var/full_path = "data/player_saves/[folder_prefix]/[canonical_ckey]/preferences.sav"
+
+	to_chat(usr, span_notice("Debug: Checking path '[full_path]' for ckey '[ckey]' (canonical_ckey: '[canonical_ckey]')"))
+	if(!fexists(full_path))
 		to_chat(usr, span_boldwarning("User does not exist."))
 		return
 	var/popup_window_data = "<center>[canonical_ckey]</center>"
-	popup_window_data += "<center>PQ: [get_playerquality(ckey, TRUE, TRUE)] ([get_playerquality(ckey, FALSE, TRUE)])</center>"
+	popup_window_data += "<center>PQ: [get_playerquality(canonical_ckey, TRUE, TRUE)] ([get_playerquality(canonical_ckey, FALSE, TRUE)])</center>"
 
 //	dat += "<table width=100%><tr><td width=33%><div style='text-align:left'><a href='?_src_=prefs;preference=playerquality;task=menu'><b>PQ:</b></a> [get_playerquality(user.ckey, text = TRUE)]</div></td><td width=34%><center><a href='?_src_=prefs;preference=triumphs;task=menu'><b>TRIUMPHS:</b></a> [user.get_triumphs() ? "\Roman [user.get_triumphs()]" : "None"]</center></td><td width=33%></td></tr></table>"
 	popup_window_data += "<center><a href='?_src_=holder;[HrefToken()];cursemenu=[ckey]'>CURSES</a></center>"
