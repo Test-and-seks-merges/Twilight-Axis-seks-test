@@ -341,13 +341,15 @@
 
 	var/ckey = lowertext(M.ckey)
 	var/admin = lowertext(usr.key)
-	var/canonical_ckey = replacetext(replacetext(lowertext(ckey), " ", ""), "_", "")
+	var/canonical_ckey = replacetext(replacetext(replacetext(lowertext(ckey), " ", ""), "_", ""), ".", "")
+	var/folder_prefix = copytext(canonical_ckey, 1, 2)
+	var/full_path = "data/player_saves/[folder_prefix]/[canonical_ckey]/preferences.sav"
 
 	/*if(ckey == admin)
 		to_chat(src, span_boldwarning("That's you!"))
 		return
 	*/
-	if(!fexists("data/player_saves/[copytext(ckey,1,2)]/[canonical_ckey]/preferences.sav"))
+	if(!fexists(full_path))
 		to_chat(src, span_boldwarning("User does not exist."))
 		return
 	var/amt2change = input("How much to modify the PQ by? (20 to -20, or 0 to just add a note)") as null|num

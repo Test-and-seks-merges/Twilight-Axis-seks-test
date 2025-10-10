@@ -124,7 +124,7 @@
 	check_pq_menu(theykey)
 
 /proc/check_pq_menu(ckey)
-	var/canonical_ckey = replacetext(replacetext(lowertext(ckey), " ", ""), "_", "")
+	var/canonical_ckey = replacetext(replacetext(replacetext(lowertext(ckey), " ", ""), "_", ""), ".", "")
 	var/folder_prefix = copytext(canonical_ckey, 1, 2)
 	var/full_path = "data/player_saves/[folder_prefix]/[canonical_ckey]/preferences.sav"
 
@@ -186,7 +186,7 @@
 		if(!selection)
 			return
 		theykey = selection
-	var/canonical_ckey = replacetext(replacetext(lowertext(theykey), " ", ""), "_", "")
+	var/canonical_ckey = replacetext(replacetext(replacetext(lowertext(theykey), " ", ""), "_", ""), ".", "")
 	var/folder_prefix = copytext(canonical_ckey, 1, 2)
 	var/full_path = "data/player_saves/[folder_prefix]/[canonical_ckey]/preferences.sav"
 	if(!fexists(full_path))
