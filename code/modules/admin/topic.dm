@@ -1199,7 +1199,7 @@
 		if(!amt2change && !raisin)
 			return
 		if(mob_client.ckey == usr.ckey)
-			message_admins("Админ [key_name_admin(usr.ckey)] попытался поменять PQ самому себе, но так нельзя.")
+			to_chat(src, span_boldwarning("Самому себе PQ менять нельзя."))
 			return
 		adjust_playerquality(amt2change, mob_client.ckey, usr.ckey, raisin)
 		for(var/client/C in GLOB.clients) // I hate this, but I'm not refactoring the cancer above this point.
