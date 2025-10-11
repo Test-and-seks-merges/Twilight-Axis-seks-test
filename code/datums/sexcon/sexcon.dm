@@ -23,6 +23,10 @@
 	var/last_ejaculation_time = 0
 	var/last_moan = 0
 	var/last_pain = 0
+	/// Menu based variables
+	var/action_category = SEX_CATEGORY_MISC
+	/// Show progress bar
+	var/show_progress = 1
 	/// Which zones we are using in the current action.
 	var/using_zones = list()
 	var/knotted_status = KNOTTED_NULL // knotted state and used to prevent multiple knottings when we do not handle that case
@@ -423,10 +427,15 @@
 		dat += "<center><a href='?src=[REF(src)];task=stop'>Прекратить</a></center>"
 	else
 		dat += "<br>"
+	dat += "<center><a href='?src=[REF(src)];task=category_hands'>[action_category == SEX_CATEGORY_HANDS ? "<font color='#eac8de'>РУКИ</font>" : "РУКИ"]</a> | "
+	dat += "<a href='?src=[REF(src)];task=category_penetrate'>[action_category == SEX_CATEGORY_PENETRATE ? "<font color='#eac8de'>ПРОНИКНОВЕНИЕ</font>" : "ПРОНИКНОВЕНИЕ"]</a> | "
+	dat += "<a href='?src=[REF(src)];task=category_misc'>[action_category == SEX_CATEGORY_MISC ? "<font color='#eac8de'>ОСТАЛЬНОЕ</font>" : "ОСТАЛЬНОЕ"]</a></center>"
 	dat += "<table width='100%'><td width='50%'></td><td width='50%'></td><tr>"
 	var/i = 0
 	for(var/action_type in GLOB.sex_actions)
 		var/datum/sex_action/action = SEX_ACTION(action_type)
+		if(!(action_category&action.category))
+			continue
 		if(!action.shows_on_menu(user, target))
 			continue
 		dat += "<td>"
@@ -478,7 +487,14 @@
 			var/amount = input(user, "Значение выше 120 приведет к немедленному экстазу!", "Задать возбуждение", arousal) as num
 			set_arousal(amount)
 		if("freeze_arousal")
-			arousal_frozen = !arousal_frozen
+			if(aphrodisiac == 1)
+				arousal_frozen = !arousal_frozen
+		if("category_misc")
+			action_category = SEX_CATEGORY_MISC
+		if("category_hands")
+			action_category = SEX_CATEGORY_HANDS
+		if("category_penetrate")
+			action_category = SEX_CATEGORY_PENETRATE
 	show_ui()
 
 /datum/sex_controller/proc/try_stop_current_action()
@@ -491,6 +507,7 @@
 	if(!current_action)
 		return
 	var/datum/sex_action/action = SEX_ACTION(current_action)
+	show_progress = 1
 	if (!user.sexcon.knotted_status) // never show the remove message, unless unknotted
 		action.on_finish(user, target)
 	desire_stop = FALSE
@@ -527,7 +544,7 @@
 			break
 		if(!user.stamina_add(action.stamina_cost * get_stamina_cost_multiplier()))
 			break
-		if(!do_after(user, (action.do_time / get_speed_multiplier()), target = target))
+		if(!do_after(user, (action.do_time / get_speed_multiplier()), target = target, progress = show_progress))
 			break
 		if(current_action == null || performed_action_type != current_action)
 			break

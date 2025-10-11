@@ -1,5 +1,6 @@
 /datum/sex_action/selfmilk_breasts
 	name = "Подоить свое молоко в контейнер"
+	category = SEX_CATEGORY_HANDS
 
 /datum/sex_action/selfmilk_breasts/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user != target)

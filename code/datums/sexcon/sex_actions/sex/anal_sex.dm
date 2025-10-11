@@ -3,6 +3,7 @@
 	stamina_cost = 1.0
 	user_sex_part = SEX_PART_COCK
 	target_sex_part = SEX_PART_ANUS
+	category = SEX_CATEGORY_PENETRATE
 
 /datum/sex_action/anal_sex/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)
@@ -68,13 +69,13 @@
 	return ..()
 
 /datum/sex_action/anal_sex/knot/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] knot-fucks [target]'s ass."))
+	user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] долбит по самый кнот задницу [target]."))
 	playsound(target, 'sound/misc/mat/segso.ogg', 50, TRUE, -2, ignore_walls = FALSE)
 	do_thrust_animate(user, target)
 
 	user.sexcon.perform_sex_action(user, 2, 0, TRUE)
 	if(user.sexcon.check_active_ejaculation())
-		user.visible_message(span_love("[user] cums into [target]'s butt!"))
+		user.visible_message(span_love("[user] кончает в попку [target]!"))
 		user.sexcon.cum_into()
 		user.virginity = FALSE
 

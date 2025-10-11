@@ -1,6 +1,7 @@
 /datum/sex_action/masturbate_vagina_finger
 	name = "Проникнуть пальцем в вагину"
 	target_sex_part = SEX_PART_CUNT
+	category = SEX_CATEGORY_HANDS
 
 /datum/sex_action/masturbate_vagina_finger/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user != target)

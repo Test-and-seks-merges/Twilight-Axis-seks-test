@@ -2,6 +2,7 @@
 	name = "Игрушка (вагина)"
 	user_sex_part = SEX_PART_CUNT
 	target_sex_part = SEX_PART_CUNT
+	category = SEX_CATEGORY_PENETRATE
 
 /datum/sex_action/toy_vagina/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user != target)

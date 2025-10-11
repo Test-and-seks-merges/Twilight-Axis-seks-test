@@ -3,6 +3,7 @@
 	stamina_cost = 1.0
 	user_sex_part = SEX_PART_COCK
 	target_sex_part = SEX_PART_JAWS
+	category = SEX_CATEGORY_PENETRATE
 
 /datum/sex_action/throat_sex/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)

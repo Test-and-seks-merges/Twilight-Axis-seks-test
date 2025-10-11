@@ -4,6 +4,7 @@
 	aggro_grab_instead_same_tile = FALSE
 	user_sex_part = SEX_PART_CUNT
 	target_sex_part = SEX_PART_COCK
+	category = SEX_CATEGORY_PENETRATE
 
 /datum/sex_action/vaginal_ride_sex/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)

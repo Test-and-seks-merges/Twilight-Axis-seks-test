@@ -1,6 +1,7 @@
 /datum/sex_action/milk_breasts
 	name = "Подоить грудь в контейнер"
 	check_same_tile = FALSE
+	category = SEX_CATEGORY_HANDS
 
 /datum/sex_action/milk_breasts/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)
