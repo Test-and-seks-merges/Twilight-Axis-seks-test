@@ -341,7 +341,7 @@
 
 	var/ckey = lowertext(M.ckey)
 	var/admin = lowertext(usr.key)
-	var/canonical_ckey = replacetext(replacetext(replacetext(lowertext(ckey), " ", ""), "_", ""), ".", "")
+	var/canonical_ckey = replacetext(replacetext(replacetext(replacetext(lowertext(ckey), " ", ""), "_", ""), ".", ""), "-", "")
 	var/folder_prefix = copytext(canonical_ckey, 1, 2)
 	var/full_path = "data/player_saves/[folder_prefix]/[canonical_ckey]/preferences.sav"
 
