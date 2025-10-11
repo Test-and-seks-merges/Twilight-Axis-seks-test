@@ -1,6 +1,7 @@
 /datum/sex_action/masturbate_other_anus
 	name = "Трахнуть зад пальцем"
 	check_same_tile = FALSE
+	target_sex_part = SEX_PART_ANUS
 
 /datum/sex_action/masturbate_other_anus/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
 	if(user == target)
