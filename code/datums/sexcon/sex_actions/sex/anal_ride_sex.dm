@@ -36,6 +36,7 @@
 	target.sexcon.perform_sex_action(target, 2, 0, TRUE)
 	if(target.sexcon.check_active_ejaculation())
 		target.visible_message(span_lovebold("[target.name] кончает прямо в попку [user]!"))
+		target.sexcon.cum_into(splashed_user = user)
 		target.virginity = FALSE
 
 	if(target.sexcon.considered_limp())

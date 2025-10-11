@@ -138,13 +138,19 @@
 	set_target(new_target)
 	show_ui()
 
-/datum/sex_controller/proc/cum_onto()
+/datum/sex_controller/proc/cum_onto(var/mob/living/carbon/human/splashed_user = null)
 	log_combat(user, target, "Кончает на партнера")
 	playsound(target, 'sound/misc/mat/endout.ogg', 50, TRUE, ignore_walls = FALSE)
 	add_cum_floor(get_turf(target))
+	if(splashed_user)
+		var/datum/status_effect/facial/facial = splashed_user.has_status_effect(/datum/status_effect/facial)
+		if(!facial)
+			splashed_user.apply_status_effect(/datum/status_effect/facial)
+		else
+			facial.refresh_cum()
 	after_ejaculation()
 
-/datum/sex_controller/proc/cum_into(oral = FALSE)
+/datum/sex_controller/proc/cum_into(oral = FALSE, var/mob/living/carbon/human/splashed_user = null)
 	log_combat(user, target, "Кончает в партнера")
 	if(oral)
 		playsound(target, pick(list('sound/misc/mat/mouthend (1).ogg','sound/misc/mat/mouthend (2).ogg')), 100, FALSE, ignore_walls = FALSE)
@@ -152,9 +158,52 @@
 		playsound(target, 'sound/misc/mat/endin.ogg', 50, TRUE, ignore_walls = FALSE)
 	if(user != target)
 		knot_try()
-	target.reagents.add_reagent(/datum/reagent/erpjuice/cum, 3)
+	if(splashed_user && !splashed_user.sexcon.knotted_status)
+		var/status_type = !oral ? /datum/status_effect/facial/internal : /datum/status_effect/facial
+		var/datum/status_effect/facial/splashed_type = splashed_user.has_status_effect(status_type)
+		if(!splashed_type)
+			splashed_user.apply_status_effect(status_type)
+		else
+			splashed_type.refresh_cum()
 	after_ejaculation()
-	after_intimate_climax()
+	target.reagents.add_reagent(/datum/reagent/erpjuice/cum, 3)
+	if(!oral)
+		after_intimate_climax()
+
+/datum/status_effect/facial
+	id = "facial"
+	alert_type = null // don't show an alert on screen
+	tick_interval = 12 MINUTES // use this time as our dry count down
+	var/has_dried_up = FALSE // used as our dry status
+
+/datum/status_effect/facial/internal
+	id = "creampie"
+	alert_type = null // don't show an alert on screen
+	tick_interval = 7 MINUTES // use this time as our dry count down
+
+/datum/status_effect/facial/on_apply()
+	RegisterSignal(owner, list(COMSIG_COMPONENT_CLEAN_ACT, COMSIG_COMPONENT_CLEAN_FACE_ACT),PROC_REF(clean_up))
+	has_dried_up = FALSE
+	return ..()
+
+/datum/status_effect/facial/on_remove()
+	UnregisterSignal(owner, list(COMSIG_COMPONENT_CLEAN_ACT, COMSIG_COMPONENT_CLEAN_FACE_ACT))
+	return ..()
+
+/datum/status_effect/facial/tick()
+	has_dried_up = TRUE
+
+/datum/status_effect/facial/proc/refresh_cum()
+	has_dried_up = FALSE
+	tick_interval = world.time + initial(tick_interval)
+
+///Callback to remove pearl necklace
+/datum/status_effect/facial/proc/clean_up(datum/source, strength)
+	if(strength >= CLEAN_WEAK && !QDELETED(owner))
+		if(!owner.has_stress_event(/datum/stressevent/bathcleaned))
+			to_chat(owner, span_notice("I feel much cleaner now!"))
+			owner.add_stress(/datum/stressevent/bathcleaned)
+		owner.remove_status_effect(src)
 
 /datum/sex_controller/proc/ejaculate()
 	log_combat(user, user, "Кончает!")
