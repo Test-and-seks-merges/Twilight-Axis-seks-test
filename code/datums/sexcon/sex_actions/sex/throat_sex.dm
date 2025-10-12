@@ -56,7 +56,7 @@
 	return FALSE
 
 /datum/sex_action/throat_sex/knot
-	name = "Трахнуть глотку(кнот)"
+	name = "Трахнуть глотку (узел)"
 	knot_on_finish = TRUE
 
 /datum/sex_action/throat_sex/knot/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
@@ -76,7 +76,7 @@
 
 	user.sexcon.perform_sex_action(user, 2, 0, TRUE)
 	if(user.sexcon.check_active_ejaculation())
-		user.visible_message(span_love("[user] cums into [target]'s throat!"))
+		user.visible_message(span_lovebold("[user.name] кончает в глотку [target]!"))
 		user.sexcon.cum_into(oral = TRUE, splashed_user = target)
 		user.virginity = FALSE
 

@@ -55,7 +55,7 @@
 	return FALSE
 
 /datum/sex_action/anal_sex/knot
-	name = "Анал(кнот)"
+	name = "Анал (узел)"
 	knot_on_finish = TRUE
 
 /datum/sex_action/anal_sex/knot/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
@@ -69,7 +69,7 @@
 	return ..()
 
 /datum/sex_action/anal_sex/knot/on_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] долбит по самый кнот задницу [target]."))
+	user.visible_message(user.sexcon.spanify_force("[user] [user.sexcon.get_generic_force_adjective()] долбит по самый узел задницу [target]."))
 	playsound(target, 'sound/misc/mat/segso.ogg', 50, TRUE, -2, ignore_walls = FALSE)
 	do_thrust_animate(user, target)
 

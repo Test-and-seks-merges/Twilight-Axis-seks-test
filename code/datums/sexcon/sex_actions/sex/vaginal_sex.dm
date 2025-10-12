@@ -61,7 +61,7 @@
 	return FALSE
 
 /datum/sex_action/vaginal_sex/knot
-	name = "Трахнуть(кнот)"
+	name = "Трахнуть (узел)"
 	knot_on_finish = TRUE
 
 /datum/sex_action/vaginal_sex/knot/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
@@ -81,7 +81,7 @@
 
 	user.sexcon.perform_sex_action(user, 2, 0, TRUE)
 	if(user.sexcon.check_active_ejaculation())
-		user.visible_message(span_love("[user] cums into [target]'s cunt!"))
+		user.visible_message(span_lovebold("[user.name] кончает внутрь лона [target]!"))
 		user.sexcon.cum_into(splashed_user = target)
 		user.try_impregnate(target)
 		user.virginity = FALSE
