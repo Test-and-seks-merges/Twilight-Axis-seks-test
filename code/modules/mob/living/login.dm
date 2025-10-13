@@ -1,8 +1,6 @@
 /mob/living/Login()
 	login_fade()
 	..()
-	if(client)
-		client.update_ooc_verb_visibility()
 	//Mind updates
 	sync_mind()
 	mind.show_memory(src, 0)

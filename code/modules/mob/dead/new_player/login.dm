@@ -9,9 +9,6 @@
 
 	..()
 
-	if(client)
-		client.update_ooc_verb_visibility()
-
 	sight |= SEE_TURFS
 
 	addtimer(CALLBACK(src, PROC_REF(do_after_login)), 4 SECONDS)
