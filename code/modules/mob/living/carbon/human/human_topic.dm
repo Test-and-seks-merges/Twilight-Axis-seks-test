@@ -32,14 +32,10 @@ GLOBAL_VAR_INIT(year_integer, text2num(year)) // = 2013???
 		if(legacy_check)	//If this is how a Legacy char was established, we save it.
 			client.prefs?.save_character()
 		if(is_legacy)
-			dat += "<center><i><font color = '#b9b9b9'; font size = 1>This is a LEGACY profile from the naive daes of Psydon!</font></i></center>"
-		var/agevetted = client.check_agevet()
-		if(agevetted)
-			dat += "<center><i><font color = '#74cde0'; font size = 1>This profile belongs to an AGE-VERIFIED traveler of Azuria!</font></i></center>"
+			dat += "<center><i><font color = '#b9b9b9'; font size = 1>This is a LEGACY Profile from naive days of Psydon.</font></i></center>"
 		if(valid_headshot_link(null, headshot_link, TRUE))
 			dat += ("<div align='center'><img src='[headshot_link]' width='325px' height='325px'></div>")
 		if(flavortext)
-			dat += "<br>"
 			dat += "<div align='left'>[flavortext_display]</div>"
 		if(ooc_notes)
 			dat += "<br>"
@@ -47,7 +43,13 @@ GLOBAL_VAR_INIT(year_integer, text2num(year)) // = 2013???
 			dat += "<div align='left'>[ooc_notes_display]</div>"
 		if(ooc_extra)
 			dat += "<div align='center'>[ooc_extra]</div>"
-		var/datum/browser/popup = new(user, "[src]", nwidth = 600, nheight = 800)
+		if(nsfw_headshot_link)
+			dat += "<br><div align='center'><b>NSFW</b></div>"
+		if(nsfw_headshot_link && !wear_armor && !wear_shirt)
+			dat += ("<br><div align='center'><img src='[nsfw_headshot_link]' width='600px'></div>")
+		else if(nsfw_headshot_link && (wear_armor || wear_shirt))
+			dat += "<br><center><i><font color = '#9d0080'; font size = 5>There is more to see but they are not naked...</font></i></center>"
+		var/datum/browser/popup = new(user, "[src]", nwidth = 700, nheight = 800)
 		popup.set_content(dat.Join())
 		popup.open(FALSE)
 		return
