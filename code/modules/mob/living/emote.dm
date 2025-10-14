@@ -560,7 +560,7 @@
 			record_round_statistic(STATS_HUGS_MADE)
 			SEND_SIGNAL(user, COMSIG_MOB_HUGGED, target)
 
-/datum/emote/living/holdbreath
+/* /datum/emote/living/holdbreath
 	key = "hold"
 	key_third_person = "holds"
 	message = "begins to hold their breath."
@@ -589,7 +589,7 @@
 /datum/emote/living/holdbreath/select_message_type(mob/user, intentional)
 	. = ..()
 	if(HAS_TRAIT(user, TRAIT_HOLDBREATH))
-		. = "stops holding their breath."
+		. = "stops holding their breath." */
 
 /datum/emote/living/slap
 	key = "slap"
