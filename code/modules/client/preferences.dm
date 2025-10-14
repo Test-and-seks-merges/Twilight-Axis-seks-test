@@ -7,7 +7,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	//doohickeys for savefiles
 	var/path
 	var/default_slot = 1				//Holder so it doesn't default to slot 1, rather the last one used
-	var/max_save_slots = 60
+	var/max_save_slots = 20
 
 	//non-preference stuff
 	var/muted = 0
@@ -168,17 +168,19 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	var/update_mutant_colors = TRUE
 
 	var/headshot_link
-	var/chatheadshot = FALSE
+	var/chatheadshot = TRUE
+	var/nsfw_headshot_link //Twilight Axis edit далее TA
 	var/ooc_extra_link
 	var/ooc_extra
 	var/list/descriptor_entries = list()
 	var/list/custom_descriptors = list()
+	var/defiant = TRUE
 
 	var/char_accent = "No accent"
 
-	var/datum/loadout_item/loadout
-	var/datum/loadout_item/loadout2
-	var/datum/loadout_item/loadout3
+	var/list/selected_loadout_items = list()
+	//var/datum/loadout_item/loadout2
+	//var/datum/loadout_item/loadout3
 
 	var/flavortext
 	var/flavortext_display
@@ -214,9 +216,9 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	if(istype(C))
 		if(!IsGuestKey(C.key))
 			load_path(C.ckey)
-			unlock_content = C.IsByondMember()
+			unlock_content = check_patreon_lvl(C.ckey)
 			if(unlock_content)
-				max_save_slots = 100
+				max_save_slots *= 2
 	var/loaded_preferences_successfully = load_preferences()
 	if(loaded_preferences_successfully)
 		if(load_character())
@@ -252,6 +254,8 @@ GLOBAL_LIST_EMPTY(chosen_names)
 	random_character(gender, FALSE, FALSE)
 	accessory = "Nothing"
 
+	nsfw_headshot_link = null //TA edit
+
 	customizer_entries = list()
 	validate_customizer_entries()
 	reset_all_customizer_accessory_colors()
@@ -269,6 +273,8 @@ GLOBAL_LIST_EMPTY(chosen_names)
 		load_character(default_slot) // Reloads the character slot. Prevents random features from overwriting the slot if saved.
 		slot_randomized = FALSE
 	var/list/dat = list("<center>")
+	handle_loadout_size(user)
+	clean_loadout(user)
 	if(tabchoice)
 		current_tab = tabchoice
 	if(tabchoice == 4)
@@ -329,9 +335,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 				dat += "<a style='white-space:nowrap;' href='?_src_=prefs;preference=triumph_buy_menu'>Triumph Buy</a>"
 			dat += "</td>"
 
-			var/agevetted = user.check_agevet()
 			dat += "<td style='width:33%;text-align:right'>"
-			dat += "<a href='?_src_=prefs;preference=agevet'><b>VERIFIED:</b></a> [agevetted ? "<font color='#74cde0'>YAE!</font>" : "<font color='#897472'>NAE?</font>"]"
 			dat += "</td>"
 
 			dat += "</table>"
@@ -511,6 +515,9 @@ GLOBAL_LIST_EMPTY(chosen_names)
 			dat += "<br><b>Headshot:</b> <a href='?_src_=prefs;preference=headshot;task=input'>Change</a>"
 			if(headshot_link != null)
 				dat += "<br><img src='[headshot_link]' width='100px' height='100px'>"
+			dat += "<br><b>NSFW Headshot:</b> <a href='?_src_=prefs;preference=nsfw_headshot;task=input'>Change</a>" //TA edit
+			if(nsfw_headshot_link != null)
+				dat += "<br><img src='[nsfw_headshot_link]' width='125px' height='175px'>" //TA edit end
 			if(is_legacy)
 				dat += "<br><i><font size = 1>(Legacy)<a href='?_src_=prefs;preference=legacyhelp;task=input'>(?)</a></font></i>"
 
@@ -521,11 +528,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 			dat += "<br><b>OOC Extra:</b> <a href='?_src_=prefs;preference=ooc_extra;task=input'>Change</a>"
 			dat += "<br><a href='?_src_=prefs;preference=ooc_preview;task=input'><b>Preview Examine</b></a>"
 
-			dat += "<br><b>Loadout Item I:</b> <a href='?_src_=prefs;preference=loadout_item;task=input'>[loadout ? loadout.name : "None"]</a>"
-
-			dat += "<br><b>Loadout Item II:</b> <a href='?_src_=prefs;preference=loadout_item2;task=input'>[loadout2 ? loadout2.name : "None"]</a>"
-
-			dat += "<br><b>Loadout Item III:</b> <a href='?_src_=prefs;preference=loadout_item3;task=input'>[loadout3 ? loadout3.name : "None"]</a>"
+			dat += "<br><b>Loadout Items:</b> <a href='?_src_=prefs;preference=loadout_item;task=input'>Change</a>"
 
 			dat += "</td>"
 
@@ -687,7 +690,7 @@ GLOBAL_LIST_EMPTY(chosen_names)
 				dat += "<br>"
 				dat += "<b>Combo HUD Lighting:</b> <a href = '?_src_=prefs;preference=combohud_lighting'>[(toggles & COMBOHUD_LIGHTING)?"Full-bright":"No Change"]</a><br>"
 				dat += "<br>"
-				dat += "<b>Hide Dead Chat:</b> <a href = '?_src_=prefs;preference=toggle_dead_chat'>[(chat_toggles & CHAT_DSAY)?"Shown":"Hidden"]</a><br>"
+				dat += "<b>Hide Dead Chat:</b> <a href = '?_src_=prefs;preference=toggle_dead_chat'>[(chat_toggles & CHAT_DEAD)?"Shown":"Hidden"]</a><br>"
 				dat += "<b>Hide Radio Messages:</b> <a href = '?_src_=prefs;preference=toggle_radio_chatter'>[(chat_toggles & CHAT_RADIO)?"Shown":"Hidden"]</a><br>"
 				dat += "<b>Hide Prayers:</b> <a href = '?_src_=prefs;preference=toggle_prayers'>[(chat_toggles & CHAT_PRAYER)?"Shown":"Hidden"]</a><br>"
 				if(CONFIG_GET(flag/allow_admin_asaycolor))
@@ -784,12 +787,13 @@ GLOBAL_LIST_EMPTY(chosen_names)
 				dat += "<a class='linkOff' href='byond://?src=[REF(N)];late_join=1'>JOINLATE</a>"
 			dat += " - <a href='?_src_=prefs;preference=migrants'>MIGRATION</a>"
 			dat += "<br><a href='?_src_=prefs;preference=manifest'>ACTORS</a>"
-			dat += " - <a href='?_src_=prefs;preference=observe'>VOYEUR</a>"
+			//dat += " - <a href='?_src_=prefs;preference=observe'>VOYEUR</a>"
 	else
 		dat += "<a href='?_src_=prefs;preference=finished'>DONE</a>"
 
 	dat += "</td>"
 	dat += "<td width='33%' align='right'>"
+	dat += "<b>Be defiant:</b> <a href='?_src_=prefs;preference=be_defiant'>[(defiant) ? "Yes":"No"]</a><br>"
 	dat += "<b>Be voice:</b> <a href='?_src_=prefs;preference=schizo_voice'>[(toggles & SCHIZO_VOICE) ? "Enabled":"Disabled"]</a>"
 	dat += "</td>"
 	dat += "</tr>"
@@ -1244,6 +1248,12 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 			C.clear_character_previews()
 
 /datum/preferences/proc/process_link(mob/user, list/href_list)
+	if(href_list["boosty"])
+		var/url = CONFIG_GET(string/boostyurl)
+		if (url)
+			user << link(url)
+		return
+
 	if(href_list["bancheck"])
 		var/list/ban_details = is_banned_from_with_details(user.ckey, user.client.address, user.client.computer_id, href_list["bancheck"])
 		var/admin = FALSE
@@ -1326,12 +1336,6 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 
 	else if(href_list["preference"] == "playerquality")
 		check_pq_menu(user.ckey)
-
-	else if(href_list["preference"] == "agevet")
-		if(!user.check_agevet())
-			to_chat(usr, span_info("- You are a whitelisted player with full access to the server's features. If you'd also like to show others that you've been <b>AGE-VERIFIED</b> with a censored ID, you can open a ticket in Azure Peak's <b>#vet-here</b> channel. Note that this is a purely optional process, and - besides awarding a special header for your flavortext - doesn't affect you in any other way."))
-		else
-			to_chat(usr, span_love("- You have been successfully <b>AGE-VERIFIED!</b>"))
 
 	else if(href_list["preference"] == "culinary")
 		show_culinary_ui(user)
@@ -1425,6 +1429,19 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 			else
 				SetKeybinds(user)
 		return TRUE
+
+	else if(href_list["preference"] == "loadout_items")
+		var/item_name = href_list["item"]
+		switch(href_list["task"])
+			if("add")
+				if(selected_loadout_items.len >= get_loadout_size(user))
+					to_chat(user, "Лимит исчерпан!")
+					return
+				add_loadout_item(item_name)
+			if("remove")
+				remove_loadout_item(item_name)
+		show_loadout_window(user)
+		return
 
 	switch(href_list["task"])
 		if("change_customizer")
@@ -1640,9 +1657,9 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 					var/faith_input = tgui_input_list(user, "The world rots. Which truth you bear?", "FAITH", faiths_named) 
 					if(faith_input)
 						var/datum/faith/faith = faiths_named[faith_input]
-						to_chat(user, "<font color='yellow'>Faith: [faith.name]</font>")
-						to_chat(user, "Background: [faith.desc]")
-						to_chat(user, "<font color='red'>Likely Worshippers: [faith.worshippers]</font>")
+						to_chat(user, "<font color='yellow'>Вера: [faith.translated_name]</font>") //	TA EDIT
+						to_chat(user, "Описание: [faith.desc]") //										TA EDIT
+						to_chat(user, "<font color='red'>Последователи: [faith.worshippers]</font>") //	TA EDIT
 						selected_patron = GLOB.patronlist[faith.godhead] || GLOB.patronlist[pick(GLOB.patrons_by_faith[faith_input])]
 
 				if("patron")
@@ -1655,10 +1672,10 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 					var/god_input = tgui_input_list(user, "The first amongst many.", "PATRON", patrons_named)
 					if(god_input)
 						selected_patron = patrons_named[god_input]
-						to_chat(user, "<font color='yellow'>Patron: [selected_patron]</font>")
-						to_chat(user, "<font color='#FFA500'>Domain: [selected_patron.domain]</font>")
-						to_chat(user, "Background: [selected_patron.desc]")
-						to_chat(user, "<font color='red'>Likely Worshippers: [selected_patron.worshippers]</font>")
+						to_chat(user, "<font color='yellow'>Покровитель: [selected_patron.translated_name]</font>") //	TA EDIT
+						to_chat(user, "<font color='#FFA500'>Домены: [selected_patron.domain]</font>") //				TA EDIT
+						to_chat(user, "Описание: [selected_patron.desc]") //											TA EDIT
+						to_chat(user, "<font color='red'>Последователи: [selected_patron.worshippers]</font>") //		TA EDIT
 
 				if("combat_music") // if u change shit here look at /client/verb/combat_music() too
 					if(!combat_music_helptext_shown)
@@ -1816,6 +1833,22 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 					is_legacy = FALSE
 					to_chat(user, "<span class='notice'>Successfully updated OOC notes.</span>")
 					log_game("[user] has set their OOC notes'.")
+				if("nsfw_headshot")//TA edit
+					to_chat(user, "<span class='notice'>Finally a place to show it all.</span>")
+					var/new_nsfw_headshot_link = input(user, "Input the nsfw headshot link (https, hosts: gyazo, lensdump, imgbox, catbox):", "NSFW Headshot", nsfw_headshot_link) as text|null
+					if(new_nsfw_headshot_link == null)
+						return
+					if(new_nsfw_headshot_link == "")
+						nsfw_headshot_link = null
+						ShowChoices(user)
+						return
+					if(!valid_nsfw_headshot_link(user, new_nsfw_headshot_link))
+						nsfw_headshot_link = null
+						ShowChoices(user)
+						return
+					nsfw_headshot_link = new_nsfw_headshot_link
+					to_chat(user, "<span class='notice'>Successfully updated NSFW Headshot picture</span>")
+					log_game("[user] has set their NSFW Headshot image to '[nsfw_headshot_link]'.") //TA edit end
 				if("ooc_preview")	//Unashamedly copy pasted from human_topic.dm L:7. Sorry!
 					var/list/dat = list()
 					dat += "<div align='center'><font size = 5; font color = '#dddddd'><b>[real_name]</b></font></div>"
@@ -1837,7 +1870,6 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 					if(valid_headshot_link(null, headshot_link, TRUE))
 						dat += ("<div align='center'><img src='[headshot_link]' width='325px' height='325px'></div>")
 					if(flavortext && flavortext_display)
-						dat += "<br>"
 						dat += "<div align='left'>[flavortext_display]</div>"
 					if(ooc_notes && ooc_notes_display)
 						dat += "<br>"
@@ -1845,7 +1877,10 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 						dat += "<div align='left'>[ooc_notes_display]</div>"
 					if(ooc_extra)
 						dat += "<div align='center'>[ooc_extra]</div>"
-					var/datum/browser/popup = new(user, "[real_name]", nwidth = 600, nheight = 800)
+					if(nsfw_headshot_link)//TA edit
+						dat += "<br><div align='center'><b>NSFW</b></div>"
+						dat += ("<br><div align='center'><img src='[nsfw_headshot_link]' width='600px'></div>")//TA edit end
+					var/datum/browser/popup = new(user, "[real_name]", nwidth = 700, nheight = 800)
 					popup.set_content(dat.Join())
 					popup.open(FALSE)
 				if("ooc_extra")
@@ -1907,68 +1942,10 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 					familiar_prefs.fam_show_ui()
 
 				if("loadout_item")
-					var/list/loadouts_available = list("None")
-					for (var/path as anything in GLOB.loadout_items)
-						var/datum/loadout_item/loadout = GLOB.loadout_items[path]
-						var/donoritem = loadout.donoritem
-						if(donoritem && !loadout.donator_ckey_check(user.ckey))
-							continue
-						if (!loadout.name)
-							continue
-						loadouts_available[loadout.name] = loadout
+					handle_loadout_size(user)
+					clean_loadout(user)
+					show_loadout_window(user)
 
-					var/loadout_input = tgui_input_list(user, "Choose your character's loadout item. RMB a tree, statue or clock to collect. I cannot stress this enough. YOU DON'T SPAWN WITH THESE. YOU HAVE TO MANUALLY PICK THEM UP!!", "LOADOUT THAT YOU GET FROM A TREE OR STATUE OR CLOCK", loadouts_available) 
-					if(loadout_input)
-						if(loadout_input == "None")
-							loadout = null
-							to_chat(user, "Who needs stuff anyway?")
-						else
-							loadout = loadouts_available[loadout_input]
-							to_chat(user, "<font color='yellow'><b>[loadout.name]</b></font>")
-							if(loadout.desc)
-								to_chat(user, "[loadout.desc]")
-				if("loadout_item2")
-					var/list/loadouts_available = list("None")
-					for (var/path as anything in GLOB.loadout_items)
-						var/datum/loadout_item/loadout2 = GLOB.loadout_items[path]
-						var/donoritem = loadout2.donoritem
-						if(donoritem && !loadout2.donator_ckey_check(user.ckey))
-							continue
-						if (!loadout2.name)
-							continue
-						loadouts_available[loadout2.name] = loadout2
-
-					var/loadout_input2 = tgui_input_list(user, "Choose your character's loadout item. RMB a tree, statue or clock to collect. I cannot stress this enough. YOU DON'T SPAWN WITH THESE. YOU HAVE TO MANUALLY PICK THEM UP!!", "LOADOUT THAT YOU GET FROM A TREE OR STATUE OR CLOCK", loadouts_available) 
-					if(loadout_input2)
-						if(loadout_input2 == "None")
-							loadout2 = null
-							to_chat(user, "Who needs stuff anyway?")
-						else
-							loadout2 = loadouts_available[loadout_input2]
-							to_chat(user, "<font color='yellow'><b>[loadout2.name]</b></font>")
-							if(loadout2.desc)
-								to_chat(user, "[loadout2.desc]")
-				if("loadout_item3")
-					var/list/loadouts_available = list("None")
-					for (var/path as anything in GLOB.loadout_items)
-						var/datum/loadout_item/loadout3 = GLOB.loadout_items[path]
-						var/donoritem = loadout3.donoritem
-						if(donoritem && !loadout3.donator_ckey_check(user.ckey))
-							continue
-						if (!loadout3.name)
-							continue
-						loadouts_available[loadout3.name] = loadout3
-
-					var/loadout_input3 = tgui_input_list(user, "Choose your character's loadout item. RMB a tree, statue or clock to collect. I cannot stress this enough. YOU DON'T SPAWN WITH THESE. YOU HAVE TO MANUALLY PICK THEM UP!!", "LOADOUT THAT YOU GET FROM A TREE OR STATUE OR CLOCK", loadouts_available) 
-					if(loadout_input3)
-						if(loadout_input3 == "None")
-							loadout3 = null
-							to_chat(user, "Who needs stuff anyway?")
-						else
-							loadout3 = loadouts_available[loadout_input3]
-							to_chat(user, "<font color='yellow'><b>[loadout3.name]</b></font>")
-							if(loadout3.desc)
-								to_chat(user, "[loadout3.desc]")
 				if("species")
 					var/list/species = list()
 					for(var/A in GLOB.roundstart_races)
@@ -2317,6 +2294,8 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 					user.client.toggleannouncelogin()
 				if("combohud_lighting")
 					toggles ^= COMBOHUD_LIGHTING
+				if("toggle_dead_chat")
+					user.client.deadchat()
 				if("toggle_radio_chatter")
 					user.client.toggle_hear_radio()
 				if("toggle_prayers")
@@ -2406,6 +2385,13 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 					widescreenpref = !widescreenpref
 					user.client.change_view(CONFIG_GET(string/default_view))
 
+				if("be_defiant")
+					defiant = !defiant
+					if(defiant)
+						to_chat(user, span_notice("You will now have resistance from people violating you. Ahelp if you are targeted in spite of this."))
+					else
+						to_chat(user, span_boldwarning("You fully immerse yourself in the grim experience, waiving your resistance from people violating you."))
+		
 				if("schizo_voice")
 					toggles ^= SCHIZO_VOICE
 					if(toggles & SCHIZO_VOICE)
@@ -2560,6 +2546,7 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 	character.detail = detail
 	character.set_patron(selected_patron)
 	character.backpack = backpack
+	character.defiant = defiant
 
 	character.jumpsuit_style = jumpsuit_style
 
@@ -2570,6 +2557,8 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 	character.dna.real_name = character.real_name
 
 	character.headshot_link = headshot_link
+
+	character.nsfw_headshot_link = nsfw_headshot_link //TA edit
 
 	character.statpack = statpack
 
@@ -2704,6 +2693,39 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 			to_chat(usr, "<span class='warning'>The link must be hosted on one of the following sites: 'Gyazo, Lensdump, Imgbox, Catbox'</span>")
 		return FALSE
 	return TRUE
+
+/proc/valid_nsfw_headshot_link(mob/user, value, silent = FALSE) //TA edit
+	var/static/link_regex = regex("i.gyazo.com|a.l3n.co|b.l3n.co|c.l3n.co|images2.imgbox.com|thumbs2.imgbox.com|files.catbox.moe") //gyazo, discord, lensdump, imgbox, catbox
+	var/static/list/valid_extensions = list("jpg", "png", "jpeg") // Regex works fine, if you know how it works
+
+	if(!length(value))
+		return FALSE
+
+	var/find_index = findtext(value, "https://")
+	if(find_index != 1)
+		if(!silent)
+			to_chat(user, "<span class='warning'>Your link must be https!</span>")
+		return FALSE
+
+	if(!findtext(value, "."))
+		if(!silent)
+			to_chat(user, "<span class='warning'>Invalid link!</span>")
+		return FALSE
+	var/list/value_split = splittext(value, ".")
+
+	// extension will always be the last entry
+	var/extension = value_split[length(value_split)]
+	if(!(extension in valid_extensions))
+		if(!silent)
+			to_chat(usr, "<span class='warning'>The image must be one of the following extensions: '[english_list(valid_extensions)]'</span>")
+		return FALSE
+
+	find_index = findtext(value, link_regex)
+	if(find_index != 9)
+		if(!silent)
+			to_chat(usr, "<span class='warning'>The image must be hosted on one of the following sites: 'Gyazo, Lensdump, Imgbox, Catbox'</span>")
+		return FALSE
+	return TRUE //TA edit end
 
 /datum/preferences/proc/is_active_migrant()
 	if(!migrant)
