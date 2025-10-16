@@ -172,10 +172,6 @@ GLOBAL_LIST_EMPTY(loadout_items_by_name)
 	name = "Rapscallion Shawl"
 	path = /obj/item/clothing/cloak/thief_cloak
 
-/datum/loadout_item/poncho
-	name = "Poncho"
-	path = /obj/item/clothing/cloak/poncho
-
 //SHOES
 /datum/loadout_item/darkboots
 	name = "Dark Boots"
@@ -748,6 +744,11 @@ GLOBAL_LIST_EMPTY(loadout_items_by_name)
 /datum/loadout_item/donat/tabard/crusader/psydon
 	name = "Табард Псайдона"
 	path = /obj/item/clothing/cloak/psydontabard
+	donatitem = TRUE
+
+/datum/loadout_item/poncho
+	name = "Пончо"
+	path = /obj/item/clothing/cloak/poncho
 	donatitem = TRUE
 
 /datum/loadout_item/donat/elvencloak
