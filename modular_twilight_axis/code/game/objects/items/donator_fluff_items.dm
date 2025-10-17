@@ -1,5 +1,5 @@
 /obj/item/clothing/shoes/roguetown/boots/leather/reinforced/aristocratic
-	name = "Aristocratic boots"
+	name = "aristocratic boots"
 	desc = "A pair of sturdy riding boots with an iron heel and brass spurs."
 	icon_state = "kumieboots"
 	item_state = "kumieboots"
@@ -7,7 +7,7 @@
 	mob_overlay_icon = 'modular_twilight_axis/icons/clothing/onmob/donor_clothes.dmi'
 
 /obj/item/clothing/gloves/roguetown/fingerless_leather/aristocratic
-	name = "Aristocratic gloves"
+	name = "aristocratic gloves"
 	desc = ""
 	icon_state = "kumiegloves"
 	item_state = "kumiegloves"
@@ -15,7 +15,7 @@
 	mob_overlay_icon = 'modular_twilight_axis/icons/clothing/onmob/donor_clothes.dmi'
 
 /obj/item/clothing/suit/roguetown/armor/gambeson/aristocratic
-	name = "Aristocratic shirt"
+	name = "aristocratic shirt"
 	desc = ""
 	icon_state = "kumieshirt"
 	item_state = "kumieshirt"
@@ -24,7 +24,7 @@
 	sleeved = 'modular_twilight_axis/icons/clothing/onmob/donor_sleeves_armor.dmi'
 
 /obj/item/clothing/suit/roguetown/armor/leather/heavy/coat/aristocratic
-	name = "Aristocratic coat"
+	name = "aristocratic coat"
 	desc = ""
 	icon_state = "kumiecoat"
 	item_state = "kumiecoat"
