@@ -177,7 +177,7 @@ GLOBAL_LIST_EMPTY(loadout_items_by_name)
 	path = /obj/item/clothing/suit/roguetown/shirt/robe/tabardscarlet
 
 /datum/loadout_item/shroudscarlet
-	name = "Tabard's Shroud, Scarlet"
+	name = "Tabard Shroud, Scarlet"
 	path = /obj/item/clothing/head/roguetown/roguehood/shroudscarlet
 
 /datum/loadout_item/tabardblack
@@ -185,7 +185,7 @@ GLOBAL_LIST_EMPTY(loadout_items_by_name)
 	path = /obj/item/clothing/suit/roguetown/shirt/robe/tabardblack
 
 /datum/loadout_item/shroudblack
-	name = "Tabard's Shroud, Black"
+	name = "Tabard Shroud, Black"
 	path = /obj/item/clothing/head/roguetown/roguehood/shroudblack
 
 //SHOES
@@ -243,11 +243,11 @@ GLOBAL_LIST_EMPTY(loadout_items_by_name)
 	path = /obj/item/clothing/suit/roguetown/shirt/robe
 
 /datum/loadout_item/phys_robe
-	name = "Physicker's Robe"
+	name = "Physicker Robe"
 	path = /obj/item/clothing/suit/roguetown/shirt/robe/phys
 
 /datum/loadout_item/feld_robe
-	name = "Feldsher's Robe"
+	name = "Feldsher Robe"
 	path = /obj/item/clothing/suit/roguetown/shirt/robe/feld
 
 /datum/loadout_item/formalsilks
