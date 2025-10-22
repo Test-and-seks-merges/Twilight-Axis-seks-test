@@ -13,13 +13,14 @@
 		"MarkScript-Regular.ttf" = 'interface/fonts/languages/MarkScript-Regular.ttf', // Эльфийский
 		"Comforter Brush.otf" = 'interface/fonts/languages/Comforter Brush.otf', // инфернальный
 		"VizaviTYGRA.ttf" = 'interface/fonts/languages/VizaviTYGRA.ttf', // Орочий
-		"Kamelia.ttf" = 'interface/fonts/languages/Kamelia.ttf', // аасимарский
+		"Kamelia.ttf" = 'interface/fonts/languages/Kamelia.ttf', // Аасимарский
 		"FDMedian.ttf" = 'interface/fonts/languages/FDMedian.ttf', // андеад
 		"Kautiva Cyrillic Black.ttf" = 'interface/fonts/languages/Kautiva Cyrillic Black.ttf', // Ящерский
 		"ALOT Gutenberg B Normal.ttf" = 'interface/fonts/languages/ALOT Gutenberg B Normal.ttf', // Грензели
-		"kazengunese.ttf" = 'interface/fonts/languages/kazengunese.ttf',
+		"GaneshaType-Regular.ttf" = 'interface/fonts/languages/GaneshaType-Regular.ttf', // Казенгунский +-
 		"Deutsch Gothic.ttf" = 'interface/fonts/languages/Deutsch Gothic.ttf', // Отава
-		"etruscan.ttf" = 'interface/fonts/languages/etruscan.ttf',
-		"gronnic.ttf" = 'interface/fonts/languages/gronnic.ttf',
-		"aavnic.ttf" = 'interface/fonts/languages/aavnic.ttf',
+		"TolkienCyr.ttf" = 'interface/fonts/languages/TolkienCyr.ttf', // Етрусский +-
+		"Blackcraft.ttf" = 'interface/fonts/languages/Blackcraft.ttf', // Гронновский +-
+		"ConstaciaModern.ttf" = 'interface/fonts/languages/ConstaciaModern.ttf', // Аавианский +-
+		"sandspeak.ttf" = 'interface/fonts/languages/sandspeak.ttf', // Самаглос -
 	)
