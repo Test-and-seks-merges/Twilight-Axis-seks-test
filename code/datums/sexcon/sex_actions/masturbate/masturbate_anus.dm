@@ -5,7 +5,7 @@
 	category = SEX_CATEGORY_HANDS
 
 /datum/sex_action/masturbate_anus/shows_on_menu(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	if(user != target)
+	if(user != target || !user.sexcon.can_zodomize())
 		return FALSE
 	return TRUE
 
