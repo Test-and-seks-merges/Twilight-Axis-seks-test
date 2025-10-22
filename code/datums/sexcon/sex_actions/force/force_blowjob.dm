@@ -14,7 +14,6 @@
 				return FALSE
 		else
 			return FALSE
-
 	if(!user.getorganslot(ORGAN_SLOT_PENIS))
 		return FALSE
 	return TRUE
@@ -27,14 +26,14 @@
 				return FALSE
 		else
 			return FALSE
-	if(!check_location_accessible(user, user, BODY_ZONE_PRECISE_GROIN, TRUE))
+	if(!get_location_accessible(user, BODY_ZONE_PRECISE_GROIN, TRUE))
 		return FALSE
-	if(!check_location_accessible(user, target, BODY_ZONE_PRECISE_MOUTH))
+	if(!get_location_accessible(target, BODY_ZONE_PRECISE_MOUTH))
 		return FALSE
 	if(!user.getorganslot(ORGAN_SLOT_PENIS))
 		return FALSE
 	if(!user.sexcon.can_use_penis())
-		return FALSE
+		return
 	return TRUE
 
 /datum/sex_action/force_blowjob/on_start(mob/living/carbon/human/user, mob/living/carbon/human/target)

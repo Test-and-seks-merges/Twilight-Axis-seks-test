@@ -10,7 +10,7 @@
 	return TRUE
 
 /datum/sex_action/masturbate_other_anus/can_perform(mob/living/carbon/human/user, mob/living/carbon/human/target)
-	if(user == target || !target.sexcon.can_zodomize())
+	if(user == target)
 		return FALSE
 	if(!get_location_accessible(target, BODY_ZONE_PRECISE_GROIN, TRUE))
 		return FALSE
