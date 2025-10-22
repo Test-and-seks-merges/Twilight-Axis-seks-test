@@ -80,3 +80,19 @@ div {
 .tooltip:hover .tooltip-text {
 	visibility: visible;
 }
+
+.category-button {
+    text-decoration: none;
+    color: #7b5346;
+    white-space: nowrap;  /* Предотвращает перенос текста на новую строку */
+}
+.category-button:hover {
+    color: #a67c52;
+}
+
+/* Фиксированная ширина для ячеек категорий (если не хочешь inline-стили в DM-коде) */
+td:has(.category-button) {
+    width: 160px;  /* Увеличено с 120px для вмещения длинных названий вроде "головные уборы" */
+    text-align: center;
+    padding: 0 5px;
+}

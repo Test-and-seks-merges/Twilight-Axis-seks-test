@@ -1444,6 +1444,8 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 				add_loadout_item(item_name)
 			if("remove")
 				remove_loadout_item(item_name)
+			if("set_category")
+				current_loadout_category = href_list["category"]
 		show_loadout_window(user)
 		return
 
