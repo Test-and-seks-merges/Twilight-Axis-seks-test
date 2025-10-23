@@ -17,10 +17,10 @@
 		"FDMedian.ttf" = 'interface/fonts/languages/FDMedian.ttf', // андеад
 		"Kautiva Cyrillic Black.ttf" = 'interface/fonts/languages/Kautiva Cyrillic Black.ttf', // Ящерский
 		"ALOT Gutenberg B Normal.ttf" = 'interface/fonts/languages/ALOT Gutenberg B Normal.ttf', // Грензели
-		"GaneshaType-Regular.ttf" = 'interface/fonts/languages/GaneshaType-Regular.ttf', // Казенгунский +-
+		"Ganesha Type.ttf" = 'interface/fonts/languages/Ganesha Type.ttf', // Казенгунский +-
 		"Deutsch Gothic.ttf" = 'interface/fonts/languages/Deutsch Gothic.ttf', // Отава
 		"TolkienCyr.ttf" = 'interface/fonts/languages/TolkienCyr.ttf', // Етрусский +-
-		"Blackcraft.ttf" = 'interface/fonts/languages/Blackcraft.ttf', // Гронновский +-
+		"RUSNeverwinter.ttf" = 'interface/fonts/languages/RUSNeverwinter.ttf', // Гронновский +-
 		"ConstaciaModern.ttf" = 'interface/fonts/languages/ConstaciaModern.ttf', // Аавианский +-
-		"sandspeak.ttf" = 'interface/fonts/languages/sandspeak.ttf', // Самаглос -
+		"Arabic Cyr (kerning fixed).ttf" = 'interface/fonts/languages/Arabic Cyr (kerning fixed).ttf', // Самаглос -
 	)
