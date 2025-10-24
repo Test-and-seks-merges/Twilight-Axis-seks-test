@@ -457,6 +457,10 @@ GLOBAL_LIST_EMPTY(loadout_items_by_name)
 	category = "Штаны"
 	path = /obj/item/clothing/under/roguetown/trou/leather
 
+/datum/loadout_item/leathershorts
+	name = "Leather Shorts"
+	path = /obj/item/clothing/under/roguetown/heavy_leather_pants/shorts
+
 /datum/loadout_item/sailorpants
 	name = "Seafaring Pants"
 	category = "Штаны"
