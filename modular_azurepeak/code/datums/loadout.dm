@@ -774,11 +774,13 @@ GLOBAL_LIST_EMPTY(loadout_items_by_name)
 	name = "Donator Kit - Weeper Lathe - Required: Greatsword"
 	category = list("Разное", "Донат")
 	path = /obj/item/enchantingkit/waff
+	donatitem = TRUE
 
 /datum/loadout_item/donator_inverserun
-	name = "Donator Kit - Votive Thorns"
+	name = "Donator Kit - Votive Thorns - Required: Zweihander"
 	path = /obj/item/enchantingkit/inverserun
-	ckeywhitelist = list("inverserun")
+	category = list("Разное", "Донат")
+	donatitem = TRUE
 
 /datum/loadout_item/donator_zoe
 	name = "Donator Kit - Shroud of the Undermaiden - Required: Direbear Cloak"

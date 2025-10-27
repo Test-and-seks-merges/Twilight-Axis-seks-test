@@ -106,6 +106,7 @@
 //inverserun claymore
 /obj/item/enchantingkit/inverserun
 	name = "'Votive Thorns' morphing elixir"
+	desc = "A small container of special morphing dust, perfect to make a specifc item. Required: Zweihander"
 	target_items = list(/obj/item/rogueweapon/greatsword/zwei)
 	result_item = /obj/item/rogueweapon/greatsword/zwei/inverserun
 
