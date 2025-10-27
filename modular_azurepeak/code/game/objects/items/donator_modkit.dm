@@ -102,27 +102,9 @@
 	desc = "A small container of special morphing dust, perfect to make a specifc item. Required: Any Greatsword"
 	target_items = list(/obj/item/rogueweapon/greatsword)		// i, uh. i really do promise i'm only gonna use it on steel greatswords.
 	result_item = /obj/item/rogueweapon/greatsword/weeperslathe
- 
-/obj/item/enchantingkit/psydonianarmet
-	name = "'Psydonian armet morphing elixir"
-	desc = "A small container of special morphing dust, perfect to make a specifc item. Required: Armet"
-	target_items = list(/obj/item/clothing/head/roguetown/helmet/heavy/knight/armet)
-	result_item = /obj/item/clothing/head/roguetown/helmet/heavy/psydonhelm
 
-/obj/item/enchantingkit/psydonbarbute
-	name = "'Psydonian barbute morphing elixir"
-	desc = "A small container of special morphing dust, perfect to make a specifc item. Required: Barbute"
-	target_items = list(/obj/item/clothing/head/roguetown/helmet/heavy)
-	result_item = /obj/item/clothing/head/roguetown/helmet/heavy/psydonbarbute
-
-/obj/item/enchantingkit/psysallet
-	name = "'Psydonian sallet morphing elixir"
-	desc = "A small container of special morphing dust, perfect to make a specifc item. Required: Barbute"
-	target_items = list(/obj/item/clothing/head/roguetown/helmet/heavy)
-	result_item = /obj/item/clothing/head/roguetown/helmet/heavy/psysallet
-
-/obj/item/enchantingkit/psybucket
-	name = "'Psydonian bucket helmet morphing elixir"
-	desc = "A small container of special morphing dust, perfect to make a specifc item. Required: Bucket Helmet"
-	target_items = list(/obj/item/clothing/head/roguetown/helmet/heavy/bucket)
-	result_item = /obj/item/clothing/head/roguetown/helmet/heavy/psybucket
+//Zoe - Tytos Blackwood cloak
+/obj/item/enchantingkit/zoe
+	name = "'Shroud of the Undermaiden' morphing elixir"
+	target_items = list(/obj/item/clothing/cloak/darkcloak/bear)
+	result_item = /obj/item/clothing/cloak/raincloak/feather_cloak

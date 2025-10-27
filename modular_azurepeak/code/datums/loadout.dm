@@ -752,8 +752,8 @@ GLOBAL_LIST_EMPTY(loadout_items_by_name)
 	path = /obj/item/enchantingkit/bigfoot
 	donatitem = TRUE
 
-/datum/loadout_item/donator_bigfoot_exe
-	name = "Donator Kit - Gilded Great Axe - Required: Steel Great Axe"
+/datum/loadout_item/donator_bigfoot_axe
+	name = "Donator Kit - Gilded GreatAxe - Required: Steel GreatAxe"
 	category = list("Разное", "Донат")
 	path = /obj/item/enchantingkit/bigfoot_axe
 	donatitem = TRUE
@@ -774,6 +774,12 @@ GLOBAL_LIST_EMPTY(loadout_items_by_name)
 	name = "Donator Kit - Weeper Lathe - Required: Any Greatsword"
 	category = list("Разное", "Донат")
 	path = /obj/item/enchantingkit/waff
+  donatitem = TRUE
+  
+/datum/loadout_item/donator_zoe
+	name = "Donator Kit - Shroud of the Undermaiden"
+  category = list("Разное", "Донат")
+	path = /obj/item/enchantingkit/zoe
 	donatitem = TRUE
 
 /datum/loadout_item/donator_kumie
