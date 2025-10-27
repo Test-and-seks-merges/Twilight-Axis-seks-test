@@ -71,12 +71,14 @@
 //Bigfoot - Custom knight helm type
 /obj/item/enchantingkit/bigfoot
 	name = "'Gilded Knight Helm' morphing elixir"
+	desc = "A small container of special morphing dust, perfect to make a specifc item. Required: Knight Helmet"
 	target_items = list(/obj/item/clothing/head/roguetown/helmet/heavy/knight)
 	result_item = /obj/item/clothing/head/roguetown/helmet/heavy/knight/gilded
 
 //Bigfoot - Custom great axe type
 /obj/item/enchantingkit/bigfoot_axe
 	name = "'Gilded Great Axe' morphing elixir"
+	desc = "A small container of special morphing dust, perfect to make a specifc item. Required: Greataxe"
 	target_items = list(/obj/item/rogueweapon/greataxe/steel)
 	result_item = /obj/item/rogueweapon/greataxe/steel/gilded
 
