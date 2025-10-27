@@ -78,7 +78,7 @@
 //Bigfoot - Custom great axe type
 /obj/item/enchantingkit/bigfoot_axe
 	name = "'Gilded Great Axe' morphing elixir"
-	desc = "A small container of special morphing dust, perfect to make a specifc item. Required: Steel Great Axe"
+	desc = "A small container of special morphing dust, perfect to make a specifc item. Required: Steel Greataxe"
 	target_items = list(/obj/item/rogueweapon/greataxe/steel)
 	result_item = /obj/item/rogueweapon/greataxe/steel/gilded
 
@@ -99,12 +99,13 @@
 //pretzel - custom steel greatsword. PSYDON LYVES. PSYDON ENDVRES.
 /obj/item/enchantingkit/waff
 	name = "'Weeper's Lathe' morphing elixir"
-	desc = "A small container of special morphing dust, perfect to make a specifc item. Required: Any Greatsword"
+	desc = "A small container of special morphing dust, perfect to make a specifc item. Required: Greatsword"
 	target_items = list(/obj/item/rogueweapon/greatsword)		// i, uh. i really do promise i'm only gonna use it on steel greatswords.
 	result_item = /obj/item/rogueweapon/greatsword/weeperslathe
 
 //Zoe - Tytos Blackwood cloak
 /obj/item/enchantingkit/zoe
 	name = "'Shroud of the Undermaiden' morphing elixir"
+	desc = "A small container of special morphing dust, perfect to make a specifc item. Required: Direbear Cloak"
 	target_items = list(/obj/item/clothing/cloak/darkcloak/bear)
 	result_item = /obj/item/clothing/cloak/raincloak/feather_cloak

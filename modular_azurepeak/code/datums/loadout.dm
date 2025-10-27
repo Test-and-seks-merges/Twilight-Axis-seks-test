@@ -753,7 +753,7 @@ GLOBAL_LIST_EMPTY(loadout_items_by_name)
 	donatitem = TRUE
 
 /datum/loadout_item/donator_bigfoot_axe
-	name = "Donator Kit - Gilded GreatAxe - Required: Steel GreatAxe"
+	name = "Donator Kit - Gilded GreatAxe - Required: Steel Greataxe"
 	category = list("Разное", "Донат")
 	path = /obj/item/enchantingkit/bigfoot_axe
 	donatitem = TRUE
@@ -771,14 +771,14 @@ GLOBAL_LIST_EMPTY(loadout_items_by_name)
 	donatitem = TRUE
 
 /datum/loadout_item/donator_waff
-	name = "Donator Kit - Weeper Lathe - Required: Any Greatsword"
+	name = "Donator Kit - Weeper Lathe - Required: Greatsword"
 	category = list("Разное", "Донат")
 	path = /obj/item/enchantingkit/waff
-  donatitem = TRUE
+	donatitem = TRUE
   
 /datum/loadout_item/donator_zoe
-	name = "Donator Kit - Shroud of the Undermaiden"
-  category = list("Разное", "Донат")
+	name = "Donator Kit - Shroud of the Undermaiden - Required: Direbear Cloak"
+	category = list("Разное", "Донат")
 	path = /obj/item/enchantingkit/zoe
 	donatitem = TRUE
 
@@ -853,6 +853,18 @@ GLOBAL_LIST_EMPTY(loadout_items_by_name)
 	name = "Музыкальный инструмент: Сямисэн"
 	category = list("Аксессуары", "Донат")
 	path = /obj/item/rogue/instrument/shamisen
+	donatitem = TRUE
+
+/datum/loadout_item/donat/vocals
+	name = "Музыкальный инструмент: Талисман Вокалиста"
+	category = list("Аксессуары", "Донат")
+	path = /obj/item/rogue/instrument/vocals
+	donatitem = TRUE
+
+/datum/loadout_item/donat/viola
+	name = "Музыкальный инструмент: Виола"
+	category = list("Аксессуары", "Донат")
+	path = /obj/item/rogue/instrument/viola
 	donatitem = TRUE
 
 // Одежда для донатеров
