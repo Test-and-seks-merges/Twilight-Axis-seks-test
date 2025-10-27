@@ -749,11 +749,11 @@ GLOBAL_LIST_EMPTY(loadout_items_by_name)
 /datum/loadout_item/donator_bigfoot
 	name = "Donator Kit - Gilded Knight Helm - Required: Knight Helmet"
 	category = list("Разное", "Донат")
-	/obj/item/enchantingkit/bigfoot
+	path = /obj/item/enchantingkit/bigfoot
 	donatitem = TRUE
 
 /datum/loadout_item/donator_bigfoot_exe
-	name = "Donator Kit - Gilded Great Axe - Required: Great Axe"
+	name = "Donator Kit - Gilded Great Axe - Required: Steel Great Axe"
 	category = list("Разное", "Донат")
 	path = /obj/item/enchantingkit/bigfoot_axe
 	donatitem = TRUE
