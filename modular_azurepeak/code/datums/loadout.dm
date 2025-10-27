@@ -746,6 +746,10 @@ GLOBAL_LIST_EMPTY(loadout_items_by_name)
 	path = /obj/item/enchantingkit/rebel
 	donatitem = TRUE
 
+/datum/loadout_item/donator_bigfoot
+	name = "Donator Kit - Gilded Knight Helm"
+	ckeywhitelist = list("bigfoot02")
+
 /datum/loadout_item/donator_zydras
 	name = "Donator Kit - Padded silky dress - Required: Silky Dress(No Small Races)"
 	category = list("Разное", "Донат")
