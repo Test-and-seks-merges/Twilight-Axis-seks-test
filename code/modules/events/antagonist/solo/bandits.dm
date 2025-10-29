@@ -5,7 +5,7 @@
 		TAG_VILLIAN,
 		TAG_LOOT
 	)
-	roundstart = FALSE // Пока я не рефакторну код антагов или их не починит кто то другой.
+	roundstart = TRUE
 	antag_flag = ROLE_BANDIT
 	shared_occurence_type = SHARED_MINOR_THREAT
 
@@ -43,9 +43,8 @@
 		"Apothecary"
 	)
 
-
-	base_antags = 0 // Пока я не рефакторну код антагов или их не починит кто то другой.
-	maximum_antags = 0 // Пока я не рефакторну код антагов или их не починит кто то другой.
+	base_antags = 5
+	maximum_antags = 10
 
 	earliest_start = 0 SECONDS
 
