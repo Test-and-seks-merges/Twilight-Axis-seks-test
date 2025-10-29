@@ -44,7 +44,7 @@
 		"Head Physician",
 		"Town Crier",
 		"Keeper",
-		"Captain",
+		"Knight Captain",
 		"Archivist",
 		"Knight",
 		"Court Magician",
@@ -54,6 +54,7 @@
 		"Warden",
 		"Squire",
 		"Veteran",
+		"Court Agent",
 		"Apothecary"
 	)
 
